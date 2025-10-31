@@ -398,15 +398,27 @@ export function Portfolio() {
                                     <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
                                       {project.detailContent.solution.images.map((image: any, index: number) => (
                                         <div key={index} className="space-y-3">
-                                          {typeof image.src === 'string' && image.src.includes('待插入') ? (
+                                          {!image.src || (typeof image.src === 'string' && image.src.includes('待插入')) ? (
                                             <div className="w-full h-48 bg-muted rounded-xl border-2 border-border flex items-center justify-center">
-                                              <span className="text-sm text-muted-foreground">{image.src}</span>
+                                              <span className="text-sm text-muted-foreground">{image.src || '【待插入图片】'}</span>
                                             </div>
                                           ) : (
                                             <img 
-                                              src={image.src} 
-                                              alt={image.alt} 
-                                              className="w-full h-48 object-cover rounded-xl border-2 border-border shadow-lg"
+                                              src={typeof image.src === 'string' ? image.src : image.src} 
+                                              alt={image.alt || '项目图片'} 
+                                              className="w-full h-48 object-contain rounded-xl border-2 border-border shadow-lg bg-muted"
+                                              loading="lazy"
+                                              onError={(e) => {
+                                                const target = e.target as HTMLImageElement;
+                                                target.style.display = 'none';
+                                                const parent = target.parentElement;
+                                                if (parent) {
+                                                  const placeholder = document.createElement('div');
+                                                  placeholder.className = 'w-full h-48 bg-muted rounded-xl border-2 border-border flex items-center justify-center';
+                                                  placeholder.innerHTML = '<span class="text-sm text-muted-foreground">图片加载失败</span>';
+                                                  parent.insertBefore(placeholder, target);
+                                                }
+                                              }}
                                             />
                                           )}
                                           <p className="text-xs text-muted-foreground text-center">
