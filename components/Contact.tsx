@@ -1,10 +1,6 @@
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 
-interface ContactProps {
-  onOpenResume: () => void;
-}
-
 const contactMethods = [
   {
     title: "邮箱联系",
@@ -29,7 +25,7 @@ const contactMethods = [
   }
 ];
 
-export function Contact(props: ContactProps) {
+export function Contact() {
   return (
     <section id="contact" className="py-24 px-6 bg-secondary">
       <div className="max-w-6xl mx-auto">
@@ -108,13 +104,6 @@ export function Contact(props: ContactProps) {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-4 transition-all duration-300 hover:scale-105"
-                onClick={props.onOpenResume}
-              >
-                查看个人简历
-              </Button>
               <Button 
                 size="lg" 
                 variant="outline"

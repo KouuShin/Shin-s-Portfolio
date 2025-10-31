@@ -1,11 +1,7 @@
 import { Button } from "./ui/button";
 import profileImage from 'figma:asset/d85704791d01226202f209a631300f5e40385ac2.png';
 
-interface HeroProps {
-  onOpenResume: () => void;
-}
-
-export function Hero({ onOpenResume }: HeroProps) {
+export function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -48,13 +44,6 @@ export function Hero({ onOpenResume }: HeroProps) {
                   className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-3 transition-all duration-300 hover:scale-105"
                 >
                   查看作品
-                </Button>
-                <Button 
-                  onClick={onOpenResume}
-                  variant="outline"
-                  className="border-2 border-border hover:bg-muted rounded-full px-8 py-3 transition-all duration-300"
-                >
-                  个人简历
                 </Button>
               </div>
 

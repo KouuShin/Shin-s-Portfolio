@@ -1,18 +1,11 @@
-import { useState } from "react";
 import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
 import { Skills } from "./components/Skills";
 import { Portfolio } from "./components/Portfolio";
 import { Contact } from "./components/Contact";
-import { ResumeModal } from "./components/ResumeModal";
 import { SectionTransition } from "./components/SectionTransition";
 
 export default function App() {
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
-
-  const openResumeModal = () => setIsResumeModalOpen(true);
-  const closeResumeModal = () => setIsResumeModalOpen(false);
-
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -20,7 +13,7 @@ export default function App() {
       <main className="overflow-hidden">
         <SectionTransition>
           <section id="hero">
-            <Hero onOpenResume={openResumeModal} />
+            <Hero />
           </section>
         </SectionTransition>
         
@@ -38,15 +31,10 @@ export default function App() {
         
         <SectionTransition>
           <section id="contact">
-            <Contact onOpenResume={openResumeModal} />
+            <Contact />
           </section>
         </SectionTransition>
       </main>
-      
-      <ResumeModal 
-        isOpen={isResumeModalOpen} 
-        onClose={closeResumeModal} 
-      />
     </div>
   );
 }
