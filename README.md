@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 个人作品集网站
 
 这是一个使用 React + TypeScript + Vite + Tailwind CSS 构建的个人作品集网站。
@@ -51,3 +52,6 @@ npm run preview
 └── main.tsx       # 入口文件
 ```
 
+=======
+# Shin-s-Portfolio
+>>>>>>> 4c9c370788d9956e77ce6ee08f2e9122b4dc4a77
