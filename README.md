@@ -1,9 +1,8 @@
-<<<<<<< HEAD
-# 个人作品集网站
+# 寇欣怡的个人作品集网站
 
 这是一个使用 React + TypeScript + Vite + Tailwind CSS 构建的个人作品集网站。
 
-## 快速开始
+## 🚀 快速开始
 
 ### 安装依赖
 
@@ -17,7 +16,7 @@ npm install
 npm run dev
 ```
 
-开发服务器将在 http://localhost:3000 启动，浏览器会自动打开。
+开发服务器将根据vite.config.ts中的配置启动。
 
 ### 构建生产版本
 
@@ -25,13 +24,11 @@ npm run dev
 npm run build
 ```
 
-### 预览生产版本
+### 在线预览
 
-```bash
-npm run preview
-```
+网站已配置好Vercel部署，访问 https://vercel.com 连接此仓库即可自动部署。
 
-## 技术栈
+## 💻 技术栈
 
 - **React 18** - UI 框架
 - **TypeScript** - 类型安全
@@ -40,7 +37,7 @@ npm run preview
 - **shadcn/ui** - UI 组件库
 - **Radix UI** - 无样式组件库
 
-## 项目结构
+## 📁 项目结构
 
 ```
 ├── assets/          # 图片资源
@@ -52,6 +49,15 @@ npm run preview
 └── main.tsx       # 入口文件
 ```
 
-=======
-# Shin-s-Portfolio
->>>>>>> 4c9c370788d9956e77ce6ee08f2e9122b4dc4a77
+## 🌐 在线访问
+
+网站部署后可通过以下方式访问：
+- Vercel自动生成的URL
+- 或自定义域名
+
+## 📝 项目内容
+
+- 个人介绍与背景
+- 技能展示
+- 作品集（包括Synapse AI工作流平台、汽车售后索赔AI审核项目、AI客服机器人POC等）
+- 联系方式
