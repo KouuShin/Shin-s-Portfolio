@@ -4,13 +4,15 @@ import { Skills } from "./components/Skills";
 import { Portfolio } from "./components/Portfolio";
 import { Contact } from "./components/Contact";
 import { SectionTransition } from "./components/SectionTransition";
+import { BackgroundBubbles } from "./components/BackgroundBubbles";
 
 export default function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <BackgroundBubbles />
       <Navigation />
       
-      <main className="overflow-hidden">
+      <main className="overflow-hidden relative z-10">
         <SectionTransition>
           <section id="hero">
             <Hero />
