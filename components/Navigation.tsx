@@ -59,6 +59,12 @@ export function Navigation() {
               作品
             </button>
             <button 
+              onClick={() => window.open('https://xhslink.com/m/7zur4w8wu0f', '_blank')}
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+            >
+              博客
+            </button>
+            <button 
               onClick={() => scrollToSection('contact')}
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
             >

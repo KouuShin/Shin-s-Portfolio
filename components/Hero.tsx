@@ -45,6 +45,13 @@ export function Hero() {
                 >
                   查看作品
                 </Button>
+                <Button 
+                  onClick={() => window.open('https://xhslink.com/m/7zur4w8wu0f', '_blank')}
+                  variant="outline"
+                  className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8 py-3 transition-all duration-300 hover:scale-105"
+                >
+                  我的博客
+                </Button>
               </div>
 
               {/* 数据展示 */}
