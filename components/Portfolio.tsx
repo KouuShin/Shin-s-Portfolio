@@ -8,7 +8,8 @@ import synapseLoginImage from "figma:asset/62f6b55bfea6a0c115708202f0165a4275180
 import synapseDashboardImage from "figma:asset/e47618a1b6ddb02fe667d91c25f8a32d559adeca.png";
 import synapseWorkflowImage from "figma:asset/1d70601697815cad98cc68d4cc0737a27382d4ba.png";
 import synapseAIAssistantImage from "figma:asset/6c051f61c65dc9abb213bcd8332b1acddef9e58d.png";
-import aiChatbotRAGVectorizationImage from "figma:asset/ai-chatbot-rag-vectorization.png";
+import aiChatbotVectorizationImage from "figma:asset/ai-chatbot-rag-vectorization.png";
+import langgraphRagArchitectureImage from "figma:asset/langgraph-rag-system-architecture.png";
 
 const projects = [
   {
@@ -184,19 +185,19 @@ const projects = [
 这个POC证明了AI可以准确、自动地7x24小时处理这些基础查询。`,
         images: [
           {
-            src: aiChatbotRAGVectorizationImage,
+            src: aiChatbotVectorizationImage,
             alt: "AI客服知识库构建界面",
             description: "知识库构建 - RAG文档切片与向量化存储"
+          },
+          {
+            src: langgraphRagArchitectureImage,
+            alt: "AI客服系统架构",
+            description: "系统架构 - LangGraph + RAG技术栈"
           },
           {
             src: "【待插入图片】",
             alt: "AI客服对话界面",
             description: "对话界面 - 基于Gemini大模型的智能问答"
-          },
-          {
-            src: "【待插入图片】",
-            alt: "AI客服系统架构",
-            description: "系统架构 - LangGraph + RAG技术栈"
           },
           {
             src: "【待插入图片】",
@@ -373,10 +374,10 @@ export function Portfolio() {
                             {/* 最终成果展示 */}
                             {project.detailContent.solution && (
                               <>
-                                <div>
-                                  <h3 className="text-lg font-medium mb-6 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
+                            <div>
+                              <h3 className="text-lg font-medium mb-6 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
                                     {project.detailContent.solution.title || "最终成果展示"}
-                                  </h3>
+                              </h3>
                                   
                                   {/* 工作流程描述 */}
                                   {project.detailContent.solution.workflow && (
@@ -397,15 +398,15 @@ export function Portfolio() {
                                     <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
                                       {project.detailContent.solution.images.map((image: any, index: number) => (
                                         <div key={index} className="space-y-3">
-                                          {typeof image.src === 'string' && image.src.includes('【待插入图片】') ? (
+                                          {typeof image.src === 'string' && image.src.includes('待插入') ? (
                                             <div className="w-full h-48 bg-muted rounded-xl border-2 border-border flex items-center justify-center">
                                               <span className="text-sm text-muted-foreground">{image.src}</span>
                                             </div>
                                           ) : (
                                             <img 
                                               src={image.src} 
-                                              alt={image.alt || image.description}
-                                              className="w-full rounded-xl border-2 border-border shadow-lg"
+                                              alt={image.alt} 
+                                              className="w-full h-48 object-cover rounded-xl border-2 border-border shadow-lg"
                                             />
                                           )}
                                           <p className="text-xs text-muted-foreground text-center">
@@ -416,175 +417,175 @@ export function Portfolio() {
                                     </div>
                                   ) : (
                                     // 默认显示Synapse项目的图片（向后兼容）
-                                    <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
-                                      <div className="space-y-3">
-                                        <img 
-                                          src={synapseLoginImage} 
-                                          alt="Synapse登录界面" 
-                                          className="w-full rounded-xl border-2 border-border shadow-lg"
-                                        />
-                                        <p className="text-xs text-muted-foreground text-center">
-                                          登录界面 - 简洁的用户认证体验
-                                        </p>
-                                      </div>
-                                      <div className="space-y-3">
-                                        <img 
-                                          src={synapseDashboardImage} 
-                                          alt="Synapse主界面仪表板" 
-                                          className="w-full rounded-xl border-2 border-border shadow-lg"
-                                        />
-                                        <p className="text-xs text-muted-foreground text-center">
-                                          主界面仪表板 - 项目概览与快速操作
-                                        </p>
-                                      </div>
-                                      <div className="space-y-3">
-                                        <img 
-                                          src={synapseWorkflowImage} 
-                                          alt="Synapse工作流管理界面" 
-                                          className="w-full rounded-xl border-2 border-border shadow-lg"
-                                        />
-                                        <p className="text-xs text-muted-foreground text-center">
-                                          工作流管理 - AI驱动的任务协作平台
-                                        </p>
-                                      </div>
-                                      <div className="space-y-3">
-                                        <img 
-                                          src={synapseAIAssistantImage} 
-                                          alt="Synapse AI助手对话界面" 
-                                          className="w-full rounded-xl border-2 border-border shadow-lg"
-                                        />
-                                        <p className="text-xs text-muted-foreground text-center">
-                                          AI智能助手 - 自动化需求文档生成
-                                        </p>
-                                      </div>
-                                    </div>
+                              <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
+                                <div className="space-y-3">
+                                  <img 
+                                    src={synapseLoginImage} 
+                                    alt="Synapse登录界面" 
+                                    className="w-full rounded-xl border-2 border-border shadow-lg"
+                                  />
+                                  <p className="text-xs text-muted-foreground text-center">
+                                    登录界面 - 简洁的用户认证体验
+                                  </p>
+                                </div>
+                                <div className="space-y-3">
+                                  <img 
+                                    src={synapseDashboardImage} 
+                                    alt="Synapse主界面仪表板" 
+                                    className="w-full rounded-xl border-2 border-border shadow-lg"
+                                  />
+                                  <p className="text-xs text-muted-foreground text-center">
+                                    主界面仪表板 - 项目概览与快速操作
+                                  </p>
+                                </div>
+                                <div className="space-y-3">
+                                  <img 
+                                    src={synapseWorkflowImage} 
+                                    alt="Synapse工作流管理界面" 
+                                    className="w-full rounded-xl border-2 border-border shadow-lg"
+                                  />
+                                  <p className="text-xs text-muted-foreground text-center">
+                                    工作流管理 - AI驱动的任务协作平台
+                                  </p>
+                                </div>
+                                <div className="space-y-3">
+                                  <img 
+                                    src={synapseAIAssistantImage} 
+                                    alt="Synapse AI助手对话界面" 
+                                    className="w-full rounded-xl border-2 border-border shadow-lg"
+                                  />
+                                  <p className="text-xs text-muted-foreground text-center">
+                                    AI智能助手 - 自动化需求文档生成
+                                  </p>
+                                </div>
+                              </div>
                                   )}
                                   
                                   {/* 平台特色描述（仅当没有workflow时显示） */}
                                   {!project.detailContent.solution.workflow && (
-                                    <div className="mt-6 bg-muted p-4 rounded-xl border-l-4 border-primary">
-                                      <p className="text-sm leading-relaxed text-muted-foreground">
-                                        <span className="font-medium text-foreground">平台特色：</span>
-                                        通过AI引导式对话，实现从产品构思到交付的全流程自动化。界面设计简洁直观，
-                                        支持多角色协作，显著提升了团队的工作效率和项目管理质量。
-                                      </p>
-                                    </div>
+                              <div className="mt-6 bg-muted p-4 rounded-xl border-l-4 border-primary">
+                                <p className="text-sm leading-relaxed text-muted-foreground">
+                                  <span className="font-medium text-foreground">平台特色：</span>
+                                  通过AI引导式对话，实现从产品构思到交付的全流程自动化。界面设计简洁直观，
+                                  支持多角色协作，显著提升了团队的工作效率和项目管理质量。
+                                </p>
+                              </div>
                                   )}
-                                </div>
+                            </div>
 
-                                <Separator className="my-6" />
+                            <Separator className="my-6" />
                               </>
                             )}
 
                             {/* 挑战（仅当存在challenge时显示） */}
                             {project.detailContent.challenge && (
                               <>
-                                <div>
-                                  <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
-                                    1. {project.detailContent.challenge.title}
-                                  </h3>
-                                  <div className="space-y-4">
-                                    <p className="text-sm leading-relaxed text-muted-foreground">
-                                      在我所负责的团队中，产品经理的精力被严重消耗。我们发现：
-                                    </p>
-                                    <ul className="space-y-3 ml-4">
-                                      {project.detailContent.challenge.content.map((item, index) => (
-                                        <li key={index} className="text-sm leading-relaxed text-muted-foreground list-disc">
-                                          {item}
-                                        </li>
-                                      ))}
-                                    </ul>
-                                    <div className="bg-muted p-4 rounded-xl border-l-4 border-primary">
-                                      <p className="text-sm leading-relaxed text-foreground font-medium whitespace-pre-line">
-                                        {project.detailContent.challenge.coreQuestion}
-                                      </p>
-                                    </div>
-                                  </div>
+                            <div>
+                              <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
+                                1. {project.detailContent.challenge.title}
+                              </h3>
+                              <div className="space-y-4">
+                                <p className="text-sm leading-relaxed text-muted-foreground">
+                                  在我所负责的团队中，产品经理的精力被严重消耗。我们发现：
+                                </p>
+                                <ul className="space-y-3 ml-4">
+                                  {project.detailContent.challenge.content.map((item, index) => (
+                                    <li key={index} className="text-sm leading-relaxed text-muted-foreground list-disc">
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                                <div className="bg-muted p-4 rounded-xl border-l-4 border-primary">
+                                  <p className="text-sm leading-relaxed text-foreground font-medium whitespace-pre-line">
+                                    {project.detailContent.challenge.coreQuestion}
+                                  </p>
                                 </div>
+                              </div>
+                            </div>
 
-                                <Separator className="my-6" />
+                            <Separator className="my-6" />
                               </>
                             )}
 
                             {/* 验证 */}
                             {project.detailContent.validation && (
                               <>
-                                <div>
-                                  <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
+                            <div>
+                              <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
                                     {project.detailContent.challenge ? "2. " : "1. "}{project.detailContent.validation.title}
-                                  </h3>
-                                  <div className="space-y-4">
+                              </h3>
+                              <div className="space-y-4">
                                     {project.detailContent.validation.process && (
-                                      <p className="text-sm leading-relaxed text-muted-foreground">
+                                <p className="text-sm leading-relaxed text-muted-foreground">
                                         {project.detailContent.validation.process.includes("我") 
                                           ? project.detailContent.validation.process 
                                           : `在项目推进过程中，${project.detailContent.validation.process}`}
-                                      </p>
+                                </p>
                                     )}
-                                    <ul className="space-y-3 ml-4">
-                                      {project.detailContent.validation.insights.map((insight, index) => (
-                                        <li key={index} className="text-sm leading-relaxed text-muted-foreground list-disc">
-                                          {insight}
-                                        </li>
-                                      ))}
-                                    </ul>
+                                <ul className="space-y-3 ml-4">
+                                  {project.detailContent.validation.insights.map((insight, index) => (
+                                    <li key={index} className="text-sm leading-relaxed text-muted-foreground list-disc">
+                                      {insight}
+                                    </li>
+                                  ))}
+                                </ul>
                                     {project.detailContent.validation.userFeedback && (
-                                      <div className="bg-primary/10 p-4 rounded-xl border-l-4 border-primary">
-                                        <p className="text-sm leading-relaxed text-foreground font-medium italic">
-                                          用户原声反馈：
-                                        </p>
-                                        <p className="text-sm leading-relaxed text-muted-foreground mt-2">
-                                          {project.detailContent.validation.userFeedback}
-                                        </p>
-                                      </div>
-                                    )}
-                                  </div>
+                                <div className="bg-primary/10 p-4 rounded-xl border-l-4 border-primary">
+                                  <p className="text-sm leading-relaxed text-foreground font-medium italic">
+                                    用户原声反馈：
+                                  </p>
+                                  <p className="text-sm leading-relaxed text-muted-foreground mt-2">
+                                    {project.detailContent.validation.userFeedback}
+                                  </p>
                                 </div>
+                                    )}
+                              </div>
+                            </div>
 
-                                <Separator className="my-6" />
+                            <Separator className="my-6" />
                               </>
                             )}
 
                             {/* 解决方案（仅当存在modules时显示，如果是workflow则在"最终成果展示"中已处理） */}
                             {project.detailContent.solution && project.detailContent.solution.modules && (
                               <>
-                                <div>
-                                  <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
+                            <div>
+                              <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
                                     {project.detailContent.challenge ? "3. " : project.detailContent.validation ? "2. " : "1. "}{project.detailContent.solution.title}
-                                  </h3>
-                                  <div className="space-y-6">
+                              </h3>
+                              <div className="space-y-6">
                                     {project.detailContent.solution.description && (
-                                      <p className="text-sm leading-relaxed text-muted-foreground">
-                                        {project.detailContent.solution.description}我设计的核心模块旨在创造可量化的业务成果：
-                                      </p>
+                                <p className="text-sm leading-relaxed text-muted-foreground">
+                                  {project.detailContent.solution.description}我设计的核心模块旨在创造可量化的业务成果：
+                                </p>
                                     )}
-                                    <div className="grid gap-6">
-                                      {project.detailContent.solution.modules.map((module, index) => (
-                                        <div key={index} className="bg-muted p-6 rounded-xl">
-                                          <h4 className="text-base font-medium text-foreground mb-3">
-                                            {module.name}：
-                                          </h4>
-                                          <p className="text-sm leading-relaxed text-muted-foreground mb-3">
-                                            <span className="font-medium">价值：</span> {module.value}
-                                          </p>
-                                          <p className="text-sm leading-relaxed text-muted-foreground">
-                                            <span className="font-medium">成果：</span> {module.result}
-                                          </p>
-                                        </div>
-                                      ))}
+                                <div className="grid gap-6">
+                                  {project.detailContent.solution.modules.map((module, index) => (
+                                    <div key={index} className="bg-muted p-6 rounded-xl">
+                                      <h4 className="text-base font-medium text-foreground mb-3">
+                                        {module.name}：
+                                      </h4>
+                                      <p className="text-sm leading-relaxed text-muted-foreground mb-3">
+                                        <span className="font-medium">价值：</span> {module.value}
+                                      </p>
+                                      <p className="text-sm leading-relaxed text-muted-foreground">
+                                        <span className="font-medium">成果：</span> {module.result}
+                                      </p>
                                     </div>
-                                  </div>
+                                  ))}
                                 </div>
+                              </div>
+                            </div>
 
-                                <Separator className="my-6" />
+                            <Separator className="my-6" />
                               </>
                             )}
 
                             {/* 成果与影响 */}
                             {project.detailContent.results && (
                               <>
-                                <div>
-                                  <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
+                            <div>
+                              <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
                                     {(() => {
                                       let num = 1;
                                       if (project.detailContent.challenge) num++;
@@ -592,29 +593,29 @@ export function Portfolio() {
                                       if (project.detailContent.solution && project.detailContent.solution.modules) num++;
                                       return `${num}. `;
                                     })()}{project.detailContent.results.title}
-                                  </h3>
-                                  <div className="space-y-4">
-                                    <div className="grid gap-4">
-                                      {project.detailContent.results.achievements.map((achievement, index) => (
-                                        <div key={index} className="flex items-start space-x-3">
-                                          <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                                          <p className="text-sm leading-relaxed text-muted-foreground">
-                                            {achievement}
-                                          </p>
-                                        </div>
-                                      ))}
+                              </h3>
+                              <div className="space-y-4">
+                                <div className="grid gap-4">
+                                  {project.detailContent.results.achievements.map((achievement, index) => (
+                                    <div key={index} className="flex items-start space-x-3">
+                                      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                                      <p className="text-sm leading-relaxed text-muted-foreground">
+                                        {achievement}
+                                      </p>
                                     </div>
-                                  </div>
+                                  ))}
                                 </div>
+                              </div>
+                            </div>
 
-                                <Separator className="my-6" />
+                            <Separator className="my-6" />
                               </>
                             )}
 
                             {/* 我的反思与展望 */}
                             {project.detailContent.reflection && (
-                              <div>
-                                <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
+                            <div>
+                              <h3 className="text-lg font-medium mb-4 text-primary-foreground bg-primary inline-block px-4 py-2 rounded-full">
                                   {(() => {
                                     let num = 1;
                                     if (project.detailContent.challenge) num++;
@@ -623,13 +624,13 @@ export function Portfolio() {
                                     if (project.detailContent.results) num++;
                                     return `${num}. `;
                                   })()}{project.detailContent.reflection.title}
-                                </h3>
+                              </h3>
                               <div className="space-y-6">
                                 <p className="text-sm leading-relaxed text-muted-foreground">
                                   {project.detailContent.reflection.insight}
                                 </p>
                                 {project.detailContent.reflection.shortTerm && project.detailContent.reflection.longTerm && (
-                                  <div className="grid md:grid-cols-2 gap-6">
+                                <div className="grid md:grid-cols-2 gap-6">
                                     {project.detailContent.reflection.shortTerm.startsWith("反思") || project.detailContent.reflection.shortTerm.startsWith("主动性") ? (
                                       <>
                                         <div className="bg-primary/10 p-4 rounded-xl">
@@ -651,32 +652,32 @@ export function Portfolio() {
                                       </>
                                     ) : (
                                       <>
-                                        <div className="bg-primary/10 p-4 rounded-xl">
-                                          <h4 className="text-base font-medium text-foreground mb-2">
-                                            短期规划 (1-3个月):
-                                          </h4>
-                                          <p className="text-sm leading-relaxed text-muted-foreground">
-                                            {project.detailContent.reflection.shortTerm}
-                                          </p>
-                                        </div>
-                                        <div className="bg-secondary text-secondary-foreground p-4 rounded-xl">
-                                          <h4 className="text-base font-medium mb-2">
-                                            长期愿景:
-                                          </h4>
-                                          <p className="text-sm leading-relaxed text-secondary-foreground/80">
-                                            {project.detailContent.reflection.longTerm}
-                                          </p>
-                                        </div>
-                                      </>
-                                    )}
-                                  </div>
-                                )}
-                                {project.detailContent.reflection.conclusion && (
-                                  <div className="bg-muted p-6 rounded-xl border-l-4 border-primary">
-                                    <p className="text-sm leading-relaxed text-muted-foreground italic">
-                                      {project.detailContent.reflection.conclusion}
+                                  <div className="bg-primary/10 p-4 rounded-xl">
+                                    <h4 className="text-base font-medium text-foreground mb-2">
+                                      短期规划 (1-3个月):
+                                    </h4>
+                                    <p className="text-sm leading-relaxed text-muted-foreground">
+                                      {project.detailContent.reflection.shortTerm}
                                     </p>
                                   </div>
+                                  <div className="bg-secondary text-secondary-foreground p-4 rounded-xl">
+                                    <h4 className="text-base font-medium mb-2">
+                                      长期愿景:
+                                    </h4>
+                                    <p className="text-sm leading-relaxed text-secondary-foreground/80">
+                                      {project.detailContent.reflection.longTerm}
+                                    </p>
+                                  </div>
+                                      </>
+                                    )}
+                                </div>
+                                )}
+                                {project.detailContent.reflection.conclusion && (
+                                <div className="bg-muted p-6 rounded-xl border-l-4 border-primary">
+                                  <p className="text-sm leading-relaxed text-muted-foreground italic">
+                                    {project.detailContent.reflection.conclusion}
+                                  </p>
+                                </div>
                                 )}
                               </div>
                             </div>
@@ -986,49 +987,49 @@ export function Portfolio() {
               ? 'bg-secondary text-secondary-foreground border-secondary'
               : 'bg-secondary text-secondary-foreground border-secondary'
           }`}>
-            <div className="grid md:grid-cols-3 gap-8 items-center">
-              <div className="md:col-span-2 space-y-4">
-                <div className="flex items-center gap-2 mb-3">
+          <div className="grid md:grid-cols-3 gap-8 items-center">
+            <div className="md:col-span-2 space-y-4">
+              <div className="flex items-center gap-2 mb-3">
                   <div className={`w-2 h-2 rounded-full ${
                     projects[3].theme === 'primary' ? 'bg-primary-foreground' : 'bg-secondary-foreground'
                   }`}></div>
                   <span className={`text-sm font-medium ${
                     projects[3].theme === 'primary' ? 'text-primary-foreground/70' : 'text-secondary-foreground/70'
                   }`}>
-                    Featured Project
-                  </span>
-                </div>
-                
+                  Featured Project
+                </span>
+              </div>
+              
                 <h3 className={`text-2xl font-medium ${
                   projects[3].theme === 'primary' ? 'text-primary-foreground' : 'text-secondary-foreground'
                 }`}>
                   {projects[3].title}
-                </h3>
-                
+              </h3>
+              
                 <p className={`leading-relaxed ${
                   projects[3].theme === 'primary' ? 'text-primary-foreground/90' : 'text-secondary-foreground/90'
                 }`}>
                   {projects[3].description}
-                </p>
-              </div>
-              
-              <div className="space-y-4">
+              </p>
+            </div>
+            
+            <div className="space-y-4">
                 <h4 className={`text-base font-medium ${
                   projects[3].theme === 'primary' ? 'text-primary-foreground' : 'text-secondary-foreground'
                 }`}>关键成果</h4>
-                <div className="space-y-2">
+              <div className="space-y-2">
                   {projects[3].metrics.map((metric, index) => (
-                    <div key={index} className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <div key={index} className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                       <span className={`text-sm ${
                         projects[3].theme === 'primary' ? 'text-primary-foreground/90' : 'text-secondary-foreground/90'
                       }`}>{metric}</span>
-                    </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </Card>
+          </div>
+        </Card>
         )}
         
         {/* Bottom CTA */}
