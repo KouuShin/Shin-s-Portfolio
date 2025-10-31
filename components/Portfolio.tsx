@@ -8,6 +8,7 @@ import synapseLoginImage from "figma:asset/62f6b55bfea6a0c115708202f0165a4275180
 import synapseDashboardImage from "figma:asset/e47618a1b6ddb02fe667d91c25f8a32d559adeca.png";
 import synapseWorkflowImage from "figma:asset/1d70601697815cad98cc68d4cc0737a27382d4ba.png";
 import synapseAIAssistantImage from "figma:asset/6c051f61c65dc9abb213bcd8332b1acddef9e58d.png";
+import aiChatbotRAGVectorizationImage from "figma:asset/ai-chatbot-rag-vectorization.png";
 
 const projects = [
   {
@@ -183,7 +184,7 @@ const projects = [
 这个POC证明了AI可以准确、自动地7x24小时处理这些基础查询。`,
         images: [
           {
-            src: "【待插入图片】",
+            src: aiChatbotRAGVectorizationImage,
             alt: "AI客服知识库构建界面",
             description: "知识库构建 - RAG文档切片与向量化存储"
           },
@@ -396,9 +397,17 @@ export function Portfolio() {
                                     <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
                                       {project.detailContent.solution.images.map((image: any, index: number) => (
                                         <div key={index} className="space-y-3">
-                                          <div className="w-full h-48 bg-muted rounded-xl border-2 border-border flex items-center justify-center">
-                                            <span className="text-sm text-muted-foreground">{image.src}</span>
-                                          </div>
+                                          {typeof image.src === 'string' && image.src.includes('【待插入图片】') ? (
+                                            <div className="w-full h-48 bg-muted rounded-xl border-2 border-border flex items-center justify-center">
+                                              <span className="text-sm text-muted-foreground">{image.src}</span>
+                                            </div>
+                                          ) : (
+                                            <img 
+                                              src={image.src} 
+                                              alt={image.alt || image.description}
+                                              className="w-full rounded-xl border-2 border-border shadow-lg"
+                                            />
+                                          )}
                                           <p className="text-xs text-muted-foreground text-center">
                                             {image.description}
                                           </p>
