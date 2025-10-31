@@ -239,7 +239,7 @@ const projects = [
 ];
 
 export function Portfolio() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  // const [selectedProject, setSelectedProject] = useState(null);
   
   return (
     <section id="portfolio" className="py-24 px-6 bg-muted">
@@ -671,6 +671,7 @@ export function Portfolio() {
                                 )}
                               </div>
                             </div>
+                          )}
                           </div>
                         </ScrollArea>
                       </DialogContent>
