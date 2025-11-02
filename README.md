@@ -1,4 +1,4 @@
-# 寇欣怡的个人作品集网站
+# 个人作品集网站
 
 这是一个使用 React + TypeScript + Vite + Tailwind CSS 构建的个人作品集网站。
 
