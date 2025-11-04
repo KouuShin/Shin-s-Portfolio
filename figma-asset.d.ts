@@ -3,3 +3,13 @@ declare module 'figma:asset/*' {
   export default content;
 }
 
+declare module 'figma:asset/*.jpg' {
+  const content: string;
+  export default content;
+}
+
+declare module 'figma:asset/*.jpeg' {
+  const content: string;
+  export default content;
+}
+
