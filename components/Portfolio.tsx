@@ -7,8 +7,8 @@ import synapseWorkflowImage from 'figma:asset/1d70601697815cad98cc68d4cc0737a273
 import synapseAIAssistantImage from 'figma:asset/6c051f61c65dc9abb213bcd8332b1acddef9e58d.png';
 // 暂时使用 dashboard 图片，直到 Vercel 使用包含 SYNAPSEAI_Coverpage.jpg 的最新提交
 // 文件已在 commit 2944bf6 中添加，但 Vercel 仍在使用旧提交 6174391
-// TODO: 当 Vercel 使用最新提交后，改为使用 synapseCoverpageImage
-import synapseCoverpageImage from 'figma:asset/SYNAPSEAI_Coverpage.jpg';
+// TODO: 当 Vercel 使用最新提交后，取消注释下面的导入并使用 synapseCoverpageImage
+// import synapseCoverpageImage from 'figma:asset/SYNAPSEAI_Coverpage.jpg';
 // AI客服系统图片
 import aiChatbotVectorizationImage from 'figma:asset/ai-chatbot-rag-vectorization.png';
 import langgraphRagArchitectureImage from 'figma:asset/langgraph-rag-system-architecture.png';
