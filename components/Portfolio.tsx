@@ -5,6 +5,11 @@ import synapseLoginImage from 'figma:asset/62f6b55bfea6a0c115708202f0165a4275180
 import synapseDashboardImage from 'figma:asset/e47618a1b6ddb02fe667d91c25f8a32d559adeca.png';
 import synapseWorkflowImage from 'figma:asset/1d70601697815cad98cc68d4cc0737a27382d4ba.png';
 import synapseAIAssistantImage from 'figma:asset/6c051f61c65dc9abb213bcd8332b1acddef9e58d.png';
+// AI客服系统图片
+import aiChatbotVectorizationImage from 'figma:asset/ai-chatbot-rag-vectorization.png';
+import langgraphRagArchitectureImage from 'figma:asset/langgraph-rag-system-architecture.png';
+import aiChatbotDialogImage from 'figma:asset/对话界面 - 基于Gemini大模型的智能问答.png';
+import aiChatbotTestResultImage from 'figma:asset/测试结果 - 90%准确率验证.png';
 
 const projects = [
   {
@@ -13,7 +18,7 @@ const projects = [
     subtitle: "智能化产品经理协作系统",
     description: "主导设计并实现AI驱动的一体化工作流平台，通过引导式AI对话实现从产品构思到交付的全流程自动化，显著提升产品经理的工作效率和团队协作质量。",
     metrics: ["需求响应速度从1个星期缩短至3天", "从0到1的启动项目：产品规划和消化从3个月缩短至1~2个月", "用户满意度 100%"],
-    imageUrl: "https://images.unsplash.com/photo-1542744094-24638eff58bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3JrZmxvdyUyMGF1dG9tYXRpb258ZW58MXx8fHwxNzYyMTY5NzExfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    imageUrl: synapseDashboardImage,
     size: "large",
     detailImages: [
       { src: synapseLoginImage, caption: "登录界面 - 简洁的用户认证体验" },
@@ -34,8 +39,14 @@ const projects = [
     subtitle: "AI赋能的理赔审核工作流系统",
     description: "作为AI赋能模块的产品经理，独立负责从0到1的完整产品闭环，将AI能力无缝集成到传统汽车售后SaaS工作流中，实现从'事后抽查'到'事前预审'的模式转变。",
     metrics: ["AI自动化审核率从2.79%提升至72%", "审核覆盖率从14%提升至100%", "源头解决72.9%的流程问题"],
-    imageUrl: "https://images.unsplash.com/photo-1660165458059-57cfb6cc87e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhaSUyMHRlY2hub2xvZ3klMjBhYnN0cmFjdHxlbnwxfHx8fDE3NjIxODg1MTl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    imageUrl: aiChatbotVectorizationImage,
     size: "medium",
+    detailImages: [
+      { src: aiChatbotVectorizationImage, caption: "知识库构建 - RAG文档切片与向量化存储" },
+      { src: langgraphRagArchitectureImage, caption: "系统架构 - LangGraph + RAG技术栈" },
+      { src: aiChatbotDialogImage, caption: "对话界面 - 基于Gemini大模型的智能问答" },
+      { src: aiChatbotTestResultImage, caption: "测试结果 - 90%准确率验证" }
+    ],
     details: {
       role: "作为AI赋能模块的产品经理，独立负责从0到1的完整产品闭环，主导AI能力探索、方案选型、流程设计和跨团队协作推动。",
       challenge: "年均40万单理赔，人工审核覆盖率仅14%。高达72.9%的问题单据是流程性问题，审核反馈滞后导致效率低下。",
@@ -49,7 +60,7 @@ const projects = [
     subtitle: "数据驱动的业务洞察平台",
     description: "设计并实现数据可视化功能，通过直观的图表和指标展示，帮助业务团队快速理解关键数据趋势，支持数据驱动的决策制定。",
     metrics: ["数据查询效率提升 60%", "决策制定时间缩短 40%", "用户采用率 85%"],
-    imageUrl: "https://images.unsplash.com/photo-1584291527908-033f4d6542c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwdmlzdWFsaXphdGlvbiUyMHNjcmVlbnxlbnwxfHx8fDE3NjIyMjUwNzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    imageUrl: synapseWorkflowImage,
     size: "medium",
     details: {
       role: "作为产品经理，负责数据指标功能的完整设计与实现，从需求调研到上线交付。",
@@ -64,8 +75,14 @@ const projects = [
     subtitle: "RAG技术驱动的智能问答平台",
     description: "独立主导从0到1的POC项目，使用Gemini大模型和RAG检索增强技术，构建了一个能够7x24小时自动处理操作手册相关查询的AI客服系统，有效释放人力资源。",
     metrics: ["AI回答准确率达到90%", "7x24小时自动化服务", "显著降低重复性咨询工作量"],
-    imageUrl: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGF0Ym90JTIwYWl8ZW58MXx8fHwxNzYyMjI1MDc3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    imageUrl: aiChatbotDialogImage,
     size: "small",
+    detailImages: [
+      { src: aiChatbotVectorizationImage, caption: "知识库构建 - RAG文档切片与向量化存储" },
+      { src: langgraphRagArchitectureImage, caption: "系统架构 - LangGraph + RAG技术栈" },
+      { src: aiChatbotDialogImage, caption: "对话界面 - 基于Gemini大模型的智能问答" },
+      { src: aiChatbotTestResultImage, caption: "测试结果 - 90%准确率验证" }
+    ],
     details: {
       role: "独立负责POC项目的全过程，从问题发现、技术选型到POC搭建和验证。",
       challenge: "业务团队花费大量时间重复回答操作手册中的基础问题，占用宝贵人力资源。",
