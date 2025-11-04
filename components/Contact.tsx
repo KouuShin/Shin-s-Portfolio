@@ -9,7 +9,7 @@ export function Contact({ onOpenResume }: ContactProps) {
         {/* Main CTA */}
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl text-white mb-8">
-            • Let's make something crazy together
+            让我们一起推动、探索边界并创造。
           </h2>
           <a 
             href="mailto:shin_kou@163.com"
