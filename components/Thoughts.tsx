@@ -252,80 +252,94 @@ export function Thoughts() {
             </a>
           </div>
           
-          {/* Thoughts Dashboard Grid */}
-          <div className="grid grid-cols-12 gap-6 auto-rows-fr">
-            {/* Top Row */}
-            {/* Thought 1 - Large (top-left, spans 8 columns, 2 rows) */}
+          {/* Thoughts 2x2 Grid */}
+          <div className="grid grid-cols-2 gap-6 max-w-[600px] mx-auto">
+            {/* Thought 1 */}
             <div 
-              className="col-span-12 lg:col-span-8 row-span-2 group cursor-pointer"
-              onClick={() => thoughts[0].content && setSelectedThought(thoughts[0])}
+              className="group cursor-pointer"
+              onClick={() => {
+                if (thoughts[0].content) {
+                  setSelectedThought(thoughts[0]);
+                }
+              }}
             >
-              <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#5B7FB3] transition-colors duration-300 shadow-lg">
+              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#5B7FB3] transition-colors duration-300 shadow-lg mx-auto">
                 <ImageWithFallback
                   src={thoughts[0].imageUrl}
                   alt={thoughts[0].title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="mt-5">
-                <h3 className="text-2xl text-black group-hover:text-[#5B7FB3] transition-colors duration-200">
+              <div className="mt-5 text-center">
+                <h3 className="text-lg text-black group-hover:text-[#5B7FB3] transition-colors duration-200">
                   {thoughts[0].title}
                 </h3>
               </div>
             </div>
 
-            {/* Thought 2 - Small (top-right, spans 4 columns) */}
+            {/* Thought 2 */}
             <div 
-              className="col-span-12 lg:col-span-4 group cursor-pointer"
-              onClick={() => thoughts[1].content && setSelectedThought(thoughts[1])}
+              className="group cursor-pointer"
+              onClick={() => {
+                if (thoughts[1].content) {
+                  setSelectedThought(thoughts[1]);
+                }
+              }}
             >
-              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
+              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg mx-auto">
                 <ImageWithFallback
                   src={thoughts[1].imageUrl}
                   alt={thoughts[1].title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="mt-5">
+              <div className="mt-5 text-center">
                 <h3 className="text-lg text-black group-hover:text-[#B8D67F] transition-colors duration-200">
                   {thoughts[1].title}
                 </h3>
               </div>
             </div>
 
-            {/* Middle Row */}
-            {/* Thought 3 - Small (middle, spans 4 columns) */}
+            {/* Thought 3 */}
             <div 
-              className="col-span-12 lg:col-span-4 group cursor-pointer"
-              onClick={() => thoughts[2].content && setSelectedThought(thoughts[2])}
+              className="group cursor-pointer"
+              onClick={() => {
+                if (thoughts[2].content) {
+                  setSelectedThought(thoughts[2]);
+                }
+              }}
             >
-              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
+              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg mx-auto">
                 <ImageWithFallback
                   src={thoughts[2].imageUrl}
                   alt={thoughts[2].title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="mt-5">
+              <div className="mt-5 text-center">
                 <h3 className="text-lg text-black group-hover:text-[#B8D67F] transition-colors duration-200">
                   {thoughts[2].title}
                 </h3>
               </div>
             </div>
 
-            {/* Thought 4 - Small (middle, spans 4 columns) */}
+            {/* Thought 4 */}
             <div 
-              className="col-span-12 lg:col-span-4 group cursor-pointer"
-              onClick={() => thoughts[3].content && setSelectedThought(thoughts[3])}
+              className="group cursor-pointer"
+              onClick={() => {
+                if (thoughts[3].content) {
+                  setSelectedThought(thoughts[3]);
+                }
+              }}
             >
-              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
+              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg mx-auto">
                 <ImageWithFallback
                   src={thoughts[3].imageUrl}
                   alt={thoughts[3].title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="mt-5">
+              <div className="mt-5 text-center">
                 <h3 className="text-lg text-black group-hover:text-[#B8D67F] transition-colors duration-200">
                   {thoughts[3].title}
                 </h3>
