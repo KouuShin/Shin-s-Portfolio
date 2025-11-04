@@ -1,0 +1,9 @@
+# Vercel ignore file - ensure all config files are included
+!package.json
+!vite.config.ts
+!tsconfig.json
+!index.html
+!vercel.json
+!postcss.config.js
+!figma-asset.d.ts
+
