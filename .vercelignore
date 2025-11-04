@@ -1,4 +1,4 @@
-# Vercel ignore file - ensure all config files are included
+# Do not ignore any config files
 !package.json
 !vite.config.ts
 !tsconfig.json
@@ -6,4 +6,4 @@
 !vercel.json
 !postcss.config.js
 !figma-asset.d.ts
-
+!.gitignore
