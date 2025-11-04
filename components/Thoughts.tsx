@@ -69,9 +69,9 @@ export function Thoughts() {
             </div>
           </div>
 
-          {/* Thought 3 - Medium (6 columns) */}
-          <div className="col-span-12 lg:col-span-6 group cursor-pointer">
-            <div className="relative aspect-[4/3] overflow-hidden bg-white border border-gray-300 hover:border-[#2D5016] transition-colors duration-300">
+          {/* Thought 3 - Small (4 columns) */}
+          <div className="col-span-12 lg:col-span-4 group cursor-pointer lg:col-start-1">
+            <div className="relative aspect-square overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300">
               <ImageWithFallback
                 src={thoughts[2].imageUrl}
                 alt={thoughts[2].title}
@@ -79,15 +79,15 @@ export function Thoughts() {
               />
             </div>
             <div className="mt-5">
-              <h3 className="text-xl text-black group-hover:text-[#2D5016] transition-colors duration-200">
+              <h3 className="text-lg text-black group-hover:text-[#B8D67F] transition-colors duration-200">
                 {thoughts[2].title}
               </h3>
             </div>
           </div>
 
-          {/* Thought 4 - Medium (6 columns) */}
-          <div className="col-span-12 lg:col-span-6 group cursor-pointer">
-            <div className="relative aspect-[4/3] overflow-hidden bg-white border border-gray-300 hover:border-[#2D5016] transition-colors duration-300">
+          {/* Thought 4 - Small (4 columns) */}
+          <div className="col-span-12 lg:col-span-4 group cursor-pointer">
+            <div className="relative aspect-square overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300">
               <ImageWithFallback
                 src={thoughts[3].imageUrl}
                 alt={thoughts[3].title}
@@ -95,7 +95,7 @@ export function Thoughts() {
               />
             </div>
             <div className="mt-5">
-              <h3 className="text-xl text-black group-hover:text-[#2D5016] transition-colors duration-200">
+              <h3 className="text-lg text-black group-hover:text-[#B8D67F] transition-colors duration-200">
                 {thoughts[3].title}
               </h3>
             </div>
