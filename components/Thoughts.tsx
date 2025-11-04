@@ -2,14 +2,9 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const thoughts = [
   {
-    title: "AI造码时代，我们需",
+    title: "AI造码时代，我们需成为无障碍设计-数字包容第一人",
     imageUrl: "https://images.unsplash.com/photo-1593086784152-b060f8109e0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjBjb2RpbmclMjBzY3JlZW58ZW58MXx8fHwxNzYyMTUzNTI1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     size: "large"
-  },
-  {
-    title: "成为无障碍设计-数字包容第一人",
-    imageUrl: "https://images.unsplash.com/photo-1711202675843-ccdb194d2b7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG1vb24lMjBjYW5kbGV8ZW58MXx8fHwxNzYyMjI1ODMwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    size: "small"
   },
   {
     title: "AI机器人与AI教育的新思路",
@@ -74,9 +69,9 @@ export function Thoughts() {
             </div>
           </div>
 
-          {/* Thought 3 - Small (4 columns) */}
-          <div className="col-span-12 lg:col-span-4 group cursor-pointer">
-            <div className="relative aspect-square overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300">
+          {/* Thought 3 - Medium (6 columns) */}
+          <div className="col-span-12 lg:col-span-6 group cursor-pointer">
+            <div className="relative aspect-[4/3] overflow-hidden bg-white border border-gray-300 hover:border-[#2D5016] transition-colors duration-300">
               <ImageWithFallback
                 src={thoughts[2].imageUrl}
                 alt={thoughts[2].title}
@@ -84,15 +79,15 @@ export function Thoughts() {
               />
             </div>
             <div className="mt-5">
-              <h3 className="text-lg text-black group-hover:text-[#B8D67F] transition-colors duration-200">
+              <h3 className="text-xl text-black group-hover:text-[#2D5016] transition-colors duration-200">
                 {thoughts[2].title}
               </h3>
             </div>
           </div>
 
-          {/* Thought 4 - Medium (5 columns) */}
-          <div className="col-span-12 lg:col-span-5 group cursor-pointer">
-            <div className="relative aspect-[4/5] overflow-hidden bg-white border border-gray-300 hover:border-[#2D5016] transition-colors duration-300">
+          {/* Thought 4 - Medium (6 columns) */}
+          <div className="col-span-12 lg:col-span-6 group cursor-pointer">
+            <div className="relative aspect-[4/3] overflow-hidden bg-white border border-gray-300 hover:border-[#2D5016] transition-colors duration-300">
               <ImageWithFallback
                 src={thoughts[3].imageUrl}
                 alt={thoughts[3].title}
@@ -102,22 +97,6 @@ export function Thoughts() {
             <div className="mt-5">
               <h3 className="text-xl text-black group-hover:text-[#2D5016] transition-colors duration-200">
                 {thoughts[3].title}
-              </h3>
-            </div>
-          </div>
-
-          {/* Thought 5 - Medium (3 columns, positioned to create offset) */}
-          <div className="col-span-12 lg:col-span-3 group cursor-pointer">
-            <div className="relative aspect-[3/4] overflow-hidden bg-white border border-gray-300 hover:border-[#2D5016] transition-colors duration-300">
-              <ImageWithFallback
-                src={thoughts[4].imageUrl}
-                alt={thoughts[4].title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div className="mt-5">
-              <h3 className="text-lg text-black group-hover:text-[#2D5016] transition-colors duration-200">
-                {thoughts[4].title}
               </h3>
             </div>
           </div>
