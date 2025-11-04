@@ -1,8 +1,4 @@
-interface ContactProps {
-  onOpenResume: () => void;
-}
-
-export function Contact({ onOpenResume }: ContactProps) {
+export function Contact() {
   return (
     <section id="contact" className="bg-black py-32 px-8">
       <div className="max-w-7xl mx-auto">

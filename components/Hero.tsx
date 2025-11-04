@@ -1,11 +1,7 @@
 import { Button } from "./ui/button";
 import profileImage from 'figma:asset/profile-image.png';
 
-interface HeroProps {
-  onOpenResume: () => void;
-}
-
-export function Hero({ onOpenResume }: HeroProps) {
+export function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
