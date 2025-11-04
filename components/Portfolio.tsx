@@ -6,7 +6,9 @@ import synapseDashboardImage from 'figma:asset/e47618a1b6ddb02fe667d91c25f8a32d5
 import synapseWorkflowImage from 'figma:asset/1d70601697815cad98cc68d4cc0737a27382d4ba.png';
 import synapseAIAssistantImage from 'figma:asset/6c051f61c65dc9abb213bcd8332b1acddef9e58d.png';
 // 导入封面图片，如果文件不存在，vite 插件会自动回退到 dashboard 图片
-import synapseCoverpageImage from 'figma:asset/SYNAPSEAI_Coverpage.jpg';
+import synapseCoverpageImageRaw from 'figma:asset/SYNAPSEAI_Coverpage.jpg';
+// 如果导入失败，使用 dashboard 图片作为备用
+const synapseCoverpageImage = synapseCoverpageImageRaw || synapseDashboardImage;
 // AI客服系统图片
 import aiChatbotVectorizationImage from 'figma:asset/ai-chatbot-rag-vectorization.png';
 import langgraphRagArchitectureImage from 'figma:asset/langgraph-rag-system-architecture.png';
