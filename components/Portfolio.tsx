@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { X } from "lucide-react";
-import synapseLoginImage from 'figma:asset/62f6b55bfea6a0c115708202f0165a4275180284.png';
-import synapseDashboardImage from 'figma:asset/e47618a1b6ddb02fe667d91c25f8a32d559adeca.png';
-import synapseWorkflowImage from 'figma:asset/1d70601697815cad98cc68d4cc0737a27382d4ba.png';
-import synapseAIAssistantImage from 'figma:asset/6c051f61c65dc9abb213bcd8332b1acddef9e58d.png';
+import synapseLoginImage from 'figma:asset/synapse-login.png';
+import synapseDashboardImage from 'figma:asset/synapse-dashboard.png';
+import synapseWorkflowImage from 'figma:asset/synapse-workflow.png';
+import synapseAIAssistantImage from 'figma:asset/synapse-ai-assistant.png';
 // 导入封面图片，如果文件不存在，vite 插件会自动回退到 dashboard 图片
-import synapseCoverpageImageRaw from 'figma:asset/SYNAPSEAI_Coverpage.jpg';
+import synapseCoverpageImageRaw from 'figma:asset/synapse-ai-coverpage.jpg';
 // 如果导入失败，使用 dashboard 图片作为备用
 const synapseCoverpageImage = synapseCoverpageImageRaw || synapseDashboardImage;
 // AI客服系统图片
 import aiChatbotVectorizationImage from 'figma:asset/ai-chatbot-rag-vectorization.png';
 import langgraphRagArchitectureImage from 'figma:asset/langgraph-rag-system-architecture.png';
-import aiChatbotDialogImage from 'figma:asset/对话界面 - 基于Gemini大模型的智能问答.png';
-import aiChatbotTestResultImage from 'figma:asset/测试结果 - 90%准确率验证.png';
+import aiChatbotDialogImage from 'figma:asset/ai-chatbot-dialog-gemini-qa.png';
+import aiChatbotTestResultImage from 'figma:asset/ai-chatbot-test-result-90-percent.png';
 
 const projects = [
   {

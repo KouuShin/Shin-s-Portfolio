@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import profileImage from 'figma:asset/d85704791d01226202f209a631300f5e40385ac2.png';
+import profileImage from 'figma:asset/profile-image.png';
 
 interface HeroProps {
   onOpenResume: () => void;

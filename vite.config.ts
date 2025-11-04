@@ -18,14 +18,14 @@ function figmaAssetPlugin() {
         
         // 如果文件不存在，返回一个虚拟 ID 用于 load hook 处理
         if (!existsSync(fullPath)) {
-          // 对于 SYNAPSEAI_Coverpage.jpg，使用 dashboard 图片作为备用
-          if (assetPath === 'SYNAPSEAI_Coverpage.jpg') {
-            const fallbackPath = resolve(__dirname, 'assets', 'e47618a1b6ddb02fe667d91c25f8a32d559adeca.png');
+          // 对于 synapse-ai-coverpage.jpg，使用 dashboard 图片作为备用
+          if (assetPath === 'synapse-ai-coverpage.jpg') {
+            const fallbackPath = resolve(__dirname, 'assets', 'synapse-dashboard.png');
             // 返回虚拟 ID，标记需要回退
             return `\0figma:asset:fallback:${fallbackPath}`;
           }
           // 其他文件不存在时也返回一个默认图片
-          const fallbackPath = resolve(__dirname, 'assets', 'e47618a1b6ddb02fe667d91c25f8a32d559adeca.png');
+          const fallbackPath = resolve(__dirname, 'assets', 'synapse-dashboard.png');
           return `\0figma:asset:fallback:${fallbackPath}`;
         }
         
