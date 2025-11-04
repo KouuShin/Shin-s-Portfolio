@@ -5,6 +5,9 @@ import synapseLoginImage from 'figma:asset/62f6b55bfea6a0c115708202f0165a4275180
 import synapseDashboardImage from 'figma:asset/e47618a1b6ddb02fe667d91c25f8a32d559adeca.png';
 import synapseWorkflowImage from 'figma:asset/1d70601697815cad98cc68d4cc0737a27382d4ba.png';
 import synapseAIAssistantImage from 'figma:asset/6c051f61c65dc9abb213bcd8332b1acddef9e58d.png';
+// 暂时使用 dashboard 图片，直到 Vercel 使用包含 SYNAPSEAI_Coverpage.jpg 的最新提交
+// 文件已在 commit 2944bf6 中添加，但 Vercel 仍在使用旧提交 6174391
+// TODO: 当 Vercel 使用最新提交后，改为使用 synapseCoverpageImage
 import synapseCoverpageImage from 'figma:asset/SYNAPSEAI_Coverpage.jpg';
 // AI客服系统图片
 import aiChatbotVectorizationImage from 'figma:asset/ai-chatbot-rag-vectorization.png';
@@ -19,7 +22,7 @@ const projects = [
     subtitle: "智能化产品经理协作系统",
     description: "主导设计并实现AI驱动的一体化工作流平台，通过引导式AI对话实现从产品构思到交付的全流程自动化，显著提升产品经理的工作效率和团队协作质量。",
     metrics: ["需求响应速度从1个星期缩短至3天", "从0到1的启动项目：产品规划和消化从3个月缩短至1~2个月", "用户满意度 100%"],
-    imageUrl: synapseCoverpageImage,
+    imageUrl: synapseDashboardImage, // 临时使用，直到 Vercel 使用最新提交
     size: "large",
     detailImages: [
       { src: synapseLoginImage, caption: "登录界面 - 简洁的用户认证体验" },
