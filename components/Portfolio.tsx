@@ -109,14 +109,15 @@ export function Portfolio() {
             <span className="text-sm text-gray-500">2023 - 2024</span>
           </div>
           
-          {/* Projects Masonry Grid */}
-          <div className="grid grid-cols-12 gap-6">
-            {/* Project 1 - Large (spans 8 columns, 2 rows) */}
+          {/* Projects Dashboard Grid */}
+          <div className="grid grid-cols-12 gap-6 auto-rows-fr">
+            {/* Top Row */}
+            {/* Project 1 - Large (top-left, spans 8 columns, 2 rows) */}
             <div 
               className="col-span-12 lg:col-span-8 row-span-2 group cursor-pointer"
               onClick={() => setSelectedProject(projects[0])}
             >
-              <div className="relative h-full min-h-[600px] border border-gray-800 hover:border-[#5B7FB3] transition-colors duration-300 overflow-hidden">
+              <div className="relative h-full min-h-[500px] rounded-xl overflow-hidden border border-gray-800 hover:border-[#5B7FB3] transition-colors duration-300 shadow-lg">
                 <ImageWithFallback
                   src={projects[0].imageUrl}
                   alt={projects[0].title}
@@ -126,14 +127,14 @@ export function Portfolio() {
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-10 flex flex-col justify-end">
                   <div className="space-y-4">
-                    <div className="inline-block px-3 py-1 bg-[#5B7FB3] text-white text-xs">
+                    <div className="inline-block px-3 py-1 bg-[#5B7FB3] text-white text-xs rounded-full">
                       FEATURED
                     </div>
                     <h3 className="text-3xl text-white">{projects[0].title}</h3>
                     <p className="text-base text-gray-300 max-w-lg">{projects[0].subtitle}</p>
                     <div className="flex flex-wrap gap-2 pt-4">
                       {projects[0].metrics.slice(0, 2).map((metric, i) => (
-                        <span key={i} className="text-xs text-gray-400 bg-gray-900/80 px-3 py-1">
+                        <span key={i} className="text-xs text-gray-400 bg-gray-900/80 px-3 py-1 rounded-full">
                           {metric}
                         </span>
                       ))}
@@ -143,63 +144,65 @@ export function Portfolio() {
               </div>
             </div>
 
-            {/* Project 2 - Medium (spans 4 columns) */}
+            {/* Project 2 - Small (top-right, spans 4 columns) */}
             <div 
               className="col-span-12 lg:col-span-4 group cursor-pointer"
               onClick={() => setSelectedProject(projects[1])}
             >
-              <div className="relative h-full min-h-[290px] border border-gray-800 hover:border-[#B8D67F] transition-colors duration-300 overflow-hidden">
+              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden border border-gray-800 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
                 <ImageWithFallback
                   src={projects[1].imageUrl}
                   alt={projects[1].title}
                   className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end rounded-xl">
                   <h3 className="text-xl text-white mb-2">{projects[1].title}</h3>
                   <p className="text-sm text-gray-300">{projects[1].subtitle}</p>
                 </div>
               </div>
             </div>
 
-            {/* Project 3 - Medium (spans 4 columns) */}
+            {/* Middle Row */}
+            {/* Project 3 - Medium (middle-left, spans 4 columns) */}
             <div 
               className="col-span-12 lg:col-span-4 group cursor-pointer"
               onClick={() => setSelectedProject(projects[2])}
             >
-              <div className="relative h-full min-h-[290px] border border-gray-800 hover:border-[#B8D67F] transition-colors duration-300 overflow-hidden">
+              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden border border-gray-800 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
                 <ImageWithFallback
                   src={projects[2].imageUrl}
                   alt={projects[2].title}
                   className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end rounded-xl">
                   <h3 className="text-xl text-white mb-2">{projects[2].title}</h3>
                   <p className="text-sm text-gray-300">{projects[2].subtitle}</p>
                 </div>
               </div>
             </div>
 
-            {/* Project 4 - Wide (spans 12 columns, shorter) */}
+            {/* Bottom Row */}
+            {/* Project 4 - Wide (bottom, spans 12 columns) */}
             <div 
-              className="col-span-12 group cursor-pointer"
+              className="col-span-12 lg:col-span-12 group cursor-pointer"
               onClick={() => setSelectedProject(projects[3])}
             >
-              <div className="relative h-full min-h-[320px] border border-gray-800 hover:border-[#2D5016] transition-colors duration-300 overflow-hidden">
+              <div className="relative h-full min-h-[280px] rounded-xl overflow-hidden border border-gray-800 hover:border-[#2D5016] transition-colors duration-300 shadow-lg">
                 <ImageWithFallback
                   src={projects[3].imageUrl}
                   alt={projects[3].title}
                   className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent p-8 flex items-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent p-8 flex items-center rounded-xl">
                   <div className="max-w-xl space-y-3">
                     <h3 className="text-2xl text-white">{projects[3].title}</h3>
                     <p className="text-base text-gray-300">{projects[3].subtitle}</p>
                     <div className="flex flex-wrap gap-2 pt-2">
                       {projects[3].metrics.map((metric, i) => (
-                        <span key={i} className="text-xs text-gray-400 bg-gray-900/80 px-3 py-1">
+                        <span key={i} className="text-xs text-gray-400 bg-gray-900/80 px-3 py-1 rounded-full">
                           {metric}
                         </span>
                       ))}

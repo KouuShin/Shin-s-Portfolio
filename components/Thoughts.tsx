@@ -35,11 +35,12 @@ export function Thoughts() {
           </a>
         </div>
         
-        {/* Thoughts Asymmetric Grid */}
-        <div className="grid grid-cols-12 gap-6">
-          {/* Thought 1 - Large (8 columns) */}
-          <div className="col-span-12 lg:col-span-8 group cursor-pointer">
-            <div className="relative aspect-[16/9] overflow-hidden bg-white border border-gray-300 hover:border-[#5B7FB3] transition-colors duration-300">
+        {/* Thoughts Dashboard Grid */}
+        <div className="grid grid-cols-12 gap-6 auto-rows-fr">
+          {/* Top Row */}
+          {/* Thought 1 - Large (top-left, spans 8 columns, 2 rows) */}
+          <div className="col-span-12 lg:col-span-8 row-span-2 group cursor-pointer">
+            <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#5B7FB3] transition-colors duration-300 shadow-lg">
               <ImageWithFallback
                 src={thoughts[0].imageUrl}
                 alt={thoughts[0].title}
@@ -53,9 +54,9 @@ export function Thoughts() {
             </div>
           </div>
 
-          {/* Thought 2 - Small (4 columns) */}
+          {/* Thought 2 - Small (top-right, spans 4 columns) */}
           <div className="col-span-12 lg:col-span-4 group cursor-pointer">
-            <div className="relative aspect-square overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300">
+            <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
               <ImageWithFallback
                 src={thoughts[1].imageUrl}
                 alt={thoughts[1].title}
@@ -69,9 +70,10 @@ export function Thoughts() {
             </div>
           </div>
 
-          {/* Thought 3 - Small (4 columns) */}
-          <div className="col-span-12 lg:col-span-4 group cursor-pointer lg:col-start-1">
-            <div className="relative aspect-square overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300">
+          {/* Middle Row */}
+          {/* Thought 3 - Small (middle, spans 4 columns) */}
+          <div className="col-span-12 lg:col-span-4 group cursor-pointer">
+            <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
               <ImageWithFallback
                 src={thoughts[2].imageUrl}
                 alt={thoughts[2].title}
@@ -85,9 +87,9 @@ export function Thoughts() {
             </div>
           </div>
 
-          {/* Thought 4 - Small (4 columns) */}
+          {/* Thought 4 - Small (middle, spans 4 columns) */}
           <div className="col-span-12 lg:col-span-4 group cursor-pointer">
-            <div className="relative aspect-square overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300">
+            <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden bg-white border border-gray-300 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
               <ImageWithFallback
                 src={thoughts[3].imageUrl}
                 alt={thoughts[3].title}
