@@ -67,11 +67,13 @@ export function Hero({ onOpenResume }: HeroProps) {
           {/* Intro Statement */}
           <div className="mb-24">
             <h2 className="text-3xl md:text-4xl text-black leading-relaxed max-w-4xl">
-              AI、科技、设计与不受限的创造，
+              AI · 科技 · 设计 · 创造
               <br />
-              思考如何将前沿技术转化为实用的商业产品，
+              我致力于将前沿技术转化为实用的商业产品，
               <br />
-              思考更无边界的产品创新和用户体验、人机交互的融合。
+              探索无边界的产品创新，
+              <br />
+              以及用户体验与人机交互的深度融合。
             </h2>
           </div>
 
