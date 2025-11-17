@@ -49,40 +49,40 @@ const skills = [
   }
 ];
 
-const accentColors = ['#5B7FB3', '#B8D67F', '#2D5016', '#5B7FB3'];
+const accentColors = ['#C0F200', '#C0F200', '#C0F200', '#C0F200'];
 
 export function Skills() {
   return (
-    <section id="skills" className="min-h-screen bg-[#e8e8e8] py-32 px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-20">
-          <h2 className="text-5xl text-black">Core Skills</h2>
-        </div>
-        
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {skills.map((skill, index) => (
-            <div key={index} className="space-y-6 group">
-              <div className="space-y-2 pb-4" style={{
-                borderBottom: `2px solid ${accentColors[index]}`
-              }}>
-                <h3 className="text-xl text-black">{skill.category}</h3>
-                <p className="text-sm text-gray-600">{skill.subtitle}</p>
+    <section id="skills" className="min-h-screen py-32 px-8" style={{ backgroundColor: '#050505' }}>
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="mb-20">
+            <h2 className="text-5xl" style={{ color: '#C0F200' }}>Core Skills</h2>
+          </div>
+          
+          {/* Skills Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {skills.map((skill, index) => (
+              <div key={index} className="space-y-6 group">
+                <div className="space-y-2 pb-4" style={{
+                  borderBottom: `2px solid ${accentColors[index]}`
+                }}>
+                  <h3 className="text-xl" style={{ color: '#C0F200' }}>{skill.category}</h3>
+                  <p className="text-sm" style={{ color: '#808080' }}>{skill.subtitle}</p>
+                </div>
+                
+                  <ul className="space-y-3">
+                    {skill.items.map((item, i) => (
+                      <li key={i} className="text-sm transition-colors duration-200 flex items-start" style={{ color: '#FAFAF0' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}>
+                        <span className="mr-2" style={{ color: accentColors[index] }}>•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
               </div>
-              
-              <ul className="space-y-3">
-                {skill.items.map((item, i) => (
-                  <li key={i} className="text-sm text-gray-700 hover:text-black transition-colors duration-200 flex items-start">
-                    <span className="mr-2" style={{ color: accentColors[index] }}>•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 }

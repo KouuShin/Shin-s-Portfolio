@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-screen bg-black flex items-center justify-center px-8 relative pt-20">
+      <section className="min-h-screen flex items-center justify-center px-8 relative pt-20" style={{ backgroundColor: '#050505' }}>
         <div className="max-w-4xl mx-auto w-full text-center">
           <div className="flex flex-col items-center space-y-12">
             {/* Profile Image */}
@@ -26,15 +26,15 @@ export function Hero() {
 
             {/* Main Title */}
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl text-white tracking-tight">
+              <h1 className="text-5xl md:text-6xl tracking-tight" style={{ color: '#C0F200' }}>
                 AI Product Manager, Designer
               </h1>
               
               <div className="space-y-3 max-w-2xl mx-auto">
-                <p className="text-lg text-gray-400">
+                <p className="text-lg" style={{ color: '#FAFAF0' }}>
                   墨尔本大学UX设计专业毕业
                 </p>
-                <p className="text-lg text-gray-400">
+                <p className="text-lg" style={{ color: '#FAFAF0' }}>
                   致力于将AI技术转化为有价值的产品体验
                 </p>
               </div>
@@ -43,7 +43,20 @@ export function Hero() {
             {/* CTA Button */}
             <button 
               onClick={() => scrollToSection('contact')}
-              className="px-8 py-3 bg-[#5B7FB3] text-white hover:bg-[#B8D67F] hover:text-black transition-all duration-300 rounded-[15px]"
+              className="px-8 py-3 transition-all duration-300 rounded-[15px] border-2"
+              style={{ 
+                backgroundColor: 'transparent',
+                borderColor: '#C0F200',
+                color: '#C0F200'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#C0F200';
+                e.currentTarget.style.color = '#050505';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#C0F200';
+              }}
             >
               Chat With Me
             </button>
@@ -51,33 +64,33 @@ export function Hero() {
         </div>
 
         {/* Footer */}
-        <div className="absolute bottom-8 left-8 right-8 flex justify-between items-center text-sm text-gray-500">
+        <div className="absolute bottom-8 left-8 right-8 flex justify-between items-center text-sm" style={{ color: '#808080' }}>
           <span>Homepage 2010-24</span>
           <span>©寇欣怡 2024</span>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="min-h-screen bg-[#e8e8e8] py-32 px-8">
+      <section id="about" className="min-h-screen py-32 px-8" style={{ backgroundColor: '#050505' }}>
         <div className="max-w-6xl mx-auto">
           {/* Intro Statement */}
           <div className="mb-24">
-            <h2 className="text-3xl md:text-4xl text-black leading-relaxed max-w-4xl">
+            <h2 className="text-3xl md:text-4xl leading-relaxed max-w-4xl" style={{ color: '#C0F200' }}>
               AI · 科技 · 设计 · 创造
               <br />
-              我致力于将前沿技术转化为实用的商业产品，
+              <span style={{ color: '#FAFAF0' }}>我致力于将前沿技术转化为实用的商业产品，</span>
               <br />
-              探索无边界的产品创新，
+              <span style={{ color: '#FAFAF0' }}>探索无边界的产品创新，</span>
               <br />
-              以及用户体验与人机交互的深度融合。
+              <span style={{ color: '#FAFAF0' }}>以及用户体验与人机交互的深度融合。</span>
             </h2>
           </div>
 
           {/* Three Columns */}
           <div className="grid md:grid-cols-3 gap-16">
             <div className="space-y-6 group">
-              <h3 className="text-xl text-black border-b-2 border-[#5B7FB3] inline-block pb-2">(1) Product</h3>
-              <p className="text-base text-gray-700 leading-relaxed">
+              <h3 className="text-xl inline-block pb-2 border-b-2" style={{ color: '#C0F200', borderColor: '#C0F200' }}>(1) Product</h3>
+              <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
                 作为产品经理，我专注于从0到1的产品孵化，
                 擅长将复杂的业务需求转化为清晰的产品方案。
                 通过用户研究和数据分析，我能够精准定位产品价值，
@@ -86,8 +99,8 @@ export function Hero() {
             </div>
 
             <div className="space-y-6 group">
-              <h3 className="text-xl text-black border-b-2 border-[#B8D67F] inline-block pb-2">(2) AI & Technology</h3>
-              <p className="text-base text-gray-700 leading-relaxed">
+              <h3 className="text-xl inline-block pb-2 border-b-2" style={{ color: '#C0F200', borderColor: '#C0F200' }}>(2) AI & Technology</h3>
+              <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
                 深度理解AI技术能力与应用边界，
                 曾主导多个AI产品项目，包括智能审核系统、
                 AI工作流平台等。擅长将大语言模型、
@@ -97,8 +110,8 @@ export function Hero() {
             </div>
 
             <div className="space-y-6 group">
-              <h3 className="text-xl text-black border-b-2 border-[#2D5016] inline-block pb-2">(3) Design</h3>
-              <p className="text-base text-gray-700 leading-relaxed">
+              <h3 className="text-xl inline-block pb-2 border-b-2" style={{ color: '#C0F200', borderColor: '#C0F200' }}>(3) Design</h3>
+              <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
                 拥有用户体验设计专业背景，
                 精通Figma等设计工具，能够快速产出高保真原型。
                 坚持以用户为中心的设计原则，

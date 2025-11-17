@@ -7,7 +7,7 @@ import { Contact } from "./components/Contact";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen" style={{ backgroundColor: '#050505' }}>
       <Navigation />
       
       <main>

@@ -20,14 +20,20 @@ export function Navigation() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
-    }`}>
+      isScrolled ? 'backdrop-blur-md border-b' : 'bg-transparent'
+    }`} style={{
+      backgroundColor: isScrolled ? 'rgba(5, 5, 5, 0.9)' : 'transparent',
+      borderColor: isScrolled ? 'rgba(192, 242, 0, 0.2)' : 'transparent'
+    }}>
       <div className="max-w-7xl mx-auto px-8 py-6">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('hero')}
-            className="text-xl tracking-tight text-white hover:text-[#5B7FB3] transition-colors duration-200"
+            className="text-xl tracking-tight transition-colors duration-200"
+            style={{ color: '#C0F200' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#FAFAF0'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#C0F200'}
           >
             KOU XINYI
           </button>
@@ -36,25 +42,37 @@ export function Navigation() {
           <div className="flex items-center space-x-12">
             <button 
               onClick={() => scrollToSection('portfolio')}
-              className="text-sm text-gray-400 hover:text-[#5B7FB3] transition-colors duration-200"
+              className="text-sm transition-colors duration-200"
+              style={{ color: '#808080' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}
             >
               Works
             </button>
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-sm text-gray-400 hover:text-[#B8D67F] transition-colors duration-200"
+              className="text-sm transition-colors duration-200"
+              style={{ color: '#808080' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection('thoughts')}
-              className="text-sm text-gray-400 hover:text-[#B8D67F] transition-colors duration-200"
+              className="text-sm transition-colors duration-200"
+              style={{ color: '#808080' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}
             >
               Thoughts
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-sm text-gray-400 hover:text-[#2D5016] transition-colors duration-200"
+              className="text-sm transition-colors duration-200"
+              style={{ color: '#808080' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}
             >
               Contact
             </button>

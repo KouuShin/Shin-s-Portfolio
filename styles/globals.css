@@ -5,19 +5,19 @@
 :root {
   --font-size: 16px;
   
-  /* 自然色彩设计系统 - 灵感来自蓝天与绿叶 */
-  --black: #000000;               /* 纯黑 - 主背景 */
-  --white: #ffffff;               /* 纯白 - 文本 */
+  /* 新配色系统 - 深色主题配霓虹绿 */
+  --black: #050505;               /* 深黑背景 */
+  --white: #ffffff;               /* 纯白 */
+  --cream: #FAFAF0;               /* 奶白色点缀 */
   --gray-dark: #1a1a1a;           /* 深灰 - 卡片背景 */
   --gray-medium: #808080;         /* 中灰 - 次要文本 */
   --gray-light: #e8e8e8;          /* 浅灰 - 浅色背景 */
-  --blue-sky: #5B7FB3;            /* 天空蓝 - 主要强调色 */
-  --green-deep: #2D5016;          /* 深绿 - 次要强调色 */
-  --green-light: #B8D67F;         /* 浅绿 - 辅助色 */
-  --accent: #5B7FB3;              /* 主强调色 */
+  --neon-green: #C0F200;          /* 霓虹绿 - 层次色/强调色 */
+  --text-green: #1D2C1B;          /* 深绿 - 文字色 */
+  --accent: #C0F200;              /* 主强调色 */
   
   --background: var(--black);
-  --foreground: var(--white);
+  --foreground: var(--text-green);
   --card: var(--gray-dark);
   --card-foreground: var(--white);
   --popover: var(--gray-dark);

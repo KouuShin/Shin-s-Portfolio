@@ -1760,17 +1760,17 @@
 
 :root {
   --font-size: 16px;
-  --black: #000;
+  --black: #050505;
   --white: #fff;
+  --cream: #FAFAF0;
   --gray-dark: #1a1a1a;
   --gray-medium: gray;
   --gray-light: #e8e8e8;
-  --blue-sky: #5b7fb3;
-  --green-deep: #2d5016;
-  --green-light: #b8d67f;
-  --accent: var(--accent);
+  --neon-green: #C0F200;
+  --text-green: #1D2C1B;
+  --accent: #C0F200;
   --background: var(--black);
-  --foreground: var(--white);
+  --foreground: var(--text-green);
   --card: var(--gray-dark);
   --card-foreground: var(--white);
   --popover: var(--gray-dark);

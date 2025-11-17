@@ -101,12 +101,12 @@ export function Portfolio() {
 
   return (
     <>
-      <section id="portfolio" className="min-h-screen bg-black py-32 px-8">
+      <section id="portfolio" className="min-h-screen py-32 px-8" style={{ backgroundColor: '#050505' }}>
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="flex justify-between items-baseline mb-20">
-            <h2 className="text-5xl text-white">Past Projects</h2>
-            <span className="text-sm text-gray-500">2023 - 2024</span>
+            <h2 className="text-5xl" style={{ color: '#C0F200' }}>Past Projects</h2>
+            <span className="text-sm" style={{ color: '#808080' }}>2023 - 2024</span>
           </div>
           
           {/* Projects Dashboard Grid */}
@@ -117,7 +117,7 @@ export function Portfolio() {
               className="col-span-12 lg:col-span-8 row-span-2 group cursor-pointer"
               onClick={() => setSelectedProject(projects[0])}
             >
-              <div className="relative h-full min-h-[500px] rounded-xl overflow-hidden border border-gray-800 hover:border-[#5B7FB3] transition-colors duration-300 shadow-lg">
+              <div className="relative h-full min-h-[500px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg" style={{ borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
                 <ImageWithFallback
                   src={projects[0].imageUrl}
                   alt={projects[0].title}
@@ -127,14 +127,14 @@ export function Portfolio() {
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-10 flex flex-col justify-end">
                   <div className="space-y-4">
-                    <div className="inline-block px-3 py-1 bg-[#5B7FB3] text-white text-xs rounded-full">
+                    <div className="inline-block px-3 py-1 text-xs rounded-full" style={{ backgroundColor: '#C0F200', color: '#050505' }}>
                       FEATURED
                     </div>
-                    <h3 className="text-3xl text-white">{projects[0].title}</h3>
-                    <p className="text-base text-gray-300 max-w-lg">{projects[0].subtitle}</p>
+                    <h3 className="text-3xl" style={{ color: '#C0F200' }}>{projects[0].title}</h3>
+                    <p className="text-base max-w-lg" style={{ color: '#FAFAF0' }}>{projects[0].subtitle}</p>
                     <div className="flex flex-wrap gap-2 pt-4">
                       {projects[0].metrics.slice(0, 2).map((metric, i) => (
-                        <span key={i} className="text-xs text-gray-400 bg-gray-900/80 px-3 py-1 rounded-full">
+                        <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ color: '#808080', backgroundColor: 'rgba(26, 26, 26, 0.8)' }}>
                           {metric}
                         </span>
                       ))}
@@ -149,7 +149,7 @@ export function Portfolio() {
               className="col-span-12 lg:col-span-4 group cursor-pointer"
               onClick={() => setSelectedProject(projects[1])}
             >
-              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden border border-gray-800 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
+              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg" style={{ borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
                 <ImageWithFallback
                   src={projects[1].imageUrl}
                   alt={projects[1].title}
@@ -157,8 +157,8 @@ export function Portfolio() {
                 />
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end rounded-xl">
-                  <h3 className="text-xl text-white mb-2">{projects[1].title}</h3>
-                  <p className="text-sm text-gray-300">{projects[1].subtitle}</p>
+                  <h3 className="text-xl mb-2" style={{ color: '#C0F200' }}>{projects[1].title}</h3>
+                  <p className="text-sm" style={{ color: '#FAFAF0' }}>{projects[1].subtitle}</p>
                 </div>
               </div>
             </div>
@@ -169,7 +169,7 @@ export function Portfolio() {
               className="col-span-12 lg:col-span-4 group cursor-pointer"
               onClick={() => setSelectedProject(projects[2])}
             >
-              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden border border-gray-800 hover:border-[#B8D67F] transition-colors duration-300 shadow-lg">
+              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg" style={{ borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
                 <ImageWithFallback
                   src={projects[2].imageUrl}
                   alt={projects[2].title}
@@ -177,8 +177,8 @@ export function Portfolio() {
                 />
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end rounded-xl">
-                  <h3 className="text-xl text-white mb-2">{projects[2].title}</h3>
-                  <p className="text-sm text-gray-300">{projects[2].subtitle}</p>
+                  <h3 className="text-xl mb-2" style={{ color: '#C0F200' }}>{projects[2].title}</h3>
+                  <p className="text-sm" style={{ color: '#FAFAF0' }}>{projects[2].subtitle}</p>
                 </div>
               </div>
             </div>
@@ -189,7 +189,7 @@ export function Portfolio() {
               className="col-span-12 lg:col-span-12 group cursor-pointer"
               onClick={() => setSelectedProject(projects[3])}
             >
-              <div className="relative h-full min-h-[280px] rounded-xl overflow-hidden border border-gray-800 hover:border-[#2D5016] transition-colors duration-300 shadow-lg">
+              <div className="relative h-full min-h-[280px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg" style={{ borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
                 <ImageWithFallback
                   src={projects[3].imageUrl}
                   alt={projects[3].title}
@@ -198,11 +198,11 @@ export function Portfolio() {
                 
                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent p-8 flex items-center rounded-xl">
                   <div className="max-w-xl space-y-3">
-                    <h3 className="text-2xl text-white">{projects[3].title}</h3>
-                    <p className="text-base text-gray-300">{projects[3].subtitle}</p>
+                    <h3 className="text-2xl" style={{ color: '#C0F200' }}>{projects[3].title}</h3>
+                    <p className="text-base" style={{ color: '#FAFAF0' }}>{projects[3].subtitle}</p>
                     <div className="flex flex-wrap gap-2 pt-2">
                       {projects[3].metrics.map((metric, i) => (
-                        <span key={i} className="text-xs text-gray-400 bg-gray-900/80 px-3 py-1 rounded-full">
+                        <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ color: '#808080', backgroundColor: 'rgba(26, 26, 26, 0.8)' }}>
                           {metric}
                         </span>
                       ))}
@@ -218,18 +218,23 @@ export function Portfolio() {
       {/* Project Detail Modal */}
       {selectedProject && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm overflow-y-auto"
+          className="fixed inset-0 z-50 backdrop-blur-sm overflow-y-auto"
+          style={{ backgroundColor: 'rgba(5, 5, 5, 0.95)' }}
           onClick={() => setSelectedProject(null)}
         >
           <div className="min-h-screen py-12 px-4">
             <div 
-              className="max-w-5xl mx-auto bg-gray-900 border border-[#5B7FB3]/30 relative"
+              className="max-w-5xl mx-auto border relative"
+              style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(192, 242, 0, 0.3)' }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close button */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 text-white hover:text-[#5B7FB3] transition-colors duration-200 z-10"
+                className="absolute top-6 right-6 transition-colors duration-200 z-10"
+                style={{ color: '#FAFAF0' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}
               >
                 <X className="h-6 w-6" />
               </button>
@@ -238,8 +243,8 @@ export function Portfolio() {
               <div className="p-12">
                 {/* Header */}
                 <div className="mb-12">
-                  <h2 className="text-4xl text-white mb-4">{selectedProject.title}</h2>
-                  <p className="text-lg text-gray-400">{selectedProject.subtitle}</p>
+                  <h2 className="text-4xl mb-4" style={{ color: '#C0F200' }}>{selectedProject.title}</h2>
+                  <p className="text-lg" style={{ color: '#808080' }}>{selectedProject.subtitle}</p>
                 </div>
 
                 {/* Detail Images - if available */}
@@ -250,9 +255,10 @@ export function Portfolio() {
                         <img 
                           src={img.src} 
                           alt={img.caption}
-                          className="w-full border border-[#5B7FB3]/20"
+                          className="w-full border"
+                          style={{ borderColor: 'rgba(192, 242, 0, 0.2)' }}
                         />
-                        <p className="text-xs text-gray-500">{img.caption}</p>
+                        <p className="text-xs" style={{ color: '#808080' }}>{img.caption}</p>
                       </div>
                     ))}
                   </div>
@@ -272,19 +278,19 @@ export function Portfolio() {
                 {/* Description */}
                 <div className="space-y-8">
                   <div>
-                    <h3 className="text-xl text-white mb-4">项目概述</h3>
-                    <p className="text-base text-gray-400 leading-relaxed">
+                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>项目概述</h3>
+                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
                       {selectedProject.description}
                     </p>
                   </div>
 
                   {/* Metrics */}
                   <div>
-                    <h3 className="text-xl text-white mb-4">关键成果</h3>
+                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>关键成果</h3>
                     <ul className="space-y-2">
                       {selectedProject.metrics.map((metric, index) => (
-                        <li key={index} className="text-base text-gray-400 flex items-start">
-                          <span className="text-[#B8D67F] mr-2">•</span>
+                        <li key={index} className="text-base flex items-start" style={{ color: '#FAFAF0' }}>
+                          <span className="mr-2" style={{ color: '#C0F200' }}>•</span>
                           {metric}
                         </li>
                       ))}
@@ -293,32 +299,32 @@ export function Portfolio() {
 
                   {/* Role */}
                   <div>
-                    <h3 className="text-xl text-white mb-4">我的角色</h3>
-                    <p className="text-base text-gray-400 leading-relaxed">
+                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>我的角色</h3>
+                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
                       {selectedProject.details.role}
                     </p>
                   </div>
 
                   {/* Challenge */}
                   <div>
-                    <h3 className="text-xl text-white mb-4">面临挑战</h3>
-                    <p className="text-base text-gray-400 leading-relaxed">
+                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>面临挑战</h3>
+                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
                       {selectedProject.details.challenge}
                     </p>
                   </div>
 
                   {/* Solution */}
                   <div>
-                    <h3 className="text-xl text-white mb-4">解决方案</h3>
-                    <p className="text-base text-gray-400 leading-relaxed">
+                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>解决方案</h3>
+                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
                       {selectedProject.details.solution}
                     </p>
                   </div>
 
                   {/* Results */}
                   <div>
-                    <h3 className="text-xl text-white mb-4">项目成果</h3>
-                    <p className="text-base text-gray-400 leading-relaxed">
+                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>项目成果</h3>
+                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
                       {selectedProject.details.results}
                     </p>
                   </div>

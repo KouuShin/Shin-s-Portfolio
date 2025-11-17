@@ -203,7 +203,7 @@ export function Thoughts() {
           if (trimmedPara.startsWith('## ')) {
             const title = trimmedPara.replace('## ', '').trim();
             return (
-              <h3 key={index} className="text-2xl font-light text-white mt-10 mb-6 first:mt-0 tracking-wide">
+              <h3 key={index} className="text-2xl font-light mt-10 mb-6 first:mt-0 tracking-wide" style={{ color: '#C0F200' }}>
                 {title}
               </h3>
             );
@@ -217,11 +217,11 @@ export function Thoughts() {
             
             return (
               <div key={index}>
-                <h3 className="text-2xl font-light text-white mt-10 mb-6 first:mt-0 tracking-wide">
+                <h3 className="text-2xl font-light mt-10 mb-6 first:mt-0 tracking-wide" style={{ color: '#C0F200' }}>
                   {title}
                 </h3>
                 {rest && (
-                  <p className="text-base font-light text-gray-300 leading-relaxed mt-4">
+                  <p className="text-base font-light leading-relaxed mt-4" style={{ color: '#FAFAF0' }}>
                     {rest}
                   </p>
                 )}
@@ -231,7 +231,7 @@ export function Thoughts() {
           
           // 普通段落
           return (
-            <p key={index} className="text-base font-light text-gray-300 leading-relaxed tracking-wide">
+            <p key={index} className="text-base font-light leading-relaxed tracking-wide" style={{ color: '#FAFAF0' }}>
               {trimmedPara}
             </p>
           );
@@ -242,19 +242,19 @@ export function Thoughts() {
 
   return (
     <>
-      <section id="thoughts" className="min-h-screen bg-black py-32 px-8">
+      <section id="thoughts" className="min-h-screen py-32 px-8" style={{ backgroundColor: '#050505' }}>
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="flex justify-between items-baseline mb-20">
-            <h2 className="text-5xl text-white">My weekly thoughts</h2>
-            <a href="#" className="text-sm text-gray-400 hover:text-[#b9ff66] transition-colors duration-200">
+            <h2 className="text-5xl" style={{ color: '#C0F200' }}>My weekly thoughts</h2>
+            <a href="#" className="text-sm transition-colors duration-200" style={{ color: '#808080' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}>
               View all →
             </a>
           </div>
           
-          {/* Thoughts Grid - 3 cards + bottom text section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {/* Thought 1 - Black card */}
+          {/* Thoughts 2x2 Grid */}
+          <div className="grid grid-cols-2 gap-6 max-w-[600px] mx-auto">
+            {/* Thought 1 */}
             <div 
               className="group cursor-pointer"
               onClick={() => {
@@ -263,19 +263,21 @@ export function Thoughts() {
                 }
               }}
             >
-              <div className="bg-black rounded-2xl p-8 h-[320px] flex flex-col justify-center items-center text-center border-2 border-[#b9ff66]/20 hover:border-[#b9ff66] transition-all duration-300">
-                <div className="mb-6">
-                  <svg className="w-16 h-16 mx-auto text-[#b9ff66]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl text-white font-medium leading-tight px-4">
+              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg mx-auto" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
+                <ImageWithFallback
+                  src={thoughts[0].imageUrl}
+                  alt={thoughts[0].title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="mt-5 text-center">
+                <h3 className="text-lg transition-colors duration-200" style={{ color: '#FAFAF0' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}>
                   {thoughts[0].title}
                 </h3>
               </div>
             </div>
 
-            {/* Thought 2 - Neon green card */}
+            {/* Thought 2 */}
             <div 
               className="group cursor-pointer"
               onClick={() => {
@@ -284,19 +286,21 @@ export function Thoughts() {
                 }
               }}
             >
-              <div className="bg-[#b9ff66] rounded-2xl p-8 h-[320px] flex flex-col justify-center items-center text-center border-2 border-[#b9ff66] hover:border-[#b9ff66]/80 transition-all duration-300">
-                <div className="mb-6">
-                  <svg className="w-16 h-16 mx-auto text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
-                <h3 className="text-xl text-black font-medium leading-tight px-4">
+              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg mx-auto" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
+                <ImageWithFallback
+                  src={thoughts[1].imageUrl}
+                  alt={thoughts[1].title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="mt-5 text-center">
+                <h3 className="text-lg transition-colors duration-200" style={{ color: '#FAFAF0' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}>
                   {thoughts[1].title}
                 </h3>
               </div>
             </div>
 
-            {/* Thought 3 - Light gray card */}
+            {/* Thought 3 */}
             <div 
               className="group cursor-pointer"
               onClick={() => {
@@ -305,19 +309,21 @@ export function Thoughts() {
                 }
               }}
             >
-              <div className="bg-[#2a2a2a] rounded-2xl p-8 h-[320px] flex flex-col justify-center items-center text-center border-2 border-gray-700 hover:border-[#b9ff66] transition-all duration-300">
-                <div className="mb-6">
-                  <svg className="w-16 h-16 mx-auto text-[#b9ff66]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl text-white font-medium leading-tight px-4">
+              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg mx-auto" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
+                <ImageWithFallback
+                  src={thoughts[2].imageUrl}
+                  alt={thoughts[2].title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="mt-5 text-center">
+                <h3 className="text-lg transition-colors duration-200" style={{ color: '#FAFAF0' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}>
                   {thoughts[2].title}
                 </h3>
               </div>
             </div>
 
-            {/* Thought 4 - Bottom text section */}
+            {/* Thought 4 */}
             <div 
               className="group cursor-pointer"
               onClick={() => {
@@ -326,18 +332,17 @@ export function Thoughts() {
                 }
               }}
             >
-              <div className="bg-black rounded-2xl p-8 h-[320px] flex flex-col justify-center border-t-2 border-[#b9ff66]/30">
-                <h3 className="text-xl text-white font-medium leading-tight mb-4">
+              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg mx-auto" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
+                <ImageWithFallback
+                  src={thoughts[3].imageUrl}
+                  alt={thoughts[3].title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="mt-5 text-center">
+                <h3 className="text-lg transition-colors duration-200" style={{ color: '#FAFAF0' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}>
                   {thoughts[3].title}
                 </h3>
-                <p className="text-base text-gray-400 leading-relaxed">
-                  {thoughts[3].content ? thoughts[3].content.substring(0, 150) + '...' : '点击查看详情'}
-                </p>
-                <div className="mt-6">
-                  <span className="inline-block bg-[#b9ff66] text-black px-4 py-2 rounded-full text-sm font-medium">
-                    查看详情 →
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -347,18 +352,23 @@ export function Thoughts() {
       {/* Thought Detail Modal */}
       {selectedThought && selectedThought.content && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm overflow-y-auto"
+          className="fixed inset-0 z-50 backdrop-blur-sm overflow-y-auto"
+          style={{ backgroundColor: 'rgba(5, 5, 5, 0.95)' }}
           onClick={() => setSelectedThought(null)}
         >
           <div className="min-h-screen py-12 px-4">
             <div 
-              className="max-w-5xl mx-auto bg-gray-900 border-2 border-[#b9ff66]/30 relative rounded-2xl"
+              className="max-w-5xl mx-auto border relative"
+              style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(192, 242, 0, 0.3)' }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close button */}
               <button
                 onClick={() => setSelectedThought(null)}
-                className="absolute top-6 right-6 text-white hover:text-[#b9ff66] transition-colors duration-200 z-10"
+                className="absolute top-6 right-6 transition-colors duration-200 z-10"
+                style={{ color: '#FAFAF0' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}
               >
                 <X className="h-6 w-6" />
               </button>
@@ -367,7 +377,7 @@ export function Thoughts() {
               <div className="p-12">
                 {/* Header */}
                 <div className="mb-12">
-                  <h2 className="text-4xl font-light text-white mb-4 tracking-wide">{selectedThought.title}</h2>
+                  <h2 className="text-4xl font-light mb-4 tracking-wide" style={{ color: '#C0F200' }}>{selectedThought.title}</h2>
                 </div>
 
                 {/* Image */}
@@ -375,12 +385,13 @@ export function Thoughts() {
                   <ImageWithFallback
                     src={selectedThought.imageUrl}
                     alt={selectedThought.title}
-                    className="w-full aspect-video object-cover border-2 border-[#b9ff66]/20 rounded-lg"
+                    className="w-full aspect-video object-cover border rounded-lg"
+                    style={{ borderColor: 'rgba(192, 242, 0, 0.2)' }}
                   />
                 </div>
 
                 {/* Content with thin font */}
-                <div className="prose prose-invert max-w-none">
+                <div className="prose prose-invert max-w-none" style={{ color: '#FAFAF0' }}>
                   {renderContent(selectedThought.content)}
                 </div>
               </div>

@@ -1,61 +1,64 @@
 export function Contact() {
   return (
-    <section id="contact" className="bg-black py-32 px-8">
+    <section id="contact" className="py-32 px-8" style={{ backgroundColor: '#050505' }}>
       <div className="max-w-7xl mx-auto">
         {/* Main CTA */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl text-white mb-8">
+          <h2 className="text-4xl md:text-5xl mb-8" style={{ color: '#C0F200' }}>
             让我们一起推动、探索边界并创造。
           </h2>
           <a 
             href="mailto:shin_kou@163.com"
-            className="text-2xl text-[#5B7FB3] hover:text-[#B8D67F] transition-colors duration-300"
+            className="text-2xl transition-colors duration-300"
+            style={{ color: '#C0F200' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#FAFAF0'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#C0F200'}
           >
             shin_kou@163.com
           </a>
-          <p className="text-lg text-gray-500 mt-4">
+          <p className="text-lg mt-4" style={{ color: '#808080' }}>
             微信号：15527406960
           </p>
         </div>
 
         {/* Footer Links */}
-        <div className="border-t border-white/10 pt-12">
+        <div className="border-t pt-12" style={{ borderColor: 'rgba(192, 242, 0, 0.2)' }}>
           <div className="grid md:grid-cols-3 gap-12">
             {/* Left - Social */}
             <div className="space-y-3">
-              <a href="#" className="block text-sm text-gray-400 hover:text-[#5B7FB3] transition-colors duration-200">
+              <a href="#" className="block text-sm transition-colors duration-200" style={{ color: '#808080' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}>
                 Instagram
               </a>
-              <a href="#" className="block text-sm text-gray-400 hover:text-[#5B7FB3] transition-colors duration-200">
+              <a href="#" className="block text-sm transition-colors duration-200" style={{ color: '#808080' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}>
                 Twitter
               </a>
-              <a href="#" className="block text-sm text-gray-400 hover:text-[#5B7FB3] transition-colors duration-200">
+              <a href="#" className="block text-sm transition-colors duration-200" style={{ color: '#808080' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}>
                 Redbook
               </a>
             </div>
 
             {/* Center - Nav */}
             <div className="space-y-3">
-              <a href="#portfolio" className="block text-sm text-gray-400 hover:text-[#B8D67F] transition-colors duration-200">
+              <a href="#portfolio" className="block text-sm transition-colors duration-200" style={{ color: '#808080' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}>
                 Work
               </a>
-              <a href="#about" className="block text-sm text-gray-400 hover:text-[#B8D67F] transition-colors duration-200">
+              <a href="#about" className="block text-sm transition-colors duration-200" style={{ color: '#808080' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}>
                 About
               </a>
-              <a href="#contact" className="block text-sm text-gray-400 hover:text-[#B8D67F] transition-colors duration-200">
+              <a href="#contact" className="block text-sm transition-colors duration-200" style={{ color: '#808080' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}>
                 Contact
               </a>
-              <a href="#thoughts" className="block text-sm text-gray-400 hover:text-[#B8D67F] transition-colors duration-200">
+              <a href="#thoughts" className="block text-sm transition-colors duration-200" style={{ color: '#808080' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}>
                 Thoughts
               </a>
             </div>
 
             {/* Right - Info */}
             <div className="space-y-3 text-right">
-              <p className="text-sm text-gray-400">
+              <p className="text-sm" style={{ color: '#808080' }}>
                 © 寇欣怡 2024
               </p>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm" style={{ color: '#808080' }}>
                 AI Product Manager
               </p>
             </div>
@@ -64,7 +67,7 @@ export function Contact() {
 
         {/* Bottom Copyright */}
         <div className="mt-12 text-center">
-          <p className="text-xs text-gray-600">
+          <p className="text-xs" style={{ color: '#808080' }}>
             Made with passion & AI ✨
           </p>
         </div>
