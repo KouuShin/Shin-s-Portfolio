@@ -195,7 +195,7 @@ export function Thoughts() {
     const paragraphs = content.split('\n\n').filter(p => p.trim().length > 0);
     
     return (
-      <div className="space-y-6">
+      <div className="space-y-6 md:space-y-8">
         {paragraphs.map((para, index) => {
           const trimmedPara = para.trim();
           
@@ -203,7 +203,11 @@ export function Thoughts() {
           if (trimmedPara.startsWith('## ')) {
             const title = trimmedPara.replace('## ', '').trim();
             return (
-              <h3 key={index} className="text-2xl font-light mt-10 mb-6 first:mt-0 tracking-wide" style={{ color: '#C0F200' }}>
+              <h3 
+                key={index} 
+                className="text-xl md:text-2xl lg:text-3xl font-light mt-12 md:mt-16 mb-6 md:mb-8 first:mt-0 tracking-tight leading-tight" 
+                style={{ color: '#C0F200' }}
+              >
                 {title}
               </h3>
             );
@@ -217,11 +221,17 @@ export function Thoughts() {
             
             return (
               <div key={index}>
-                <h3 className="text-2xl font-light mt-10 mb-6 first:mt-0 tracking-wide" style={{ color: '#C0F200' }}>
+                <h3 
+                  className="text-xl md:text-2xl lg:text-3xl font-light mt-12 md:mt-16 mb-6 md:mb-8 first:mt-0 tracking-tight leading-tight" 
+                  style={{ color: '#C0F200' }}
+                >
                   {title}
                 </h3>
                 {rest && (
-                  <p className="text-base font-light leading-relaxed mt-4" style={{ color: '#FAFAF0' }}>
+                  <p 
+                    className="text-sm md:text-base leading-relaxed mt-4 md:mt-6 font-light tracking-wide" 
+                    style={{ color: '#FAFAF0', opacity: 0.9 }}
+                  >
                     {rest}
                   </p>
                 )}
@@ -231,7 +241,11 @@ export function Thoughts() {
           
           // 普通段落
           return (
-            <p key={index} className="text-base font-light leading-relaxed tracking-wide" style={{ color: '#FAFAF0' }}>
+            <p 
+              key={index} 
+              className="text-sm md:text-base leading-relaxed tracking-wide font-light" 
+              style={{ color: '#FAFAF0', opacity: 0.9 }}
+            >
               {trimmedPara}
             </p>
           );
@@ -242,18 +256,24 @@ export function Thoughts() {
 
   return (
     <>
-      <section id="thoughts" className="min-h-screen py-32 px-8" style={{ backgroundColor: '#050505' }}>
-        <div className="max-w-7xl mx-auto">
+      <section id="thoughts" className="min-h-screen py-24 px-6 md:px-12 lg:px-20" style={{ backgroundColor: '#050505' }}>
+        <div className="max-w-[1600px] mx-auto">
           {/* Header */}
-          <div className="flex justify-between items-baseline mb-20">
-            <h2 className="text-5xl" style={{ color: '#C0F200' }}>My weekly thoughts</h2>
-            <a href="#" className="text-sm transition-colors duration-200" style={{ color: '#808080' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}>
+          <div className="flex justify-between items-baseline mb-16 md:mb-24">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight" style={{ color: '#C0F200' }}>My weekly thoughts</h2>
+            <a 
+              href="#" 
+              className="text-xs md:text-sm font-light tracking-wide transition-colors duration-300" 
+              style={{ color: '#808080' }} 
+              onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} 
+              onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}
+            >
               View all →
             </a>
           </div>
           
           {/* Thoughts Grid - Readymag Style */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
             {thoughts.map((thought) => (
               <div 
                 key={thought.id}
@@ -264,28 +284,60 @@ export function Thoughts() {
                   }
                 }}
               >
-                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden border transition-all duration-300" 
-                     style={{ borderColor: '#1a1a1a', backgroundColor: '#1a1a1a' }} 
-                     onMouseEnter={(e) => {
-                       e.currentTarget.style.borderColor = '#C0F200';
-                       e.currentTarget.style.transform = 'translateY(-4px)';
-                     }} 
-                     onMouseLeave={(e) => {
-                       e.currentTarget.style.borderColor = '#1a1a1a';
-                       e.currentTarget.style.transform = 'translateY(0)';
-                     }}>
+                <div 
+                  className="relative w-full aspect-[3/4] rounded-lg overflow-hidden border transition-all duration-500" 
+                  style={{ 
+                    borderColor: 'rgba(192, 242, 0, 0.1)',
+                    borderWidth: '1px',
+                    backgroundColor: '#0a0a0a'
+                  }} 
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#C0F200';
+                    e.currentTarget.style.transform = 'translateY(-8px)';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(192, 242, 0, 0.15)';
+                  }} 
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.1)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
                   <ImageWithFallback
                     src={thought.imageUrl}
                     alt={thought.title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                    className="w-full h-full object-cover transition-opacity duration-700"
+                    style={{ opacity: 0.8 }}
+                    onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                    onMouseLeave={(e) => e.currentTarget.style.opacity = '0.8'}
                   />
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent p-6 flex flex-col justify-end">
-                    <h3 className="text-base font-medium leading-tight line-clamp-3" style={{ color: '#C0F200' }}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent p-6 md:p-8 flex flex-col justify-end">
+                    <h3 
+                      className="text-base md:text-lg font-light leading-tight tracking-tight line-clamp-3" 
+                      style={{ color: '#C0F200' }}
+                    >
                       {thought.title}
                     </h3>
                   </div>
+                </div>
+                
+                {/* Card Content Below Image - Readymag Style */}
+                <div className="mt-4 md:mt-6">
+                  <h3 
+                    className="text-sm md:text-base font-light leading-relaxed tracking-wide transition-colors duration-300" 
+                    style={{ color: '#FAFAF0', opacity: 0.9 }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = '#C0F200';
+                      e.currentTarget.style.opacity = '1';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#FAFAF0';
+                      e.currentTarget.style.opacity = '0.9';
+                    }}
+                  >
+                    {thought.title}
+                  </h3>
                 </div>
               </div>
             ))}
@@ -296,46 +348,64 @@ export function Thoughts() {
       {/* Thought Detail Modal */}
       {selectedThought && selectedThought.content && (
         <div 
-          className="fixed inset-0 z-50 backdrop-blur-sm overflow-y-auto"
-          style={{ backgroundColor: 'rgba(5, 5, 5, 0.95)' }}
+          className="fixed inset-0 z-50 backdrop-blur-md overflow-y-auto"
+          style={{ backgroundColor: 'rgba(5, 5, 5, 0.97)' }}
           onClick={() => setSelectedThought(null)}
         >
-          <div className="min-h-screen py-12 px-4">
+          <div className="min-h-screen py-8 md:py-12 px-4 md:px-6 lg:px-8">
             <div 
-              className="max-w-5xl mx-auto border relative"
-              style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(192, 242, 0, 0.3)' }}
+              className="max-w-6xl mx-auto border relative rounded-lg"
+              style={{ 
+                backgroundColor: '#0a0a0a', 
+                borderColor: 'rgba(192, 242, 0, 0.2)',
+                borderWidth: '1px'
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close button */}
               <button
                 onClick={() => setSelectedThought(null)}
-                className="absolute top-6 right-6 transition-colors duration-200 z-10"
+                className="absolute top-6 right-6 md:top-8 md:right-8 transition-all duration-300 z-10 p-2 rounded-full hover:bg-[#C0F200]/10"
                 style={{ color: '#FAFAF0' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#C0F200';
+                  e.currentTarget.style.transform = 'rotate(90deg)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#FAFAF0';
+                  e.currentTarget.style.transform = 'rotate(0deg)';
+                }}
               >
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5 md:h-6 md:w-6" />
               </button>
 
               {/* Content */}
-              <div className="p-12">
+              <div className="p-8 md:p-12 lg:p-16">
                 {/* Header */}
-                <div className="mb-12">
-                  <h2 className="text-4xl font-light mb-4 tracking-wide" style={{ color: '#C0F200' }}>{selectedThought.title}</h2>
+                <div className="mb-10 md:mb-16">
+                  <h2 
+                    className="text-3xl md:text-4xl lg:text-5xl font-light mb-4 tracking-tight leading-tight" 
+                    style={{ color: '#C0F200' }}
+                  >
+                    {selectedThought.title}
+                  </h2>
                 </div>
 
                 {/* Image */}
-                <div className="mb-12">
+                <div className="mb-12 md:mb-16">
                   <ImageWithFallback
                     src={selectedThought.imageUrl}
                     alt={selectedThought.title}
-                    className="w-full aspect-video object-cover border rounded-lg"
-                    style={{ borderColor: 'rgba(192, 242, 0, 0.2)' }}
+                    className="w-full aspect-video object-cover border rounded-lg transition-opacity duration-300 hover:opacity-90"
+                    style={{ 
+                      borderColor: 'rgba(192, 242, 0, 0.15)',
+                      borderWidth: '1px'
+                    }}
                   />
                 </div>
 
-                {/* Content with thin font */}
-                <div className="prose prose-invert max-w-none" style={{ color: '#FAFAF0' }}>
+                {/* Content with Readymag style */}
+                <div className="max-w-none">
                   {renderContent(selectedThought.content)}
                 </div>
               </div>

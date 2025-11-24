@@ -101,64 +101,99 @@ export function Portfolio() {
 
   return (
     <>
-      <section id="portfolio" className="min-h-screen py-32 px-8" style={{ backgroundColor: '#050505' }}>
-        <div className="max-w-7xl mx-auto">
+      <section id="portfolio" className="min-h-screen py-24 px-6 md:px-12 lg:px-20" style={{ backgroundColor: '#050505' }}>
+        <div className="max-w-[1600px] mx-auto">
           {/* Header */}
-          <div className="flex justify-between items-baseline mb-20">
-            <h2 className="text-5xl" style={{ color: '#C0F200' }}>Past Projects</h2>
-            <span className="text-sm" style={{ color: '#808080' }}>2023 - 2024</span>
+          <div className="flex justify-between items-baseline mb-16 md:mb-24">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight" style={{ color: '#C0F200' }}>Past Projects</h2>
+            <span className="text-xs md:text-sm font-light tracking-wide" style={{ color: '#808080' }}>2023 - 2024</span>
           </div>
           
           {/* Projects Grid - Readymag Style */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+            {projects.map((project, index) => (
               <div 
                 key={project.id}
                 className="group cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border transition-all duration-300" 
-                     style={{ borderColor: '#1a1a1a', backgroundColor: '#1a1a1a' }} 
-                     onMouseEnter={(e) => {
-                       e.currentTarget.style.borderColor = '#C0F200';
-                       e.currentTarget.style.transform = 'translateY(-4px)';
-                     }} 
-                     onMouseLeave={(e) => {
-                       e.currentTarget.style.borderColor = '#1a1a1a';
-                       e.currentTarget.style.transform = 'translateY(0)';
-                     }}>
+                <div 
+                  className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border transition-all duration-500" 
+                  style={{ 
+                    borderColor: 'rgba(192, 242, 0, 0.1)',
+                    borderWidth: '1px',
+                    backgroundColor: '#0a0a0a'
+                  }} 
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#C0F200';
+                    e.currentTarget.style.transform = 'translateY(-8px)';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(192, 242, 0, 0.15)';
+                  }} 
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.1)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
                   <ImageWithFallback
                     src={project.imageUrl}
                     alt={project.title}
-                    className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-500"
+                    className="w-full h-full object-cover transition-opacity duration-700"
+                    style={{ opacity: 0.7 }}
+                    onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
+                    onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
                   />
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-6 flex flex-col justify-end">
-                    <div className="space-y-3">
-                      {project.id === 1 && (
-                        <div className="inline-block px-3 py-1 text-xs rounded-full font-medium" style={{ backgroundColor: '#C0F200', color: '#050505' }}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-6 md:p-8 lg:p-10 flex flex-col justify-end">
+                    <div className="space-y-3 md:space-y-4">
+                      {index === 0 && (
+                        <div 
+                          className="inline-block px-3 py-1.5 text-xs font-medium tracking-wide rounded-full" 
+                          style={{ backgroundColor: '#C0F200', color: '#050505' }}
+                        >
                           FEATURED
                         </div>
                       )}
-                      <h3 className="text-xl font-medium" style={{ color: '#C0F200' }}>{project.title}</h3>
-                      <p className="text-sm leading-relaxed" style={{ color: '#FAFAF0' }}>{project.subtitle}</p>
+                      <h3 
+                        className="text-xl md:text-2xl lg:text-3xl font-light leading-tight tracking-tight" 
+                        style={{ color: '#C0F200' }}
+                      >
+                        {project.title}
+                      </h3>
+                      <p 
+                        className="text-sm md:text-base leading-relaxed max-w-lg" 
+                        style={{ color: '#FAFAF0', opacity: 0.9 }}
+                      >
+                        {project.subtitle}
+                      </p>
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {project.metrics.slice(0, 2).map((metric, i) => (
+                          <span 
+                            key={i} 
+                            className="text-xs px-3 py-1.5 rounded-full font-light tracking-wide" 
+                            style={{ 
+                              color: '#808080', 
+                              backgroundColor: 'rgba(26, 26, 26, 0.8)',
+                              border: '1px solid rgba(192, 242, 0, 0.1)'
+                            }}
+                          >
+                            {metric}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Card Content Below Image */}
-                <div className="mt-4 space-y-2">
-                  <p className="text-sm leading-relaxed line-clamp-2" style={{ color: '#808080' }}>
+                {/* Card Content Below Image - Readymag Style */}
+                <div className="mt-4 md:mt-6 space-y-2">
+                  <p 
+                    className="text-sm md:text-base leading-relaxed line-clamp-2 font-light tracking-wide" 
+                    style={{ color: '#808080' }}
+                  >
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {project.metrics.slice(0, 2).map((metric, i) => (
-                      <span key={i} className="text-xs px-2 py-1 rounded" style={{ color: '#808080', backgroundColor: 'rgba(26, 26, 26, 0.6)' }}>
-                        {metric}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </div>
             ))}
@@ -169,47 +204,75 @@ export function Portfolio() {
       {/* Project Detail Modal */}
       {selectedProject && (
         <div 
-          className="fixed inset-0 z-50 backdrop-blur-sm overflow-y-auto"
-          style={{ backgroundColor: 'rgba(5, 5, 5, 0.95)' }}
+          className="fixed inset-0 z-50 backdrop-blur-md overflow-y-auto"
+          style={{ backgroundColor: 'rgba(5, 5, 5, 0.97)' }}
           onClick={() => setSelectedProject(null)}
         >
-          <div className="min-h-screen py-12 px-4">
+          <div className="min-h-screen py-8 md:py-12 px-4 md:px-6 lg:px-8">
             <div 
-              className="max-w-5xl mx-auto border relative"
-              style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(192, 242, 0, 0.3)' }}
+              className="max-w-6xl mx-auto border relative rounded-lg"
+              style={{ 
+                backgroundColor: '#0a0a0a', 
+                borderColor: 'rgba(192, 242, 0, 0.2)',
+                borderWidth: '1px'
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close button */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 transition-colors duration-200 z-10"
+                className="absolute top-6 right-6 md:top-8 md:right-8 transition-all duration-300 z-10 p-2 rounded-full hover:bg-[#C0F200]/10"
                 style={{ color: '#FAFAF0' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#C0F200';
+                  e.currentTarget.style.transform = 'rotate(90deg)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#FAFAF0';
+                  e.currentTarget.style.transform = 'rotate(0deg)';
+                }}
               >
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5 md:h-6 md:w-6" />
               </button>
 
               {/* Content */}
-              <div className="p-12">
+              <div className="p-8 md:p-12 lg:p-16">
                 {/* Header */}
-                <div className="mb-12">
-                  <h2 className="text-4xl mb-4" style={{ color: '#C0F200' }}>{selectedProject.title}</h2>
-                  <p className="text-lg" style={{ color: '#808080' }}>{selectedProject.subtitle}</p>
+                <div className="mb-10 md:mb-16">
+                  <h2 
+                    className="text-3xl md:text-4xl lg:text-5xl font-light mb-4 tracking-tight leading-tight" 
+                    style={{ color: '#C0F200' }}
+                  >
+                    {selectedProject.title}
+                  </h2>
+                  <p 
+                    className="text-base md:text-lg font-light tracking-wide" 
+                    style={{ color: '#808080' }}
+                  >
+                    {selectedProject.subtitle}
+                  </p>
                 </div>
 
                 {/* Detail Images - if available */}
                 {selectedProject.detailImages && (
-                  <div className="grid md:grid-cols-2 gap-6 mb-12">
+                  <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
                     {selectedProject.detailImages.map((img, index) => (
-                      <div key={index} className="space-y-3">
+                      <div key={index} className="space-y-3 md:space-y-4">
                         <img 
                           src={img.src} 
                           alt={img.caption}
-                          className="w-full border"
-                          style={{ borderColor: 'rgba(192, 242, 0, 0.2)' }}
+                          className="w-full rounded-lg border transition-opacity duration-300 hover:opacity-90"
+                          style={{ 
+                            borderColor: 'rgba(192, 242, 0, 0.15)',
+                            borderWidth: '1px'
+                          }}
                         />
-                        <p className="text-xs" style={{ color: '#808080' }}>{img.caption}</p>
+                        <p 
+                          className="text-xs md:text-sm font-light tracking-wide" 
+                          style={{ color: '#808080' }}
+                        >
+                          {img.caption}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -217,32 +280,53 @@ export function Portfolio() {
 
                 {/* Main Image - if no detail images */}
                 {!selectedProject.detailImages && (
-                  <div className="mb-12">
+                  <div className="mb-12 md:mb-16">
                     <ImageWithFallback
                       src={selectedProject.imageUrl}
                       alt={selectedProject.title}
-                      className="w-full aspect-video object-cover border border-[#5B7FB3]/20"
+                      className="w-full aspect-video object-cover rounded-lg border"
+                      style={{ 
+                        borderColor: 'rgba(192, 242, 0, 0.15)',
+                        borderWidth: '1px'
+                      }}
                     />
                   </div>
                 )}
 
                 {/* Description */}
-                <div className="space-y-8">
+                <div className="space-y-10 md:space-y-12">
                   <div>
-                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>项目概述</h3>
-                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
+                    <h3 
+                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
+                      style={{ color: '#C0F200' }}
+                    >
+                      项目概述
+                    </h3>
+                    <p 
+                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
+                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                    >
                       {selectedProject.description}
                     </p>
                   </div>
 
                   {/* Metrics */}
                   <div>
-                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>关键成果</h3>
-                    <ul className="space-y-2">
+                    <h3 
+                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
+                      style={{ color: '#C0F200' }}
+                    >
+                      关键成果
+                    </h3>
+                    <ul className="space-y-3 md:space-y-4">
                       {selectedProject.metrics.map((metric, index) => (
-                        <li key={index} className="text-base flex items-start" style={{ color: '#FAFAF0' }}>
-                          <span className="mr-2" style={{ color: '#C0F200' }}>•</span>
-                          {metric}
+                        <li 
+                          key={index} 
+                          className="text-sm md:text-base flex items-start font-light tracking-wide" 
+                          style={{ color: '#FAFAF0', opacity: 0.9 }}
+                        >
+                          <span className="mr-3 mt-1" style={{ color: '#C0F200' }}>•</span>
+                          <span>{metric}</span>
                         </li>
                       ))}
                     </ul>
@@ -250,32 +334,64 @@ export function Portfolio() {
 
                   {/* Role */}
                   <div>
-                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>我的角色</h3>
-                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
+                    <h3 
+                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
+                      style={{ color: '#C0F200' }}
+                    >
+                      我的角色
+                    </h3>
+                    <p 
+                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
+                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                    >
                       {selectedProject.details.role}
                     </p>
                   </div>
 
                   {/* Challenge */}
                   <div>
-                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>面临挑战</h3>
-                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
+                    <h3 
+                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
+                      style={{ color: '#C0F200' }}
+                    >
+                      面临挑战
+                    </h3>
+                    <p 
+                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
+                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                    >
                       {selectedProject.details.challenge}
                     </p>
                   </div>
 
                   {/* Solution */}
                   <div>
-                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>解决方案</h3>
-                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
+                    <h3 
+                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
+                      style={{ color: '#C0F200' }}
+                    >
+                      解决方案
+                    </h3>
+                    <p 
+                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
+                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                    >
                       {selectedProject.details.solution}
                     </p>
                   </div>
 
                   {/* Results */}
                   <div>
-                    <h3 className="text-xl mb-4" style={{ color: '#C0F200' }}>项目成果</h3>
-                    <p className="text-base leading-relaxed" style={{ color: '#FAFAF0' }}>
+                    <h3 
+                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
+                      style={{ color: '#C0F200' }}
+                    >
+                      项目成果
+                    </h3>
+                    <p 
+                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
+                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                    >
                       {selectedProject.details.results}
                     </p>
                   </div>

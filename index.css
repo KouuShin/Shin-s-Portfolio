@@ -634,6 +634,17 @@
     aspect-ratio: 4 / 3;
   }
 
+  .aspect-\[4\/5\] {
+    aspect-ratio: 4 / 5;
+  }
+
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -646,10 +657,6 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  .aspect-\[4\/5\] {
-    aspect-ratio: 4 / 5;
   }
 
   .aspect-\[16\/9\] {
@@ -782,6 +789,22 @@
     cursor: pointer;
   }
 
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
@@ -896,8 +919,16 @@
     border-radius: 25px;
   }
 
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+
   .rounded-md {
     border-radius: var(--radius);
+  }
+
+  .rounded-xl {
+    border-radius: 0.75rem;
   }
 
   .border {
