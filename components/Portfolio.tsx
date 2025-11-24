@@ -109,28 +109,44 @@ export function Portfolio() {
             <span className="text-xs md:text-sm font-light tracking-wide" style={{ color: '#808080' }}>2023 - 2024</span>
           </div>
           
-          {/* Projects Grid - Readymag Style */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-            {projects.map((project, index) => (
+          {/* Projects Grid - Readymag Style Masonry Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-8">
+            {projects.map((project, index) => {
+              // Readymag-style varied sizing
+              const getGridSpan = () => {
+                if (index === 0) return 'lg:col-span-8'; // Large featured card
+                if (index === 1) return 'lg:col-span-4'; // Medium card
+                if (index === 2) return 'lg:col-span-5'; // Medium card
+                return 'lg:col-span-7'; // Default
+              };
+              
+              const getAspectRatio = () => {
+                if (index === 0) return 'aspect-[16/10]'; // Wide featured
+                if (index === 1) return 'aspect-[4/5]'; // Tall
+                if (index === 2) return 'aspect-[3/4]'; // Portrait
+                return 'aspect-[5/4]'; // Landscape
+              };
+              
+              return (
               <div 
                 key={project.id}
-                className="group cursor-pointer"
+                className={`group cursor-pointer ${getGridSpan()}`}
                 onClick={() => setSelectedProject(project)}
               >
                 <div 
-                  className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border transition-all duration-500" 
+                  className={`relative w-full ${getAspectRatio()} rounded-2xl overflow-hidden border transition-all duration-700 ease-out`}
                   style={{ 
-                    borderColor: 'rgba(192, 242, 0, 0.1)',
-                    borderWidth: '1px',
+                    borderColor: 'rgba(192, 242, 0, 0.08)',
+                    borderWidth: '1.5px',
                     backgroundColor: '#0a0a0a'
                   }} 
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#C0F200';
-                    e.currentTarget.style.transform = 'translateY(-8px)';
-                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(192, 242, 0, 0.15)';
+                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.6)';
+                    e.currentTarget.style.transform = 'translateY(-12px)';
+                    e.currentTarget.style.boxShadow = '0 24px 48px rgba(192, 242, 0, 0.12), 0 0 0 1px rgba(192, 242, 0, 0.1)';
                   }} 
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.1)';
+                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.08)';
                     e.currentTarget.style.transform = 'translateY(0)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
@@ -145,37 +161,38 @@ export function Portfolio() {
                   />
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-6 md:p-8 lg:p-10 flex flex-col justify-end">
-                    <div className="space-y-3 md:space-y-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/98 via-black/70 to-transparent p-8 md:p-10 lg:p-12 flex flex-col justify-end">
+                    <div className="space-y-4 md:space-y-5">
                       {index === 0 && (
                         <div 
-                          className="inline-block px-3 py-1.5 text-xs font-medium tracking-wide rounded-full" 
-                          style={{ backgroundColor: '#C0F200', color: '#050505' }}
+                          className="inline-block px-4 py-2 text-xs font-bold tracking-wider rounded-full" 
+                          style={{ backgroundColor: '#C0F200', color: '#050505', letterSpacing: '0.1em' }}
                         >
                           FEATURED
                         </div>
                       )}
                       <h3 
-                        className="text-xl md:text-2xl lg:text-3xl font-light leading-tight tracking-tight" 
-                        style={{ color: '#C0F200' }}
+                        className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight tracking-tight" 
+                        style={{ color: '#C0F200', letterSpacing: '-0.02em' }}
                       >
                         {project.title}
                       </h3>
                       <p 
-                        className="text-sm md:text-base leading-relaxed max-w-lg" 
-                        style={{ color: '#FAFAF0', opacity: 0.9 }}
+                        className="text-base md:text-lg leading-relaxed max-w-2xl" 
+                        style={{ color: '#FAFAF0', opacity: 0.95, letterSpacing: '-0.01em' }}
                       >
                         {project.subtitle}
                       </p>
-                      <div className="flex flex-wrap gap-2 pt-2">
+                      <div className="flex flex-wrap gap-3 pt-3">
                         {project.metrics.slice(0, 2).map((metric, i) => (
                           <span 
                             key={i} 
-                            className="text-xs px-3 py-1.5 rounded-full font-light tracking-wide" 
+                            className="text-xs px-4 py-2 rounded-full font-medium tracking-wide" 
                             style={{ 
-                              color: '#808080', 
-                              backgroundColor: 'rgba(26, 26, 26, 0.8)',
-                              border: '1px solid rgba(192, 242, 0, 0.1)'
+                              color: '#C0F200', 
+                              backgroundColor: 'rgba(192, 242, 0, 0.08)',
+                              border: '1px solid rgba(192, 242, 0, 0.15)',
+                              letterSpacing: '0.02em'
                             }}
                           >
                             {metric}
@@ -187,16 +204,16 @@ export function Portfolio() {
                 </div>
                 
                 {/* Card Content Below Image - Readymag Style */}
-                <div className="mt-4 md:mt-6 space-y-2">
+                <div className="mt-6 md:mt-8 space-y-3">
                   <p 
-                    className="text-sm md:text-base leading-relaxed line-clamp-2 font-light tracking-wide" 
-                    style={{ color: '#808080' }}
+                    className="text-sm md:text-base leading-relaxed line-clamp-2 font-light" 
+                    style={{ color: '#808080', letterSpacing: '-0.01em', lineHeight: '1.7' }}
                   >
                     {project.description}
                   </p>
                 </div>
               </div>
-            ))}
+            )})}
           </div>
         </div>
       </section>
@@ -210,11 +227,11 @@ export function Portfolio() {
         >
           <div className="min-h-screen py-8 md:py-12 px-4 md:px-6 lg:px-8">
             <div 
-              className="max-w-6xl mx-auto border relative rounded-lg"
+              className="max-w-6xl mx-auto border relative rounded-2xl"
               style={{ 
                 backgroundColor: '#0a0a0a', 
-                borderColor: 'rgba(192, 242, 0, 0.2)',
-                borderWidth: '1px'
+                borderColor: 'rgba(192, 242, 0, 0.15)',
+                borderWidth: '1.5px'
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -236,18 +253,18 @@ export function Portfolio() {
               </button>
 
               {/* Content */}
-              <div className="p-8 md:p-12 lg:p-16">
+              <div className="p-10 md:p-14 lg:p-20">
                 {/* Header */}
-                <div className="mb-10 md:mb-16">
+                <div className="mb-12 md:mb-20">
                   <h2 
-                    className="text-3xl md:text-4xl lg:text-5xl font-light mb-4 tracking-tight leading-tight" 
-                    style={{ color: '#C0F200' }}
+                    className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 tracking-tight leading-tight" 
+                    style={{ color: '#C0F200', letterSpacing: '-0.02em' }}
                   >
                     {selectedProject.title}
                   </h2>
                   <p 
-                    className="text-base md:text-lg font-light tracking-wide" 
-                    style={{ color: '#808080' }}
+                    className="text-lg md:text-xl font-light" 
+                    style={{ color: '#808080', letterSpacing: '-0.01em', lineHeight: '1.6' }}
                   >
                     {selectedProject.subtitle}
                   </p>
@@ -255,21 +272,21 @@ export function Portfolio() {
 
                 {/* Detail Images - if available */}
                 {selectedProject.detailImages && (
-                  <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
+                  <div className="grid md:grid-cols-2 gap-8 md:gap-10 mb-16 md:mb-20">
                     {selectedProject.detailImages.map((img, index) => (
-                      <div key={index} className="space-y-3 md:space-y-4">
+                      <div key={index} className="space-y-4 md:space-y-5">
                         <img 
                           src={img.src} 
                           alt={img.caption}
-                          className="w-full rounded-lg border transition-opacity duration-300 hover:opacity-90"
+                          className="w-full rounded-xl border transition-all duration-500 hover:opacity-95 hover:scale-[1.01]"
                           style={{ 
-                            borderColor: 'rgba(192, 242, 0, 0.15)',
-                            borderWidth: '1px'
+                            borderColor: 'rgba(192, 242, 0, 0.12)',
+                            borderWidth: '1.5px'
                           }}
                         />
                         <p 
-                          className="text-xs md:text-sm font-light tracking-wide" 
-                          style={{ color: '#808080' }}
+                          className="text-sm md:text-base font-light" 
+                          style={{ color: '#808080', letterSpacing: '-0.01em', lineHeight: '1.6' }}
                         >
                           {img.caption}
                         </p>
@@ -280,31 +297,31 @@ export function Portfolio() {
 
                 {/* Main Image - if no detail images */}
                 {!selectedProject.detailImages && (
-                  <div className="mb-12 md:mb-16">
+                  <div className="mb-16 md:mb-20">
                     <ImageWithFallback
                       src={selectedProject.imageUrl}
                       alt={selectedProject.title}
-                      className="w-full aspect-video object-cover rounded-lg border"
+                      className="w-full aspect-video object-cover rounded-xl border"
                       style={{ 
-                        borderColor: 'rgba(192, 242, 0, 0.15)',
-                        borderWidth: '1px'
+                        borderColor: 'rgba(192, 242, 0, 0.12)',
+                        borderWidth: '1.5px'
                       }}
                     />
                   </div>
                 )}
 
                 {/* Description */}
-                <div className="space-y-10 md:space-y-12">
+                <div className="space-y-12 md:space-y-16">
                   <div>
                     <h3 
-                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
-                      style={{ color: '#C0F200' }}
+                      className="text-xl md:text-2xl mb-6 md:mb-8 font-light" 
+                      style={{ color: '#C0F200', letterSpacing: '-0.01em' }}
                     >
                       项目概述
                     </h3>
                     <p 
-                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
-                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                      className="text-base md:text-lg leading-relaxed font-light" 
+                      style={{ color: '#FAFAF0', opacity: 0.95, letterSpacing: '-0.01em', lineHeight: '1.8' }}
                     >
                       {selectedProject.description}
                     </p>
@@ -313,19 +330,19 @@ export function Portfolio() {
                   {/* Metrics */}
                   <div>
                     <h3 
-                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
-                      style={{ color: '#C0F200' }}
+                      className="text-xl md:text-2xl mb-6 md:mb-8 font-light" 
+                      style={{ color: '#C0F200', letterSpacing: '-0.01em' }}
                     >
                       关键成果
                     </h3>
-                    <ul className="space-y-3 md:space-y-4">
+                    <ul className="space-y-4 md:space-y-5">
                       {selectedProject.metrics.map((metric, index) => (
                         <li 
                           key={index} 
-                          className="text-sm md:text-base flex items-start font-light tracking-wide" 
-                          style={{ color: '#FAFAF0', opacity: 0.9 }}
+                          className="text-base md:text-lg flex items-start font-light" 
+                          style={{ color: '#FAFAF0', opacity: 0.95, letterSpacing: '-0.01em', lineHeight: '1.7' }}
                         >
-                          <span className="mr-3 mt-1" style={{ color: '#C0F200' }}>•</span>
+                          <span className="mr-4 mt-1.5 text-lg" style={{ color: '#C0F200' }}>•</span>
                           <span>{metric}</span>
                         </li>
                       ))}
@@ -335,14 +352,14 @@ export function Portfolio() {
                   {/* Role */}
                   <div>
                     <h3 
-                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
-                      style={{ color: '#C0F200' }}
+                      className="text-xl md:text-2xl mb-6 md:mb-8 font-light" 
+                      style={{ color: '#C0F200', letterSpacing: '-0.01em' }}
                     >
                       我的角色
                     </h3>
                     <p 
-                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
-                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                      className="text-base md:text-lg leading-relaxed font-light" 
+                      style={{ color: '#FAFAF0', opacity: 0.95, letterSpacing: '-0.01em', lineHeight: '1.8' }}
                     >
                       {selectedProject.details.role}
                     </p>
@@ -351,14 +368,14 @@ export function Portfolio() {
                   {/* Challenge */}
                   <div>
                     <h3 
-                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
-                      style={{ color: '#C0F200' }}
+                      className="text-xl md:text-2xl mb-6 md:mb-8 font-light" 
+                      style={{ color: '#C0F200', letterSpacing: '-0.01em' }}
                     >
                       面临挑战
                     </h3>
                     <p 
-                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
-                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                      className="text-base md:text-lg leading-relaxed font-light" 
+                      style={{ color: '#FAFAF0', opacity: 0.95, letterSpacing: '-0.01em', lineHeight: '1.8' }}
                     >
                       {selectedProject.details.challenge}
                     </p>
@@ -367,14 +384,14 @@ export function Portfolio() {
                   {/* Solution */}
                   <div>
                     <h3 
-                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
-                      style={{ color: '#C0F200' }}
+                      className="text-xl md:text-2xl mb-6 md:mb-8 font-light" 
+                      style={{ color: '#C0F200', letterSpacing: '-0.01em' }}
                     >
                       解决方案
                     </h3>
                     <p 
-                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
-                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                      className="text-base md:text-lg leading-relaxed font-light" 
+                      style={{ color: '#FAFAF0', opacity: 0.95, letterSpacing: '-0.01em', lineHeight: '1.8' }}
                     >
                       {selectedProject.details.solution}
                     </p>
@@ -383,14 +400,14 @@ export function Portfolio() {
                   {/* Results */}
                   <div>
                     <h3 
-                      className="text-lg md:text-xl mb-4 md:mb-6 font-light tracking-wide" 
-                      style={{ color: '#C0F200' }}
+                      className="text-xl md:text-2xl mb-6 md:mb-8 font-light" 
+                      style={{ color: '#C0F200', letterSpacing: '-0.01em' }}
                     >
                       项目成果
                     </h3>
                     <p 
-                      className="text-sm md:text-base leading-relaxed font-light tracking-wide" 
-                      style={{ color: '#FAFAF0', opacity: 0.9 }}
+                      className="text-base md:text-lg leading-relaxed font-light" 
+                      style={{ color: '#FAFAF0', opacity: 0.95, letterSpacing: '-0.01em', lineHeight: '1.8' }}
                     >
                       {selectedProject.details.results}
                     </p>

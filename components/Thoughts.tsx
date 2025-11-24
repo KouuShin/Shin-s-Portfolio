@@ -195,7 +195,7 @@ export function Thoughts() {
     const paragraphs = content.split('\n\n').filter(p => p.trim().length > 0);
     
     return (
-      <div className="space-y-6 md:space-y-8">
+      <div className="space-y-8 md:space-y-10">
         {paragraphs.map((para, index) => {
           const trimmedPara = para.trim();
           
@@ -205,8 +205,8 @@ export function Thoughts() {
             return (
               <h3 
                 key={index} 
-                className="text-xl md:text-2xl lg:text-3xl font-light mt-12 md:mt-16 mb-6 md:mb-8 first:mt-0 tracking-tight leading-tight" 
-                style={{ color: '#C0F200' }}
+                className="text-2xl md:text-3xl lg:text-4xl font-light mt-16 md:mt-20 mb-8 md:mb-10 first:mt-0 tracking-tight leading-tight" 
+                style={{ color: '#C0F200', letterSpacing: '-0.01em' }}
               >
                 {title}
               </h3>
@@ -222,15 +222,15 @@ export function Thoughts() {
             return (
               <div key={index}>
                 <h3 
-                  className="text-xl md:text-2xl lg:text-3xl font-light mt-12 md:mt-16 mb-6 md:mb-8 first:mt-0 tracking-tight leading-tight" 
-                  style={{ color: '#C0F200' }}
+                  className="text-2xl md:text-3xl lg:text-4xl font-light mt-16 md:mt-20 mb-8 md:mb-10 first:mt-0 tracking-tight leading-tight" 
+                  style={{ color: '#C0F200', letterSpacing: '-0.01em' }}
                 >
                   {title}
                 </h3>
                 {rest && (
                   <p 
-                    className="text-sm md:text-base leading-relaxed mt-4 md:mt-6 font-light tracking-wide" 
-                    style={{ color: '#FAFAF0', opacity: 0.9 }}
+                    className="text-base md:text-lg leading-relaxed mt-6 md:mt-8 font-light" 
+                    style={{ color: '#FAFAF0', opacity: 0.95, letterSpacing: '-0.01em', lineHeight: '1.8' }}
                   >
                     {rest}
                   </p>
@@ -243,8 +243,8 @@ export function Thoughts() {
           return (
             <p 
               key={index} 
-              className="text-sm md:text-base leading-relaxed tracking-wide font-light" 
-              style={{ color: '#FAFAF0', opacity: 0.9 }}
+              className="text-base md:text-lg leading-relaxed font-light" 
+              style={{ color: '#FAFAF0', opacity: 0.95, letterSpacing: '-0.01em', lineHeight: '1.8' }}
             >
               {trimmedPara}
             </p>
@@ -273,7 +273,7 @@ export function Thoughts() {
           </div>
           
           {/* Thoughts Grid - Readymag Style */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
             {thoughts.map((thought) => (
               <div 
                 key={thought.id}
@@ -285,19 +285,19 @@ export function Thoughts() {
                 }}
               >
                 <div 
-                  className="relative w-full aspect-[3/4] rounded-lg overflow-hidden border transition-all duration-500" 
+                  className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border transition-all duration-700 ease-out" 
                   style={{ 
-                    borderColor: 'rgba(192, 242, 0, 0.1)',
-                    borderWidth: '1px',
+                    borderColor: 'rgba(192, 242, 0, 0.08)',
+                    borderWidth: '1.5px',
                     backgroundColor: '#0a0a0a'
                   }} 
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#C0F200';
-                    e.currentTarget.style.transform = 'translateY(-8px)';
-                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(192, 242, 0, 0.15)';
+                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.5)';
+                    e.currentTarget.style.transform = 'translateY(-10px)';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(192, 242, 0, 0.1), 0 0 0 1px rgba(192, 242, 0, 0.08)';
                   }} 
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.1)';
+                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.08)';
                     e.currentTarget.style.transform = 'translateY(0)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
@@ -312,10 +312,10 @@ export function Thoughts() {
                   />
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent p-6 md:p-8 flex flex-col justify-end">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/98 via-black/40 to-transparent p-7 md:p-9 flex flex-col justify-end">
                     <h3 
-                      className="text-base md:text-lg font-light leading-tight tracking-tight line-clamp-3" 
-                      style={{ color: '#C0F200' }}
+                      className="text-lg md:text-xl font-light leading-tight line-clamp-3" 
+                      style={{ color: '#C0F200', letterSpacing: '-0.01em', lineHeight: '1.3' }}
                     >
                       {thought.title}
                     </h3>
@@ -323,10 +323,10 @@ export function Thoughts() {
                 </div>
                 
                 {/* Card Content Below Image - Readymag Style */}
-                <div className="mt-4 md:mt-6">
+                <div className="mt-6 md:mt-8">
                   <h3 
-                    className="text-sm md:text-base font-light leading-relaxed tracking-wide transition-colors duration-300" 
-                    style={{ color: '#FAFAF0', opacity: 0.9 }}
+                    className="text-base md:text-lg font-light leading-relaxed transition-colors duration-500" 
+                    style={{ color: '#FAFAF0', opacity: 0.9, letterSpacing: '-0.01em', lineHeight: '1.5' }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#C0F200';
                       e.currentTarget.style.opacity = '1';
@@ -354,11 +354,11 @@ export function Thoughts() {
         >
           <div className="min-h-screen py-8 md:py-12 px-4 md:px-6 lg:px-8">
             <div 
-              className="max-w-6xl mx-auto border relative rounded-lg"
+              className="max-w-6xl mx-auto border relative rounded-2xl"
               style={{ 
                 backgroundColor: '#0a0a0a', 
-                borderColor: 'rgba(192, 242, 0, 0.2)',
-                borderWidth: '1px'
+                borderColor: 'rgba(192, 242, 0, 0.15)',
+                borderWidth: '1.5px'
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -380,26 +380,26 @@ export function Thoughts() {
               </button>
 
               {/* Content */}
-              <div className="p-8 md:p-12 lg:p-16">
+              <div className="p-10 md:p-14 lg:p-20">
                 {/* Header */}
-                <div className="mb-10 md:mb-16">
+                <div className="mb-12 md:mb-20">
                   <h2 
-                    className="text-3xl md:text-4xl lg:text-5xl font-light mb-4 tracking-tight leading-tight" 
-                    style={{ color: '#C0F200' }}
+                    className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 tracking-tight leading-tight" 
+                    style={{ color: '#C0F200', letterSpacing: '-0.02em' }}
                   >
                     {selectedThought.title}
                   </h2>
                 </div>
 
                 {/* Image */}
-                <div className="mb-12 md:mb-16">
+                <div className="mb-16 md:mb-20">
                   <ImageWithFallback
                     src={selectedThought.imageUrl}
                     alt={selectedThought.title}
-                    className="w-full aspect-video object-cover border rounded-lg transition-opacity duration-300 hover:opacity-90"
+                    className="w-full aspect-video object-cover border rounded-xl transition-all duration-500 hover:opacity-95 hover:scale-[1.01]"
                     style={{ 
-                      borderColor: 'rgba(192, 242, 0, 0.15)',
-                      borderWidth: '1px'
+                      borderColor: 'rgba(192, 242, 0, 0.12)',
+                      borderWidth: '1.5px'
                     }}
                   />
                 </div>
