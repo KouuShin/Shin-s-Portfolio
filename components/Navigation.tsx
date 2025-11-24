@@ -1,16 +1,11 @@
 import { useState } from "react";
 
-export function Navigation() {
-  const [activeSection, setActiveSection] = useState('home');
+interface NavigationProps {
+  currentPage: string;
+  onPageChange: (page: string) => void;
+}
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(sectionId);
-    }
-  };
-
+export function Navigation({ currentPage, onPageChange }: NavigationProps) {
   const menuItems = [
     { id: 'home', label: 'About' },
     { id: 'project', label: 'Project' },
@@ -21,27 +16,29 @@ export function Navigation() {
 
   return (
     <nav 
-      className="fixed right-12 top-1/2 -translate-y-1/2 z-50"
+      className="fixed right-16 top-12 z-50"
       style={{ fontFamily: "'HuXiaoBo-NanShenTi', 'Space Grotesk', sans-serif" }}
     >
-      <div className="flex flex-col items-end space-y-8">
+      <div className="flex flex-col items-end space-y-6">
         {menuItems.map((item) => (
           <button
             key={item.id}
-            onClick={() => scrollToSection(item.id)}
-            className="text-2xl font-light tracking-wide transition-all duration-300 relative group"
+            onClick={() => onPageChange(item.id)}
+            className="font-normal tracking-wide transition-all duration-300 text-right"
             style={{ 
-              color: activeSection === item.id ? '#C0F200' : '#FFFFFF',
-              textShadow: activeSection === item.id ? '0 0 20px rgba(192, 242, 0, 0.6)' : 'none'
+              fontSize: '32px',
+              letterSpacing: '0.16em',
+              color: currentPage === item.id ? '#C0F200' : '#FFFFFF',
+              textShadow: currentPage === item.id ? '0 0 20px rgba(192, 242, 0, 0.6)' : 'none'
             }}
             onMouseEnter={(e) => {
-              if (activeSection !== item.id) {
+              if (currentPage !== item.id) {
                 e.currentTarget.style.color = '#C0F200';
                 e.currentTarget.style.textShadow = '0 0 15px rgba(192, 242, 0, 0.5)';
               }
             }}
             onMouseLeave={(e) => {
-              if (activeSection !== item.id) {
+              if (currentPage !== item.id) {
                 e.currentTarget.style.color = '#FFFFFF';
                 e.currentTarget.style.textShadow = 'none';
               }

@@ -1,14 +1,14 @@
 export function Contact() {
   return (
     <section 
-      id="contact" 
       className="relative flex items-center justify-center"
       style={{ 
         backgroundColor: '#000000',
-        width: '1440px',
-        height: '1024px',
-        maxWidth: '100vw',
-        margin: '0 auto',
+        width: '100vw',
+        height: '100vh',
+        position: 'fixed',
+        top: 0,
+        left: 0,
         padding: '80px'
       }}
     >

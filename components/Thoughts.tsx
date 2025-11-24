@@ -191,7 +191,6 @@ export function Thoughts() {
   const renderContent = (content: string | null) => {
     if (!content) return null;
     
-    // 将内容按双换行分割成段落
     const paragraphs = content.split('\n\n').filter(p => p.trim().length > 0);
     
     return (
@@ -199,7 +198,6 @@ export function Thoughts() {
         {paragraphs.map((para, index) => {
           const trimmedPara = para.trim();
           
-          // 检查是否是Markdown标题（以##开头）
           if (trimmedPara.startsWith('## ')) {
             const title = trimmedPara.replace('## ', '').trim();
             return (
@@ -213,7 +211,6 @@ export function Thoughts() {
             );
           }
           
-          // 检查是否是中文数字标题（如"三、"、"四、"等）
           if (/^[一二三四五六七八九十]+、/.test(trimmedPara)) {
             const lines = trimmedPara.split('\n');
             const title = lines[0].trim();
@@ -239,7 +236,6 @@ export function Thoughts() {
             );
           }
           
-          // 普通段落
           return (
             <p 
               key={index} 
@@ -256,92 +252,44 @@ export function Thoughts() {
 
   return (
     <>
-      <section id="thoughts" className="min-h-screen py-24 px-6 md:px-12 lg:px-20" style={{ backgroundColor: '#050505' }}>
-        <div className="max-w-[1600px] mx-auto">
-          {/* Header */}
-          <div className="flex justify-between items-baseline mb-16 md:mb-24">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight" style={{ color: '#C0F200' }}>My weekly thoughts</h2>
-            <a 
-              href="#" 
-              className="text-xs md:text-sm font-light tracking-wide transition-colors duration-300" 
-              style={{ color: '#808080' }} 
-              onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} 
-              onMouseLeave={(e) => e.currentTarget.style.color = '#808080'}
-            >
-              View all →
-            </a>
-          </div>
-          
-          {/* Thoughts Grid - Readymag Style */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
-            {thoughts.map((thought) => (
-              <div 
-                key={thought.id}
-                className="group cursor-pointer"
-                onClick={() => {
-                  if (thought.content) {
-                    setSelectedThought(thought);
-                  }
-                }}
-              >
-                <div 
-                  className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border transition-all duration-700 ease-out" 
-                  style={{ 
-                    borderColor: 'rgba(192, 242, 0, 0.08)',
-                    borderWidth: '1.5px',
-                    backgroundColor: '#0a0a0a'
-                  }} 
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.5)';
-                    e.currentTarget.style.transform = 'translateY(-10px)';
-                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(192, 242, 0, 0.1), 0 0 0 1px rgba(192, 242, 0, 0.08)';
-                  }} 
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(192, 242, 0, 0.08)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  <ImageWithFallback
-                    src={thought.imageUrl}
-                    alt={thought.title}
-                    className="w-full h-full object-cover transition-opacity duration-700"
-                    style={{ opacity: 0.8 }}
-                    onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-                    onMouseLeave={(e) => e.currentTarget.style.opacity = '0.8'}
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/98 via-black/40 to-transparent p-7 md:p-9 flex flex-col justify-end">
-                    <h3 
-                      className="text-lg md:text-xl font-light leading-tight line-clamp-3" 
-                      style={{ color: '#C0F200', letterSpacing: '-0.01em', lineHeight: '1.3' }}
-                    >
-                      {thought.title}
-                    </h3>
-                  </div>
-                </div>
-                
-                {/* Card Content Below Image - Readymag Style */}
-                <div className="mt-6 md:mt-8">
-                  <h3 
-                    className="text-base md:text-lg font-light leading-relaxed transition-colors duration-500" 
-                    style={{ color: '#FAFAF0', opacity: 0.9, letterSpacing: '-0.01em', lineHeight: '1.5' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#C0F200';
-                      e.currentTarget.style.opacity = '1';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = '#FAFAF0';
-                      e.currentTarget.style.opacity = '0.9';
-                    }}
-                  >
-                    {thought.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Main Thoughts Page - Fixed Full Screen */}
+      <section 
+        className="relative flex items-center justify-center"
+        style={{ 
+          backgroundColor: '#000000',
+          width: '100vw',
+          height: '100vh',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          padding: '80px'
+        }}
+      >
+        <div className="text-center">
+          <h2 
+            className="neon-glow-soft"
+            style={{
+              fontFamily: "'ZCOOL-GDH', 'HuXiaoBo-NanShenTi', sans-serif",
+              fontSize: '120px',
+              fontWeight: '900',
+              color: '#C0F200',
+              letterSpacing: '0.05em',
+              marginBottom: '40px'
+            }}
+          >
+            THOUGHTS
+          </h2>
+          <p 
+            style={{
+              fontFamily: "'YouYou-YiSong', serif",
+              fontSize: '32px',
+              fontWeight: '300',
+              color: '#FFFFFF',
+              letterSpacing: '0.1em'
+            }}
+          >
+            思考与洞察
+          </p>
         </div>
       </section>
 
@@ -362,7 +310,6 @@ export function Thoughts() {
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
               <button
                 onClick={() => setSelectedThought(null)}
                 className="absolute top-6 right-6 md:top-8 md:right-8 transition-all duration-300 z-10 p-2 rounded-full hover:bg-[#C0F200]/10"
@@ -379,9 +326,7 @@ export function Thoughts() {
                 <X className="h-5 w-5 md:h-6 md:w-6" />
               </button>
 
-              {/* Content */}
               <div className="p-10 md:p-14 lg:p-20">
-                {/* Header */}
                 <div className="mb-12 md:mb-20">
                   <h2 
                     className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 tracking-tight leading-tight" 
@@ -391,7 +336,6 @@ export function Thoughts() {
                   </h2>
                 </div>
 
-                {/* Image */}
                 <div className="mb-16 md:mb-20">
                   <ImageWithFallback
                     src={selectedThought.imageUrl}
@@ -404,7 +348,6 @@ export function Thoughts() {
                   />
                 </div>
 
-                {/* Content with Readymag style */}
                 <div className="max-w-none">
                   {renderContent(selectedThought.content)}
                 </div>
