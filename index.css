@@ -1,4 +1,49 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+/* Custom Chinese Fonts */
+@font-face {
+  font-family: 'YouYou-YiSong';
+  src: local('YouYou-YiSong'), local('优优意宋');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HuXiaoBo-NanShenTi';
+  src: local('HuXiaoBo-NanShenTi2.0'), local('胡晓波男神体2.0');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ZCOOL-GDH';
+  src: local('ZCOOL-GDH'), local('站酷高端黑');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Neon glow effect */
+.neon-glow {
+  text-shadow: 
+    0 0 10px #C0F200,
+    0 0 20px #C0F200,
+    0 0 30px #C0F200,
+    0 0 40px #C0F200,
+    0 0 70px #C0F200,
+    0 0 80px #C0F200,
+    0 0 100px #C0F200;
+}
+
+.neon-glow-soft {
+  text-shadow: 
+    0 0 20px rgba(192, 242, 0, 0.8),
+    0 0 40px rgba(192, 242, 0, 0.6),
+    0 0 60px rgba(192, 242, 0, 0.4);
+}
+
+.radial-glow {
+  background: radial-gradient(circle at center, rgba(192, 242, 0, 0.3) 0%, transparent 70%);
+}
 /*! tailwindcss v4.1.3 | MIT License | https://tailwindcss.com */
 @layer properties {
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
