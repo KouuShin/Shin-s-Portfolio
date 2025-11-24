@@ -252,99 +252,43 @@ export function Thoughts() {
             </a>
           </div>
           
-          {/* Thoughts 2x2 Grid */}
-          <div className="grid grid-cols-2 gap-6 max-w-[600px] mx-auto">
-            {/* Thought 1 */}
-            <div 
-              className="group cursor-pointer"
-              onClick={() => {
-                if (thoughts[0].content) {
-                  setSelectedThought(thoughts[0]);
-                }
-              }}
-            >
-              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg mx-auto" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
-                <ImageWithFallback
-                  src={thoughts[0].imageUrl}
-                  alt={thoughts[0].title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+          {/* Thoughts Grid - Readymag Style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {thoughts.map((thought) => (
+              <div 
+                key={thought.id}
+                className="group cursor-pointer"
+                onClick={() => {
+                  if (thought.content) {
+                    setSelectedThought(thought);
+                  }
+                }}
+              >
+                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden border transition-all duration-300" 
+                     style={{ borderColor: '#1a1a1a', backgroundColor: '#1a1a1a' }} 
+                     onMouseEnter={(e) => {
+                       e.currentTarget.style.borderColor = '#C0F200';
+                       e.currentTarget.style.transform = 'translateY(-4px)';
+                     }} 
+                     onMouseLeave={(e) => {
+                       e.currentTarget.style.borderColor = '#1a1a1a';
+                       e.currentTarget.style.transform = 'translateY(0)';
+                     }}>
+                  <ImageWithFallback
+                    src={thought.imageUrl}
+                    alt={thought.title}
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                  />
+                  
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent p-6 flex flex-col justify-end">
+                    <h3 className="text-base font-medium leading-tight line-clamp-3" style={{ color: '#C0F200' }}>
+                      {thought.title}
+                    </h3>
+                  </div>
+                </div>
               </div>
-              <div className="mt-5 text-center">
-                <h3 className="text-lg transition-colors duration-200" style={{ color: '#FAFAF0' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}>
-                  {thoughts[0].title}
-                </h3>
-              </div>
-            </div>
-
-            {/* Thought 2 */}
-            <div 
-              className="group cursor-pointer"
-              onClick={() => {
-                if (thoughts[1].content) {
-                  setSelectedThought(thoughts[1]);
-                }
-              }}
-            >
-              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg mx-auto" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
-                <ImageWithFallback
-                  src={thoughts[1].imageUrl}
-                  alt={thoughts[1].title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="mt-5 text-center">
-                <h3 className="text-lg transition-colors duration-200" style={{ color: '#FAFAF0' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}>
-                  {thoughts[1].title}
-                </h3>
-              </div>
-            </div>
-
-            {/* Thought 3 */}
-            <div 
-              className="group cursor-pointer"
-              onClick={() => {
-                if (thoughts[2].content) {
-                  setSelectedThought(thoughts[2]);
-                }
-              }}
-            >
-              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg mx-auto" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
-                <ImageWithFallback
-                  src={thoughts[2].imageUrl}
-                  alt={thoughts[2].title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="mt-5 text-center">
-                <h3 className="text-lg transition-colors duration-200" style={{ color: '#FAFAF0' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}>
-                  {thoughts[2].title}
-                </h3>
-              </div>
-            </div>
-
-            {/* Thought 4 */}
-            <div 
-              className="group cursor-pointer"
-              onClick={() => {
-                if (thoughts[3].content) {
-                  setSelectedThought(thoughts[3]);
-                }
-              }}
-            >
-              <div className="relative w-[240px] h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg mx-auto" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
-                <ImageWithFallback
-                  src={thoughts[3].imageUrl}
-                  alt={thoughts[3].title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="mt-5 text-center">
-                <h3 className="text-lg transition-colors duration-200" style={{ color: '#FAFAF0' }} onMouseEnter={(e) => e.currentTarget.style.color = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.color = '#FAFAF0'}>
-                  {thoughts[3].title}
-                </h3>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

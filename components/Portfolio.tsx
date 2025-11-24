@@ -109,108 +109,59 @@ export function Portfolio() {
             <span className="text-sm" style={{ color: '#808080' }}>2023 - 2024</span>
           </div>
           
-          {/* Projects Dashboard Grid */}
-          <div className="grid grid-cols-12 gap-6 auto-rows-fr">
-            {/* Top Row */}
-            {/* Project 1 - Large (top-left, spans 8 columns, 2 rows) */}
-            <div 
-              className="col-span-12 lg:col-span-8 row-span-2 group cursor-pointer"
-              onClick={() => setSelectedProject(projects[0])}
-            >
-              <div className="relative h-full min-h-[500px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg" style={{ borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
-                <ImageWithFallback
-                  src={projects[0].imageUrl}
-                  alt={projects[0].title}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                />
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-10 flex flex-col justify-end">
-                  <div className="space-y-4">
-                    <div className="inline-block px-3 py-1 text-xs rounded-full" style={{ backgroundColor: '#C0F200', color: '#050505' }}>
-                      FEATURED
-                    </div>
-                    <h3 className="text-3xl" style={{ color: '#C0F200' }}>{projects[0].title}</h3>
-                    <p className="text-base max-w-lg" style={{ color: '#FAFAF0' }}>{projects[0].subtitle}</p>
-                    <div className="flex flex-wrap gap-2 pt-4">
-                      {projects[0].metrics.slice(0, 2).map((metric, i) => (
-                        <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ color: '#808080', backgroundColor: 'rgba(26, 26, 26, 0.8)' }}>
-                          {metric}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 2 - Small (top-right, spans 4 columns) */}
-            <div 
-              className="col-span-12 lg:col-span-4 group cursor-pointer"
-              onClick={() => setSelectedProject(projects[1])}
-            >
-              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg" style={{ borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
-                <ImageWithFallback
-                  src={projects[1].imageUrl}
-                  alt={projects[1].title}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                />
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end rounded-xl">
-                  <h3 className="text-xl mb-2" style={{ color: '#C0F200' }}>{projects[1].title}</h3>
-                  <p className="text-sm" style={{ color: '#FAFAF0' }}>{projects[1].subtitle}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Middle Row */}
-            {/* Project 3 - Medium (middle-left, spans 4 columns) */}
-            <div 
-              className="col-span-12 lg:col-span-4 group cursor-pointer"
-              onClick={() => setSelectedProject(projects[2])}
-            >
-              <div className="relative h-full min-h-[240px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg" style={{ borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
-                <ImageWithFallback
-                  src={projects[2].imageUrl}
-                  alt={projects[2].title}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                />
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end rounded-xl">
-                  <h3 className="text-xl mb-2" style={{ color: '#C0F200' }}>{projects[2].title}</h3>
-                  <p className="text-sm" style={{ color: '#FAFAF0' }}>{projects[2].subtitle}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Row */}
-            {/* Project 4 - Wide (bottom, spans 12 columns) */}
-            <div 
-              className="col-span-12 lg:col-span-12 group cursor-pointer"
-              onClick={() => setSelectedProject(projects[3])}
-            >
-              <div className="relative h-full min-h-[280px] rounded-xl overflow-hidden border transition-colors duration-300 shadow-lg" style={{ borderColor: '#1a1a1a' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#C0F200'} onMouseLeave={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}>
-                <ImageWithFallback
-                  src={projects[3].imageUrl}
-                  alt={projects[3].title}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                />
-                
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent p-8 flex items-center rounded-xl">
-                  <div className="max-w-xl space-y-3">
-                    <h3 className="text-2xl" style={{ color: '#C0F200' }}>{projects[3].title}</h3>
-                    <p className="text-base" style={{ color: '#FAFAF0' }}>{projects[3].subtitle}</p>
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {projects[3].metrics.map((metric, i) => (
-                        <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ color: '#808080', backgroundColor: 'rgba(26, 26, 26, 0.8)' }}>
-                          {metric}
-                        </span>
-                      ))}
+          {/* Projects Grid - Readymag Style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <div 
+                key={project.id}
+                className="group cursor-pointer"
+                onClick={() => setSelectedProject(project)}
+              >
+                <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border transition-all duration-300" 
+                     style={{ borderColor: '#1a1a1a', backgroundColor: '#1a1a1a' }} 
+                     onMouseEnter={(e) => {
+                       e.currentTarget.style.borderColor = '#C0F200';
+                       e.currentTarget.style.transform = 'translateY(-4px)';
+                     }} 
+                     onMouseLeave={(e) => {
+                       e.currentTarget.style.borderColor = '#1a1a1a';
+                       e.currentTarget.style.transform = 'translateY(0)';
+                     }}>
+                  <ImageWithFallback
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-500"
+                  />
+                  
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-6 flex flex-col justify-end">
+                    <div className="space-y-3">
+                      {project.id === 1 && (
+                        <div className="inline-block px-3 py-1 text-xs rounded-full font-medium" style={{ backgroundColor: '#C0F200', color: '#050505' }}>
+                          FEATURED
+                        </div>
+                      )}
+                      <h3 className="text-xl font-medium" style={{ color: '#C0F200' }}>{project.title}</h3>
+                      <p className="text-sm leading-relaxed" style={{ color: '#FAFAF0' }}>{project.subtitle}</p>
                     </div>
                   </div>
                 </div>
+                
+                {/* Card Content Below Image */}
+                <div className="mt-4 space-y-2">
+                  <p className="text-sm leading-relaxed line-clamp-2" style={{ color: '#808080' }}>
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {project.metrics.slice(0, 2).map((metric, i) => (
+                      <span key={i} className="text-xs px-2 py-1 rounded" style={{ color: '#808080', backgroundColor: 'rgba(26, 26, 26, 0.6)' }}>
+                        {metric}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
