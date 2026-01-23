@@ -15,7 +15,7 @@ function figmaAssetPlugin() {
       if (id.startsWith('figma:asset/')) {
         const assetPath = id.replace('figma:asset/', '');
         const fullPath = resolve(__dirname, 'assets', assetPath);
-        
+
         // 如果文件不存在，返回一个虚拟 ID 用于 load hook 处理
         if (!existsSync(fullPath)) {
           // 对于 synapse-ai-coverpage.jpg，使用 dashboard 图片作为备用
@@ -28,7 +28,7 @@ function figmaAssetPlugin() {
           const fallbackPath = resolve(__dirname, 'assets', 'synapse-dashboard.png');
           return `\0figma:asset:fallback:${fallbackPath}`;
         }
-        
+
         return fullPath;
       }
     },
@@ -54,6 +54,11 @@ export default defineConfig({
   plugins: [react(), figmaAssetPlugin()],
   server: {
     port: 883
-  }
+  },
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "./"),
+    },
+  },
 });
 
