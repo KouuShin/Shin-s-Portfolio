@@ -15,7 +15,7 @@ export const FluidBackground = () => {
                     repeat: Infinity,
                     ease: "easeInOut"
                 }}
-                className="absolute -top-1/4 -left-1/4 h-[80vh] w-[80vh] rounded-full bg-[var(--color-accent-purple)] opacity-20 blur-[120px] mix-blend-multiply dark:mix-blend-screen"
+                className="absolute -top-1/4 -left-1/4 h-[80vh] w-[80vh] rounded-full bg-[var(--color-accent-purple)] opacity-40 blur-[100px] mix-blend-screen"
             />
 
             {/* Orb 2: Cyan/Blue Aura - Bottom Right */}
@@ -31,7 +31,7 @@ export const FluidBackground = () => {
                     ease: "easeInOut",
                     delay: 2
                 }}
-                className="absolute -bottom-1/4 -right-1/4 h-[90vh] w-[90vh] rounded-full bg-[var(--color-accent-blue)] opacity-15 blur-[140px] mix-blend-multiply dark:mix-blend-screen"
+                className="absolute -bottom-1/4 -right-1/4 h-[90vh] w-[90vh] rounded-full bg-[var(--color-accent-blue)] opacity-30 blur-[120px] mix-blend-screen"
             />
 
             {/* Orb 3: Lime/Warm Aura - Center Floating */}
@@ -39,7 +39,7 @@ export const FluidBackground = () => {
                 animate={{
                     x: [0, 50, -50, 0],
                     y: [0, 100, -100, 0],
-                    opacity: [0.1, 0.2, 0.1],
+                    opacity: [0.2, 0.4, 0.2],
                 }}
                 transition={{
                     duration: 30,
@@ -47,7 +47,7 @@ export const FluidBackground = () => {
                     ease: "easeInOut",
                     delay: 5
                 }}
-                className="absolute top-1/3 left-1/3 h-[60vh] w-[60vh] rounded-full bg-[var(--color-accent-lime)] opacity-10 blur-[100px] mix-blend-multiply dark:mix-blend-screen"
+                className="absolute top-1/3 left-1/3 h-[60vh] w-[60vh] rounded-full bg-[var(--color-accent-lime)] opacity-30 blur-[90px] mix-blend-screen"
             />
         </div>
     );
