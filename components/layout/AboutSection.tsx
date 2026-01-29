@@ -46,18 +46,10 @@ export const AboutSection = () => {
                                     ))}
                                 </div>
                             </div>
-                            <div>
-                                <h4 className="font-bold text-lg">{item.title}</h4>
-                                <p className="text-sm opacity-60">{item.desc}</p>
-                            </div>
+                        </motion.div>
                     </div>
-                                ))}
                 </div>
-            </FrostedCard>
-        </div>
-
-                </div >
-            </div >
-        </section >
+            </div>
+        </section>
     );
 };
