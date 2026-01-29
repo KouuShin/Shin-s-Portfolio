@@ -1,46 +1,55 @@
 import { motion } from 'framer-motion';
 
 export const AboutSection = () => {
-    return (
-        <section className="py-[var(--space-3xl)] bg-[var(--color-surface-hover)]/50">
-            <div className="container mx-auto px-[var(--space-lg)]">
-                <div className="flex flex-col md:flex-row gap-[var(--space-2xl)] items-start">
+    // Cyclic colors for tags
+    const colors = [
+        'border-[var(--color-accent-green)] text-[var(--color-accent-green)]',
+        'border-[var(--color-accent-blue)] text-[var(--color-accent-blue)]',
+        'border-[var(--color-accent-red)] text-[var(--color-accent-red)]'
+    ];
 
-                    {/* Left: Headline */}
-                    <div className="md:w-1/2">
+    return (
+        <section className="py-[var(--space-3xl)] relative">
+            <div className="container mx-auto px-[var(--space-lg)]">
+                <div className="flex flex-col md:flex-row gap-[var(--space-3xl)] items-start">
+
+                    {/* Left: Headline - Swiss Style Big Type */}
+                    <div className="md:w-5/12 sticky top-20">
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="font-heading text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-[var(--space-lg)] leading-tight"
+                            className="font-heading text-5xl md:text-6xl font-bold text-[var(--color-text)] mb-[var(--space-lg)] leading-tight tracking-tight"
                         >
-                            Design is not just what it looks like. <br />
-                            <span className="text-[var(--color-cta)]">It's how it works.</span>
+                            Design is
+                            <span className="block text-[var(--color-accent-green)]">Logic.</span>
+                            Code is
+                            <span className="block text-[var(--color-accent-red)]">Poetry.</span>
                         </motion.h2>
                     </div>
 
-                    {/* Right: Content */}
-                    <div className="md:w-1/2">
+                    {/* Right: Content - Spacious */}
+                    <div className="md:w-7/12 pt-[var(--space-md)]">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="prose prose-lg text-[var(--color-secondary)] font-body"
+                            className="prose prose-xl text-[var(--color-text)] font-body font-light opacity-90"
                         >
-                            <p className="mb-[var(--space-md)]">
-                                I specialize in building complex web applications that are as beautiful as they are functional. With a background in both design and engineering, I bridge the gap between creative vision and technical implementation.
+                            <p className="mb-[var(--space-lg)]">
+                                I specialize in building complex web applications that unify form and function. With a background in both <strong className="font-bold text-[var(--color-accent-blue)]">visual design</strong> and <strong className="font-bold text-[var(--color-accent-blue)]">software engineering</strong>, I bridge the gap between creative vision and technical implementation.
                             </p>
-                            <p className="mb-[var(--space-xl)]">
-                                Currently focused on React ecosystem, performance optimization, and design systems.
+                            <p className="mb-[var(--space-2xl)]">
+                                Currently focused on the React ecosystem, performance optimization, and scalable design systems.
                             </p>
 
-                            {/* Skills List - Clean Tags */}
-                            <div className="border-t border-[var(--color-primary)]/10 pt-[var(--space-lg)]">
-                                <h3 className="font-heading text-lg font-bold text-[var(--color-primary)] mb-[var(--space-md)]">Core Technologies</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'System Design'].map((skill) => (
-                                        <span key={skill} className="px-3 py-1 bg-white border border-[var(--color-primary)]/10 rounded-full text-sm font-medium text-[var(--color-primary)]">
+                            {/* Skills List - Pill Tags with Palette */}
+                            <div className="border-t border-[var(--color-text)]/10 pt-[var(--space-xl)]">
+                                <h3 className="font-heading text-sm font-bold text-[var(--color-text)] uppercase tracking-widest mb-[var(--space-lg)]">Core Technologies</h3>
+                                <div className="flex flex-wrap gap-3">
+                                    {['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'System Design'].map((skill, index) => (
+                                        <span key={skill} className={`px-4 py-2 bg-transparent border rounded-full text-sm font-semibold tracking-wide ${colors[index % colors.length]}`}>
                                             {skill}
                                         </span>
                                     ))}
