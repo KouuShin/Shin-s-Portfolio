@@ -6,8 +6,8 @@ export const HeroSection = () => {
         <section className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-transparent">
 
             {/* 
-        GRID LAYOUT: "Brand Handbook" / Magazine Style
-      */}
+                GRID LAYOUT: "Brand Handbook" / Magazine Style
+            */}
             <div className="relative z-10 w-full h-full grid grid-cols-12 grid-rows-6 p-6 md:p-12 gap-4">
 
                 {/* TOP LEFT: Identity Label */}
@@ -16,8 +16,8 @@ export const HeroSection = () => {
                     <span className="text-sm font-medium text-[#385C96]">The Undefined Explorer</span>
                 </div>
 
-                {/* TOP RIGHT: Current Status */}
-                <div className="col-span-6 row-span-1 flex flex-col justify-start items-end border-t border-r border-[#1A1A1A]/20 pt-2 pr-2">
+                {/* TOP RIGHT: Current Status - ABSOLUTELY POSITIONED in top-right corner */}
+                <div className="absolute top-6 md:top-12 right-6 md:right-12 z-20 flex flex-col items-end">
                     <span className="text-xs font-mono uppercase tracking-widest text-[#1A1A1A]/60">Current Focus</span>
                     <span className="text-sm font-medium text-[#385C96] text-right">SaaS Product Manager<br />@ Volvo</span>
                 </div>

@@ -2,22 +2,30 @@ import { motion } from 'framer-motion';
 
 export const ProjectSection = () => {
     return (
-        <section id="projects" className="relative min-h-screen py-24 bg-transparent border-t border-[#1A1A1A]/5">
+        <section id="projects" className="relative z-20 min-h-screen py-32 bg-[#ffded4]">
 
             <div className="container mx-auto px-6 md:px-12">
 
-                {/* Header */}
-                <div className="grid grid-cols-12 mb-16">
-                    <div className="col-span-12 flex justify-between items-end border-b border-[#1A1A1A]/20 pb-4">
-                        <div>
-                            <span className="text-xs font-mono uppercase tracking-widest text-[#1A1A1A]/50">(02) Selected Works</span>
-                            <h2 className="text-3xl font-bold mt-2 text-[#385C96]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Project Gallery</h2>
-                        </div>
-                        <span className="text-xs font-mono text-[#1A1A1A]/50 hidden md:block">2024 — 2026</span>
-                    </div>
+                {/* Section Divider - Clear visual break */}
+                <div className="mb-20 pt-12 border-t-2 border-[#385C96]/20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <span className="text-xs font-mono uppercase tracking-widest text-[#1A1A1A]/50">
+                            (02) Selected Works
+                        </span>
+                        <h2 className="text-5xl md:text-6xl font-bold mt-4 text-[#385C96]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                            Project Gallery
+                        </h2>
+                        <p className="text-lg text-[#1A1A1A]/60 mt-4 max-w-2xl">
+                            A curated collection of design explorations, product work, and creative experiments.
+                        </p>
+                    </motion.div>
                 </div>
 
-                {/* Placeholder Grid */}
+                {/* Project Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {[1, 2, 3].map((item) => (
                         <motion.div

@@ -53,7 +53,9 @@ function figmaAssetPlugin() {
 export default defineConfig({
   plugins: [react(), figmaAssetPlugin()],
   server: {
-    port: 883
+    port: 884,
+    host: '0.0.0.0', // 绑定到所有网络接口，支持 IPv4 和 IPv6
+    strictPort: true, // 固定使用 884 端口
   },
   resolve: {
     alias: {
