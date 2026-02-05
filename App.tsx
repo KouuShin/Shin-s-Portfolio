@@ -8,12 +8,12 @@ import { DispersionGradient } from './components/visuals/DispersionGradient';
 
 function App() {
   return (
-    <main className="relative min-h-screen w-full bg-[#ffded4] text-[#1A1A1A] selection:bg-[#385C96] selection:text-white">
+    <main className="relative min-h-screen w-full bg-[#ffded4] text-[#1A1A1A] selection:bg-[#385C96] selection:text-white" style={{ overflow: 'visible' }}>
 
       <DispersionGradient />
 
       {/* Content */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full" style={{ overflow: 'visible' }}>
         <HeroSection />
         <AboutSection />
         <TimelineSection />

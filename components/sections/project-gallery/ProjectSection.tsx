@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export const ProjectSection = () => {
     return (
-        <section id="projects" className="relative z-20 min-h-screen py-32 bg-[#ffded4]">
+        <section id="projects" className="relative z-20 min-h-screen py-32 mt-24 bg-[#ffded4]">
 
             <div className="container mx-auto px-6 md:px-12">
 

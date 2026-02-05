@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Briefcase, GraduationCap, Lightbulb } from 'lucide-react';
 
@@ -7,9 +7,8 @@ const timelineData = [
         id: 1,
         step: "STEP 1",
         year: "2022 - 2024",
-        title: "Bachelor of Design",
-        subtitle: "University of Melbourne",
-        desc: "User Experience Design program focusing on human-centered design principles and research methodologies.",
+        title: "Bachelor of Design in User Experience Design",
+        company: "University of Melbourne",
         icon: GraduationCap,
         position: "top"
     },
@@ -17,9 +16,8 @@ const timelineData = [
         id: 2,
         step: "STEP 2",
         year: "2024.12 - 2025.04",
-        title: "Product Operations Intern",
-        subtitle: "Midjourney",
-        desc: "Exploring the frontiers of AI image generation, supporting product operations and community engagement.",
+        title: "Product Operations Internship",
+        company: "Midjourney",
         icon: Lightbulb,
         position: "bottom"
     },
@@ -27,155 +25,141 @@ const timelineData = [
         id: 3,
         step: "STEP 3",
         year: "2025.04 - Current",
-        title: "SaaS Product Manager",
-        subtitle: "Volvo",
-        desc: "Leading LTO & OTD SaaS products, managing requirements and writing PRDs for enterprise solutions.",
+        title: "SaaS Product Manager (LTO & OTD)",
+        company: "Volvo",
         icon: Briefcase,
         position: "top"
     }
 ];
 
-/**
- * Timeline Section - Horizontal Scrolling Experience Timeline
- * DEBUG VERSION with console logging
- */
 export const TimelineSection = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [debugInfo, setDebugInfo] = useState({ mounted: false, height: 0 });
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ["start start", "end end"]
+        offset: ["start start", "end end"],
+        layoutEffect: false
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-150%"]);
+    // Adjusted transform to end earlier since we reduced whitespace
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
 
-    // DEBUG: Log scroll progress
-    useEffect(() => {
-        const unsubscribe = scrollYProgress.on("change", (latest) => {
-            console.log("📊 Timeline Scroll Progress:", latest);
-        });
-        return () => unsubscribe();
-    }, [scrollYProgress]);
-
-    // DEBUG: Log transform value
-    useEffect(() => {
-        const unsubscribe = x.on("change", (latest) => {
-            console.log("➡️ Timeline X Transform:", latest);
-        });
-        return () => unsubscribe();
-    }, [x]);
-
-    useEffect(() => {
-        console.log("✅ Timeline Section Mounted");
-        console.log("📦 Container Ref:", containerRef.current);
+    useLayoutEffect(() => {
+        if (containerRef.current) {
+            setDebugInfo({
+                mounted: true,
+                height: containerRef.current.offsetHeight
+            });
+            console.log("Timeline mounted:", containerRef.current);
+        }
     }, []);
 
     return (
-        <section
+        <div
             ref={containerRef}
-            className="relative z-10 h-[400vh] bg-transparent"
-            aria-label="Professional Experience Timeline"
-            style={{ border: '2px solid red' }} // DEBUG: Visual boundary
+            className="relative w-full z-20"
+            style={{
+                height: '250vh',         // Reduced height from 400vh to remove extra space
+                background: '#ffded4',   // Matched global background color
+                visibility: 'visible',
+                position: 'relative',
+                overflow: 'visible'
+            }}
         >
-            {/* Sticky Viewport - Pins during scroll */}
-            <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center bg-[#ffded4]">
-
-                {/* DEBUG Indicator */}
-                <div className="absolute top-4 right-4 z-50 bg-black text-white px-4 py-2 rounded font-mono text-xs">
-                    Timeline Active
-                </div>
-
-                {/* Section Header */}
-                <div className="absolute top-12 left-12 z-20">
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#1A1A1A]/50 block mb-2">
+            {/* STICKY CONTAINER */}
+            <div
+                className="sticky top-0 w-full h-screen overflow-hidden flex items-center bg-[#ffded4]"
+                style={{
+                    position: 'sticky',
+                    top: 0,
+                    height: '100vh',
+                    zIndex: 50,
+                    background: '#ffded4' // Matched global background color
+                }}
+            >
+                {/* Section Title - Fixed Position in sticky container */}
+                <div className="absolute top-12 left-6 md:left-12 z-30 pointer-events-none">
+                    <span className="text-xs font-mono uppercase tracking-widest text-[#385C96]/50 block mb-2">
                         (01) Experience
                     </span>
-                    <h2 className="text-5xl font-bold text-[#385C96]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#385C96]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         Timeline
                     </h2>
                 </div>
 
-                {/* Horizontal Scrolling Container */}
+                {/* MOVING CONTENT */}
                 <motion.div
                     style={{ x }}
                     className="flex items-center h-full relative"
                 >
-                    {/* Central Horizontal Axis */}
-                    <div
-                        className="absolute top-1/2 left-0 w-[300vw] h-[2px] bg-[#385C96]/30 -translate-y-1/2"
-                        role="presentation"
-                    />
+                    {/* Central Axis */}
+                    <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-[#385C96]/30 -translate-y-1/2 min-w-[300vw]" />
 
-                    {/* Timeline Nodes Container */}
-                    <div className="flex items-center h-full pl-[20vw]">
+                    {/* Nodes Container */}
+                    <div className="flex items-center h-full pl-[40vw]"> {/* Increased padding to avoid overlap */}
                         {timelineData.map((item) => {
                             const isTop = item.position === "top";
 
                             return (
-                                <article
+                                <div
                                     key={item.id}
-                                    className="relative flex-shrink-0 h-full flex items-center"
-                                    style={{ width: '50vw' }}
-                                    aria-label={`${item.subtitle} - ${item.title}`}
+                                    className="relative flex-shrink-0 h-full flex items-center px-4"
+                                    style={{ width: '60vw' }}
                                 >
-                                    {/* Central Axis Dot */}
-                                    <div
-                                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#385C96] z-20"
-                                        role="presentation"
-                                    />
+                                    {/* Connection Line & Dot */}
+                                    <div className="absolute left-1/2 top-1/2 w-full h-full pointer-events-none">
+                                        {/* Center Dot */}
+                                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#385C96] z-20" />
 
-                                    {/* Dotted Connector Line */}
-                                    <div
-                                        className={`absolute left-1/2 -translate-x-1/2 w-[2px] border-l-[3px] border-dotted border-[#385C96]/60 z-10
-                                        ${isTop ? 'bottom-1/2 h-[140px]' : 'top-1/2 h-[140px]'}`}
-                                        role="presentation"
-                                    />
+                                        {/* Vertical Line */}
+                                        <div
+                                            className={`absolute left-1/2 -translate-x-1/2 w-[2px] border-l-[2px] border-dotted border-[#385C96]/50 z-10
+                                            ${isTop ? 'bottom-1/2 h-[160px]' : 'top-1/2 h-[160px]'}`}
+                                        />
+                                    </div>
 
-                                    {/* Icon Circle */}
+                                    {/* Icon Bubble */}
                                     <motion.div
                                         whileHover={{ scale: 1.1 }}
-                                        className={`absolute left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-[#385C96] flex items-center justify-center z-30 border-4 border-white shadow-lg
-                                        ${isTop ? 'bottom-[calc(50%+140px)]' : 'top-[calc(50%+140px)]'}`}
-                                        aria-hidden="true"
+                                        className={`absolute left-1/2 -translate-x-1/2 w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#385C96] flex items-center justify-center z-30 border-4 border-[#ffded4] shadow-xl cursor-pointer
+                                        ${isTop ? 'bottom-[calc(50%+160px)]' : 'top-[calc(50%+160px)]'}`}
                                     >
-                                        <item.icon className="w-7 h-7 text-white" strokeWidth={2.5} />
+                                        <item.icon className="w-8 h-8 md:w-10 md:h-10 text-white" strokeWidth={2} />
                                     </motion.div>
 
-                                    {/* Content Block */}
+                                    {/* Text Content */}
                                     <div
-                                        className={`absolute left-1/2 -translate-x-1/2 w-[280px] text-center z-15
-                                        ${isTop ? 'top-[calc(50%+1.5rem)]' : 'bottom-[calc(50%+1.5rem)]'}`}
+                                        className={`absolute left-1/2 -translate-x-1/2 w-[300px] text-center z-30
+                                        ${isTop ? 'top-[calc(50%+2rem)]' : 'bottom-[calc(50%+2rem)]'}`}
                                     >
-                                        <span className="block text-xs font-bold text-[#385C96]/70 mb-2 tracking-wider">
+                                        <span className="block text-xs font-bold text-[#385C96]/60 mb-2 tracking-widest uppercase">
                                             {item.step}
                                         </span>
 
-                                        <h3 className="text-2xl font-bold text-[#385C96] mb-1 leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                                            {item.subtitle}
+                                        <h3 className="text-2xl md:text-3xl font-bold text-[#385C96] mb-2 leading-none" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                                            {item.company}
                                         </h3>
 
-                                        <p className="text-sm font-semibold text-[#1A1A1A] mb-2">
+                                        <p className="text-sm md:text-base font-medium text-[#1A1A1A]/80 mb-3">
                                             {item.title}
                                         </p>
 
-                                        <p className="text-xs text-[#1A1A1A]/70 leading-relaxed">
-                                            {item.desc}
-                                        </p>
-
-                                        <div className="mt-3 inline-block px-3 py-1 bg-[#cce6ff]/40 rounded-full">
-                                            <time className="text-xs font-mono font-bold text-[#385C96]">
+                                        <div className="inline-block px-4 py-1.5 bg-[#cce6ff]/50 rounded-full border border-[#385C96]/10">
+                                            <span className="text-xs font-mono font-bold text-[#385C96]">
                                                 {item.year}
-                                            </time>
+                                            </span>
                                         </div>
                                     </div>
-                                </article>
+                                </div>
                             );
                         })}
 
-                        {/* End Spacer */}
-                        <div className="w-[30vw] flex-shrink-0" role="presentation" />
+                        {/* Reduced End Spacer */}
+                        <div className="w-[10vw]" />
                     </div>
                 </motion.div>
             </div>
-        </section>
+        </div>
     );
 };

@@ -1,8 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
-interface ScribbleButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+// Define Props correctly
+interface ScribbleButtonProps extends HTMLMotionProps<"button"> {
     variant?: 'primary' | 'outline' | 'ghost';
 }
 
@@ -18,7 +19,7 @@ export const ScribbleButton = forwardRef<HTMLButtonElement, ScribbleButtonProps>
                     variant === 'outline' && "text-[var(--color-text-primary)]",
                     className
                 )}
-                {...props}
+                {...props as any}
             >
                 {/* Background for Primary */}
                 {variant === 'primary' && (
