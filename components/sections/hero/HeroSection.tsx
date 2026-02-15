@@ -69,7 +69,7 @@ export const HeroSection = () => {
                         <div className="flex flex-col items-end">
                             <span className="text-xs font-mono uppercase tracking-widest text-[#1D3344]/50 mb-2">Current Focus</span>
                             <span className="text-lg font-bold text-[#1D3344] text-right tracking-wide">
-                                GenAI Visual Art & <br /> SaaS Product Design
+                                Vibecoding, Documenting Spontaneous Insights & <br /> SaaS Product Design
                             </span>
                         </div>
                     </motion.div>
@@ -78,9 +78,9 @@ export const HeroSection = () => {
             </div>
 
             {/* BOTTOM STRIP: Project Header Style */}
-            <div className="w-full border-t border-[#1D3344] py-6 bg-[#ffdac2] z-20"> {/* Matches background color */}
-                <div className="flex justify-between items-center text-[#1D3344] px-4 md:px-0">
-                    <div className="flex items-center gap-4">
+            <div className="w-full border-t border-[#1D3344] py-12 bg-[#ffdac2] z-20"> {/* Increased from py-8 to py-12 */}
+                <div className="flex justify-between items-center text-[#1D3344] px-8 md:px-[104px]">
+                    <div className="flex items-center gap-6">
                         <span className="font-mono text-sm font-bold">(001)</span>
                     </div>
 
@@ -88,7 +88,7 @@ export const HeroSection = () => {
                         Singularity Drift
                     </div>
 
-                    <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide group cursor-pointer hover:opacity-70 transition-opacity">
+                    <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-wide group cursor-pointer hover:opacity-70 transition-opacity">
                         Generative AI Visual Art
                         <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>

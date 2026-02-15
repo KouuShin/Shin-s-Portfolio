@@ -2,11 +2,11 @@ import { motion } from 'framer-motion';
 
 export const AboutSection = () => {
     const skills = [
-        "Vibecoding & AI Workflow",
-        "Knowledge Base Construction",
-        "Figma & UI/UX Design",
-        "Information Architecture",
-        "Psychology & Sociology"
+        "AI Tools & LLM Proficiency",
+        "Prompt Engineering & Custom Skills",
+        "Requirement Documentation",
+        "Business Communication & Interviews",
+        "Agile Reflection & Observation"
     ];
 
     return (
@@ -21,8 +21,16 @@ export const AboutSection = () => {
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="lg:col-span-4 space-y-4"
+                        className="lg:col-span-4 space-y-6 mb-16"
                     >
+                        {/* Section Label */}
+                        <div className="mb-8">
+                            <span className="text-xs font-mono uppercase text-[#1D3344]/50 tracking-wider block mb-2">
+                                Capabilities & Interests
+                            </span>
+                            <div className="w-12 h-[2px] bg-[#1D3344]/20"></div>
+                        </div>
+
                         {skills.map((skill, i) => (
                             <motion.div
                                 key={i}
@@ -36,13 +44,6 @@ export const AboutSection = () => {
                                 </p>
                             </motion.div>
                         ))}
-
-                        {/* Methodology Label */}
-                        <div className="pt-8 mt-8 border-t border-[#1D3344]/10">
-                            <span className="text-xs font-mono uppercase text-[#1D3344]/50 tracking-wider">
-                                Methodology
-                            </span>
-                        </div>
                     </motion.div>
 
                     {/* Right Column: Large Statement */}
@@ -67,18 +68,18 @@ export const AboutSection = () => {
                             </p>
 
                             <p className="text-lg text-[#1D3344]/70 leading-loose">
-                                In the age of AI, I act as a bridge between disciplines. Whether it's <span className="text-[#1D3344] font-semibold">UI/UX design</span>, <span className="text-[#1D3344] font-semibold">Product Management</span>, or exploring <span className="text-[#1D3344] font-semibold">Human Psychology</span>, my goal is the same: to create with taste and precision.
+                                I'm not a cog in the machine. I <span className="text-[#1D3344] font-semibold">observe, explore, sense, and connect</span>—bridging business needs with product delivery through clear requirement documentation and effective team communication.
                             </p>
 
                             <p className="text-lg text-[#1D3344]/70 leading-loose">
-                                I believe in <strong>Vibecoding</strong>—using AI not just as a tool, but as a workflow partner to build my own digital skill library and customized product workflows from 0 to 1.
+                                With proficiency in <strong>AI tools and prompt engineering</strong>, I build custom workflows and skills. I believe in <strong>agile reflection</strong> and proactive learning, constantly improving myself through observation and documentation.
                             </p>
 
                             {/* Content Creator Badge */}
                             <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/60 backdrop-blur-sm border border-[#1D3344]/20 rounded-full mt-8">
                                 <div className="w-2 h-2 rounded-full bg-[#1D3344] animate-pulse"></div>
                                 <span className="text-sm font-medium text-[#1D3344]">
-                                    Writing on Xiaohongshu about Design, AI & Psychology
+                                    Documenting insights on Xiaohongshu
                                 </span>
                             </div>
                         </div>

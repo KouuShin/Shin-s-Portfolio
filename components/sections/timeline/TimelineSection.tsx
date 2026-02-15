@@ -1,149 +1,153 @@
-import { useRef, useState, useLayoutEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Briefcase, GraduationCap, Lightbulb, ArrowRight, ArrowDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const timelineData = [
     {
         id: 1,
-        step: "STEP 1",
+        number: "01",
         year: "2022 - 2024",
         title: "Bachelor of Design in User Experience Design",
         company: "University of Melbourne",
-        icon: GraduationCap,
-        position: "top"
+        position: "right"
     },
     {
         id: 2,
-        step: "STEP 2",
+        number: "02",
         year: "2024.12 - 2025.04",
         title: "Product Operations Internship",
         company: "Midjourney",
-        icon: Lightbulb,
-        position: "bottom"
+        position: "left"
     },
     {
         id: 3,
-        step: "STEP 3",
+        number: "03",
         year: "2025.04 - Current",
         title: "SaaS Product Manager (LTO & OTD)",
         company: "Volvo",
-        icon: Briefcase,
-        position: "top"
+        position: "right"
     }
 ];
 
 export const TimelineSection = () => {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start start", "end end"],
-    });
-
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
-
     return (
-        <section ref={sectionRef} className="relative w-full bg-[#ffdac2] overflow-hidden" style={{ height: '300vh' }}>
+        <section className="relative w-full min-h-screen bg-[#ffdac2] py-24">
 
-            {/* STICKY CONTAINER */}
-            <div className="sticky top-0 w-full h-screen overflow-hidden">
+            {/* HEADER */}
+            <div className="container mx-auto px-8 md:px-[104px] mb-16">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#1D3344]/50 block mb-2">
+                    (01) Experience
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1D3344] leading-none" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    TIMELINE
+                </h2>
+            </div>
 
-                {/* 1. HEADER PANE */}
-                <div className="absolute top-12 left-8 md:left-[104px] z-30">
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#1D3344]/50 block mb-2">
-                        (01) Experience
-                    </span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#1D3344] leading-none" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        TIMELINE
-                    </h2>
-                </div>
+            {/* TIMELINE CONTAINER */}
+            <div className="relative max-w-6xl mx-auto px-8">
 
-                {/* 2. SCROLLING CONTENT CONTAINER */}
-                <div ref={containerRef} className="relative w-full h-full flex items-center">
+                {/* VERTICAL CENTER LINE */}
+                <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#1D3344]/20 via-[#1D3344]/40 to-[#1D3344]/20 -translate-x-1/2"
+                    style={{
+                        backgroundImage: 'repeating-linear-gradient(0deg, #1D3344 0px, #1D3344 8px, transparent 8px, transparent 16px)',
+                        opacity: 0.3
+                    }}
+                />
 
-                    <motion.div
-                        style={{ x }}
-                        className="flex items-center absolute left-0 px-8 md:px-[104px]"
-                    >
-                        {/* CENTRAL AXIS LINE */}
-                        <div className="absolute top-1/2 left-0 w-[200vw] h-[2px] bg-[#1D3344] -translate-y-1/2" />
+                {/* TIMELINE ITEMS - Using Grid for proper spacing */}
+                <div className="space-y-32 py-8">
+                    {timelineData.map((item, index) => {
+                        const isRight = item.position === "right";
 
-                        {/* AXIS ARROW (End of line) */}
-                        <div className="absolute top-1/2 left-[180vw] -translate-y-1/2 text-[#1D3344] z-10">
-                            <ArrowRight className="w-6 h-6 ml-[-2px]" strokeWidth={3} />
-                        </div>
+                        return (
+                            <div key={item.id} className="relative">
 
-                        {/* TIMELINE NODES */}
-                        <div className="flex items-center gap-[400px] pl-24 relative z-20">
-                            {timelineData.map((item) => {
-                                const isTop = item.position === "top";
-                                return (
-                                    <div key={item.id} className="relative flex-shrink-0">
+                                {/* ROW CONTAINER */}
+                                <div className="grid grid-cols-2 gap-8 items-center">
 
-                                        {/* CONNECTION LINE */}
-                                        <div className="absolute left-1/2 -translate-x-1/2 w-[2px] bg-[#1D3344] h-[100px]"
-                                            style={{
-                                                top: isTop ? 'auto' : '50%',
-                                                bottom: isTop ? '50%' : 'auto'
-                                            }}
-                                        />
-
-                                        {/* AXIS DOT */}
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#ffdac2] border-[3px] border-[#1D3344] z-30" />
-
-                                        {/* CARD */}
+                                    {/* LEFT SIDE */}
+                                    {!isRight && (
                                         <motion.div
-                                            whileHover={{ scale: 1.02 }}
-                                            className={`
-                                            relative w-[360px] bg-white border-2 border-[#1D3344] p-8 rounded-3xl
-                                            shadow-[4px_4px_0px_0px_#1D3344] flex flex-col gap-4
-                                            ${isTop ? 'mb-[120px]' : 'mt-[120px]'}
-                                        `}
+                                            initial={{ opacity: 0, x: 30 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: false, amount: 0.5 }}
+                                            transition={{ duration: 0.6, delay: 0.2 }}
+                                            className="flex justify-end pr-8"
                                         >
-                                            {/* Step Label & Icon */}
-                                            <div className="flex justify-between items-start">
-                                                <span className="text-xs font-bold text-[#1D3344]/40 tracking-widest uppercase">
-                                                    {item.step}
-                                                </span>
-                                                <div className="p-2 bg-[#ffdac2] rounded-full border border-[#1D3344]/20">
-                                                    <item.icon className="w-5 h-5 text-[#1D3344]" strokeWidth={2} />
-                                                </div>
-                                            </div>
-
-                                            {/* Main Content */}
-                                            <div>
-                                                <h3 className="text-xl font-bold text-[#1D3344] leading-tight mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                                                    {item.company}
-                                                </h3>
-                                                <p className="text-base font-medium text-[#1D3344]/70">
-                                                    {item.title}
-                                                </p>
-                                            </div>
-
-                                            {/* Year Badge */}
-                                            <div className="self-start px-4 py-1.5 bg-[#d4f2fd]/50 border border-[#1D3344]/10 rounded-full">
-                                                <span className="text-xs font-mono font-bold text-[#1D3344]">
-                                                    {item.year}
-                                                </span>
+                                            <div className="w-full max-w-[350px] bg-white border-2 border-[#1D3344] p-8 rounded-3xl shadow-[4px_4px_0px_0px_#1D3344]">
+                                                <TimelineCard item={item} />
                                             </div>
                                         </motion.div>
+                                    )}
 
-                                    </div>
-                                );
-                            })}
+                                    {/* PLACEHOLDER for right-positioned items */}
+                                    {isRight && <div />}
 
-                            {/* "More to Explore" End Card */}
-                            <div className="relative flex-shrink-0 flex items-center">
-                                <div className="w-[300px] h-[200px] flex items-center justify-center border-2 border-dashed border-[#1D3344]/30 rounded-3xl">
-                                    <span className="text-[#1D3344]/50 font-medium">To be continued...</span>
+                                    {/* RIGHT SIDE */}
+                                    {isRight && (
+                                        <motion.div
+                                            initial={{ opacity: 0, x: -30 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: false, amount: 0.5 }}
+                                            transition={{ duration: 0.6, delay: 0.2 }}
+                                            className="flex justify-start pl-8"
+                                        >
+                                            <div className="w-full max-w-[350px] bg-white border-2 border-[#1D3344] p-8 rounded-3xl shadow-[4px_4px_0px_0px_#1D3344]">
+                                                <TimelineCard item={item} />
+                                            </div>
+                                        </motion.div>
+                                    )}
+
+                                    {/* PLACEHOLDER for left-positioned items */}
+                                    {!isRight && <div />}
                                 </div>
-                            </div>
-                        </div>
 
-                    </motion.div>
+                                {/* CIRCULAR NODE - Centered */}
+                                <motion.div
+                                    initial={{ scale: 0.7, opacity: 0 }}
+                                    whileInView={{ scale: 1, opacity: 1 }}
+                                    viewport={{ once: false, amount: 0.5 }}
+                                    transition={{ duration: 0.6 }}
+                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[180px] h-[180px] rounded-full bg-[#1D3344] border-4 border-[#ffdac2] shadow-2xl flex items-center justify-center"
+                                >
+                                    {/* Empty circle - no icon */}
+                                </motion.div>
+
+                            </div>
+                        );
+                    })}
                 </div>
+
             </div>
         </section>
+    );
+};
+
+// Separate component for card content
+const TimelineCard = ({ item }: { item: typeof timelineData[0] }) => {
+    return (
+        <>
+            {/* Number Badge */}
+            <div className="flex items-center gap-4 mb-4">
+                <span className="text-4xl font-bold text-[#1D3344]/20" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {item.number}
+                </span>
+                <div className="flex-1 h-[2px] bg-[#1D3344]/10" />
+            </div>
+
+            {/* Content */}
+            <h3 className="text-xl font-bold text-[#1D3344] mb-2 leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                {item.company}
+            </h3>
+
+            <p className="text-sm font-medium text-[#1D3344]/70 mb-4 leading-relaxed">
+                {item.title}
+            </p>
+
+            {/* Year Badge */}
+            <div className="inline-block px-4 py-2 bg-[#d4f2fd]/50 border border-[#1D3344]/10 rounded-full">
+                <span className="text-xs font-mono font-bold text-[#1D3344]">
+                    {item.year}
+                </span>
+            </div>
+        </>
     );
 };
