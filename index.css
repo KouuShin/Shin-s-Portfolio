@@ -1891,48 +1891,82 @@
 
 :root {
   --font-size: 16px;
+
+  /* New Color Palette Definition */
+  --color-primary-dark: #1D3344;
+  /* Deep Slate Blue */
+  --color-peach: #ffdac2;
+  /* Peach */
+  --color-air-blue: #d4f2fd;
+  /* Air Blue */
+  --color-sprout-green: #e9f6dc;
+  /* Sprout Green */
+
+  /* Base Neutral Colors */
   --black: #050505;
   --white: #fff;
-  --cream: #ffded4;
-  --gray-dark: #1a1a1a;
-  --gray-medium: gray;
-  --gray-light: #e8e8e8;
-  --neon-green: #FF3300;
-  --text-green: #1A1A1A;
-  --accent: #FF3300;
-  --background: var(--cream);
-  --foreground: var(--text-green);
-  --card: var(--gray-dark);
-  --card-foreground: var(--white);
-  --popover: var(--gray-dark);
-  --popover-foreground: var(--white);
-  --primary: var(--white);
-  --primary-foreground: var(--black);
-  --secondary: var(--gray-dark);
-  --secondary-foreground: var(--white);
-  --muted: var(--gray-dark);
-  --muted-foreground: var(--gray-medium);
-  --accent-foreground: var(--black);
+  --gray-dark: var(--color-primary-dark);
+  /* Replaced with primary dark */
+  --gray-medium: #64748b;
+  --gray-light: #e2e8f0;
+
+  /* Semantic Theme Variables */
+  --background: var(--color-peach);
+  --foreground: var(--color-primary-dark);
+
+  --primary: var(--color-primary-dark);
+  --primary-foreground: var(--white);
+
+  --secondary: var(--color-air-blue);
+  --secondary-foreground: var(--color-primary-dark);
+
+  --accent: var(--color-sprout-green);
+  --accent-foreground: var(--color-primary-dark);
+
+  --muted: var(--color-air-blue);
+  --muted-foreground: var(--color-primary-dark);
+
+  --card: var(--white);
+  --card-foreground: var(--color-primary-dark);
+
+  --popover: var(--white);
+  --popover-foreground: var(--color-primary-dark);
+
   --destructive: #dc2626;
   --destructive-foreground: var(--white);
-  --border: #ffffff1a;
-  --input: var(--gray-dark);
-  --input-background: var(--gray-dark);
-  --ring: var(--white);
-  --chart-1: var(--white);
-  --chart-2: var(--gray-medium);
-  --chart-3: var(--gray-light);
-  --chart-4: gray;
-  --chart-5: #4a5568;
+
+  --border: rgba(29, 51, 68, 0.1);
+  --input: rgba(29, 51, 68, 0.2);
+  --ring: var(--color-primary-dark);
+
+  /* Custom/Legacy Maps for Components */
+  --color-canvas-dark: var(--color-primary-dark);
+  --color-text-primary: var(--color-primary-dark);
+  --color-accent-lime: var(--color-sprout-green);
+  --color-accent-blue: var(--color-air-blue);
+
+  --cream: var(--color-peach);
+  --neon-green: var(--color-sprout-green);
+  /* Mapped for backward compat */
+  --text-green: var(--color-primary-dark);
+
+  /* Charts */
+  --chart-1: var(--color-primary-dark);
+  --chart-2: var(--color-air-blue);
+  --chart-3: var(--color-sprout-green);
+  --chart-4: #F59E0B;
+  --chart-5: #EF4444;
+
   --radius: 0rem;
-  --sidebar: var(--black);
+
+  --sidebar: var(--color-primary-dark);
   --sidebar-foreground: var(--white);
-  --sidebar-primary: var(--white);
-  --sidebar-primary-foreground: var(--black);
-  --sidebar-accent: var(--gray-dark);
-  --sidebar-accent-foreground: var(--white);
-  --sidebar-border: #ffffff1a;
-  --sidebar-ring: var(--white);
+  --sidebar-primary: var(--color-sprout-green);
+  --sidebar-primary-foreground: var(--color-primary-dark);
+  --sidebar-accent: var(--color-air-blue);
+  --sidebar-accent-foreground: var(--color-primary-dark);
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: var(--color-sprout-green);
 }
 
 @keyframes fadeIn {

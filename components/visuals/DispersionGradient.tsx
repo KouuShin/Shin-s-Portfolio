@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const DispersionGradient = () => {
     return (
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#ffded4]">
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#ffdac2]">
             <svg
                 viewBox="0 0 100 100"
                 preserveAspectRatio="xMidYMid slice"
@@ -40,13 +40,13 @@ export const DispersionGradient = () => {
 
                     {/* 
                        User's Palette Gradient 
-                       Background is #ffded4 (Pink)
-                       Blobs are #385C96 (Deep Blue) -> #cce6ff (Light Blue)
+                       Background is #ffdac2 (Peach)
+                       Blobs are #1D3344 (Deep Slate Blue) -> #d4f2fd (Air Blue)
                     */}
                     <radialGradient id="blob-gradient" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stopColor="#385C96" stopOpacity="0.8" />
-                        <stop offset="60%" stopColor="#cce6ff" stopOpacity="0.6" />
-                        <stop offset="100%" stopColor="#ffded4" stopOpacity="0" />
+                        <stop offset="0%" stopColor="#1D3344" stopOpacity="0.8" />
+                        <stop offset="60%" stopColor="#d4f2fd" stopOpacity="0.6" />
+                        <stop offset="100%" stopColor="#ffdac2" stopOpacity="0" />
                     </radialGradient>
                 </defs>
 
@@ -63,7 +63,7 @@ export const DispersionGradient = () => {
                             cx="50%"
                             cy="50%"
                             r="20%"
-                            fill="#cce6ff"
+                            fill="#d4f2fd"
                             initial={{ opacity: 0.4, scale: 0.8 }}
                             animate={{
                                 opacity: [0.4, 0, 0],
@@ -99,7 +99,7 @@ export const DispersionGradient = () => {
                         cx="40%"
                         cy="40%"
                         r="15%"
-                        fill="#385C96"
+                        fill="#1D3344"
                         opacity="0.4"
                         animate={{
                             cx: ["40%", "45%", "40%"],
@@ -115,7 +115,7 @@ export const DispersionGradient = () => {
                         cx="60%"
                         cy="60%"
                         r="18%"
-                        fill="#cce6ff"
+                        fill="#d4f2fd"
                         opacity="0.6"
                         animate={{
                             cx: ["60%", "55%", "60%"],

@@ -1,67 +1,98 @@
 import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export const HeroSection = () => {
     return (
-        <section className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-transparent">
+        <section className="relative h-screen w-full flex flex-col justify-between bg-transparent pt-12 md:pt-32 pb-0 px-8 md:px-[104px] overflow-hidden">
 
-            {/* 
-                GRID LAYOUT: "Brand Handbook" / Magazine Style
-            */}
-            <div className="relative z-10 w-full h-full grid grid-cols-12 grid-rows-6 p-6 md:p-12 gap-4">
+            {/* HEADER ROW: Name - Nav - CTA */}
+            <header className="relative z-20 flex justify-between items-start w-full">
 
-                {/* TOP LEFT: Identity Label */}
-                <div className="col-span-6 row-span-1 flex flex-col justify-start items-start border-t border-l border-[#1A1A1A]/20 pt-2 pl-2">
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#1A1A1A]/60">Identity</span>
-                    <span className="text-sm font-medium text-[#385C96]">The Undefined Explorer</span>
+                {/* 1. TOP LEFT: Name / Brand */}
+                <div className="flex-1">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-[#1D3344] leading-none" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        KOU XINYI
+                    </h1>
                 </div>
 
-                {/* TOP RIGHT: Current Status - ABSOLUTELY POSITIONED in top-right corner */}
-                <div className="absolute top-6 md:top-12 right-6 md:right-12 z-20 flex flex-col items-end">
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#1A1A1A]/60">Current Focus</span>
-                    <span className="text-sm font-medium text-[#385C96] text-right">SaaS Product Manager<br />@ Volvo</span>
-                </div>
+                {/* 2. TOP CENTER: Navigation */}
+                <nav className="hidden md:flex flex-1 justify-center gap-16">
+                    {['Work', 'Archive', 'About'].map((item) => (
+                        <a
+                            key={item}
+                            href={`#${item.toLowerCase()}`}
+                            className="text-base font-medium text-[#1D3344]/60 hover:text-[#1D3344] transition-colors uppercase tracking-wide"
+                        >
+                            {item}
+                        </a>
+                    ))}
+                </nav>
 
-                {/* CENTER: Massive Typography */}
-                <div className="col-span-12 row-span-3 flex flex-col justify-center items-center">
+                {/* 3. TOP RIGHT: CTA Button */}
+                <div className="flex-1 flex justify-end">
+                    <button className="px-6 py-2 border-2 border-[#1D3344] rounded-full text-sm font-bold text-[#1D3344] uppercase hover:bg-[#1D3344] hover:text-white transition-all shadow-[2px_2px_0px_0px_#1D3344] hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]">
+                        Start a project
+                    </button>
+                </div>
+            </header>
+
+            {/* BODY CONTENT: Right Block Intro */}
+            <div className="relative z-10 flex-grow flex items-center justify-end w-full">
+                <div className="w-full md:w-[600px] text-right mr-0 md:mr-12">
+
+                    {/* Intro Paragraph */}
                     <motion.div
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-center text-[#385C96] mix-blend-multiply"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="mb-12"
                     >
-                        <h1 className="text-[13vw] leading-[0.8] font-bold tracking-tighter" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                            KOU XINYI
-                        </h1>
-                        <div className="flex items-center justify-center gap-4 mt-2">
-                            <span className="h-[1px] w-12 bg-[#385C96]/40 hidden md:block"></span>
-                            <p className="text-lg md:text-2xl font-light tracking-widest uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                                Digital Explorer
-                            </p>
-                            <span className="h-[1px] w-12 bg-[#385C96]/40 hidden md:block"></span>
+                        <p className="text-2xl md:text-4xl font-medium text-[#1D3344] leading-snug" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                            Visual artist merging AI, abstraction, and speculative design.
+                        </p>
+                    </motion.div>
+
+                    {/* Identity & Focus Block */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="flex flex-col items-end space-y-8"
+                    >
+                        {/* Identity */}
+                        <div className="flex flex-col items-end">
+                            <span className="text-xs font-mono uppercase tracking-widest text-[#1D3344]/50 mb-2">Identity</span>
+                            <span className="text-lg font-bold text-[#1D3344] tracking-wide">The Undefined Explorer</span>
+                        </div>
+
+                        {/* Current Focus */}
+                        <div className="flex flex-col items-end">
+                            <span className="text-xs font-mono uppercase tracking-widest text-[#1D3344]/50 mb-2">Current Focus</span>
+                            <span className="text-lg font-bold text-[#1D3344] text-right tracking-wide">
+                                GenAI Visual Art & <br /> SaaS Product Design
+                            </span>
                         </div>
                     </motion.div>
-                </div>
 
-                {/* BOTTOM LEFT: Philosophy Quote */}
-                <div className="col-span-6 md:col-span-5 row-span-2 flex flex-col justify-end items-start border-b border-l border-[#1A1A1A]/20 pb-2 pl-2">
-                    <p className="text-sm md:text-base text-[#1A1A1A] font-medium leading-relaxed italic">
-                        "Driven by taste,<br />creativity, and<br />the desire to explore."
-                    </p>
                 </div>
+            </div>
 
-                {/* BOTTOM RIGHT: Scroll Indicator */}
-                <div className="col-span-6 md:col-span-7 row-span-2 flex flex-col justify-end items-end border-b border-r border-[#1A1A1A]/20 pb-2 pr-2">
-                    <motion.div
-                        animate={{ y: [0, 5, 0] }}
-                        transition={{ repeat: Infinity, duration: 2 }}
-                        className="flex items-center gap-2"
-                    >
-                        <span className="text-xs font-mono uppercase tracking-widest text-[#1A1A1A]/60 hidden md:block">Scroll to Discover</span>
-                        <ArrowDown size={18} className="text-[#385C96]" />
-                    </motion.div>
+            {/* BOTTOM STRIP: Project Header Style */}
+            <div className="w-full border-t border-[#1D3344] py-6 bg-[#ffdac2] z-20"> {/* Matches background color */}
+                <div className="flex justify-between items-center text-[#1D3344] px-4 md:px-0">
+                    <div className="flex items-center gap-4">
+                        <span className="font-mono text-sm font-bold">(001)</span>
+                    </div>
+
+                    <div className="absolute left-1/2 -translate-x-1/2 font-bold text-lg hidden md:block type-writer tracking-tight">
+                        Singularity Drift
+                    </div>
+
+                    <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide group cursor-pointer hover:opacity-70 transition-opacity">
+                        Generative AI Visual Art
+                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
                 </div>
-
             </div>
 
         </section>

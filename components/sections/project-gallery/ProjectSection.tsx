@@ -7,7 +7,7 @@ export const ProjectSection = () => {
             <div className="container mx-auto px-6 md:px-12">
 
                 {/* Section Divider - Clear visual break */}
-                <div className="mb-20 pt-12 border-t-2 border-[#385C96]/20">
+                <div className="mb-20 pt-12 border-t-2 border-[#1D3344]/20">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

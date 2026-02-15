@@ -8,7 +8,7 @@ import { DispersionGradient } from './components/visuals/DispersionGradient';
 
 function App() {
   return (
-    <main className="relative min-h-screen w-full bg-[#ffded4] text-[#1A1A1A] selection:bg-[#385C96] selection:text-white" style={{ overflow: 'visible' }}>
+    <main className="relative min-h-screen w-full bg-[#ffdac2] text-[#1D3344] selection:bg-[#1D3344] selection:text-white" style={{ overflow: 'visible' }}>
 
       <DispersionGradient />
 
