@@ -1,107 +1,105 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import imagePng from '@/assets/image.png';
+import vibecoderPng from '@/assets/VIBECODER.png';
 
 export const HeroSection = () => {
     return (
-        <section className="relative min-h-[100vh] w-full flex flex-col justify-between bg-transparent pt-12 md:pt-16 pb-0 px-8 md:px-[104px] overflow-hidden">
+        <section className="relative min-h-[100vh] w-full flex flex-col justify-center items-center bg-transparent pt-12 md:pt-16 pb-0 px-4 md:px-8 overflow-hidden">
 
-            {/* HEADER ROW: Name - Nav - CTA */}
-            <header className="relative z-20 flex justify-between items-start w-full">
-
-                {/* 1. TOP LEFT: Name / Brand */}
-                <div className="flex-1">
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-[#ede8d9] leading-none" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        KOU XINYI
-                    </h1>
-                </div>
-
-                {/* 2. TOP CENTER: Navigation */}
-                <nav className="hidden md:flex flex-1 justify-center gap-16">
+            {/* HEADER ROW: Kept minimal at the top right bounding box */}
+            <header className="absolute top-8 left-0 right-0 z-50 flex justify-end items-center w-full px-8 md:px-[104px]">
+                <nav className="hidden md:flex gap-12 mr-12">
                     {['Work', 'Archive', 'About'].map((item) => (
                         <a
                             key={item}
                             href={`#${item.toLowerCase()}`}
-                            className="text-base font-medium text-[#ede8d9]/50 hover:text-[#ede8d9] transition-colors uppercase tracking-wide"
+                            className="text-sm font-medium text-[#ede8d9]/50 hover:text-[#ede8d9] transition-colors uppercase tracking-widest"
                         >
                             {item}
                         </a>
                     ))}
                 </nav>
-
-                {/* 3. TOP RIGHT: CTA Button */}
-                <div className="flex-1 flex justify-end">
-                    <button className="px-6 py-2 border border-[#ede8d9]/60 rounded-full text-sm font-bold text-[#ede8d9] uppercase hover:bg-[#ede8d9] hover:text-[#111210] transition-all">
-                        Start a project
-                    </button>
-                </div>
+                <button className="hidden md:block px-6 py-2 border border-[#ede8d9]/40 rounded-full text-xs font-bold text-[#ede8d9] uppercase hover:bg-[#ede8d9] hover:text-[#111210] transition-all">
+                    Start a project
+                </button>
             </header>
 
-            {/* BODY CONTENT: Affiche Poster Layout */}
+            {/* Affiche Artboard Container - Responsive 4:3 Aspect Ratio Container */}
+            <div className="relative w-full max-w-[1200px] aspect-[4/3] max-h-[85vh] md:max-h-none mx-auto mt-16 md:mt-0">
 
-            {/* Massive Slogan - Center/Left Vertical Alignment */}
-            <div className="relative flex-grow w-full flex flex-col justify-center pb-12 md:pb-24 pt-8 md:pt-16 z-10 pointer-events-none">
-                <motion.h2
+                {/* 1. TOP LEFT: Name & Slogan */}
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute z-20 flex flex-col items-start"
+                    style={{ left: '7%', top: '5%' }}
+                >
+                    <h1
+                        className="font-normal text-[#ede8d9] mb-2 sm:mb-4"
+                        style={{ fontFamily: "'Space Grotesk', serif", fontSize: 'clamp(16px, 4vw, 42px)', lineHeight: 1.1 }}
+                    >
+                        XINYI KOU
+                    </h1>
+                    <h2
+                        className="font-extrabold text-[#ede8d9] whitespace-nowrap"
+                        style={{ fontFamily: "'Inter', sans-serif", fontSize: 'clamp(12px, 3vw, 32px)', lineHeight: 1.2, letterSpacing: '-0.02em' }}
+                    >
+                        I don't define myself by a title.<br />
+                        I define myself by my curiosity.
+                    </h2>
+                </motion.div>
+
+                {/* 2. TOP RIGHT: VIBECODER Pixel Image */}
+                <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-[12vw] md:text-[10vw] lg:text-[8.5vw] font-bold uppercase leading-[0.8] tracking-tighter text-[#ede8d9]"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute z-10"
+                    style={{ left: '65%', top: '5%', width: '29%' }}
                 >
-                    I don't define<br />
-                    myself by a title.<br />
-                    <span className="text-[#e85d3a]">I define myself</span><br />
-                    by my curiosity.
-                </motion.h2>
-            </div>
+                    {/* Inverting colors and using screen blend to make white background disappear into the dark theme */}
+                    <img
+                        src={vibecoderPng}
+                        alt="VIBE CODER Pixel Typography"
+                        className="w-full h-auto object-contain mix-blend-screen opacity-90"
+                        style={{ filter: 'invert(1) brightness(1.2)' }}
+                    />
+                </motion.div>
 
-            {/* Bottom Grid: Dense Narrative & Metadata Specs */}
-            <div className="w-full flex flex-col md:flex-row justify-between items-end gap-12 z-20 pb-8 md:pb-16 pt-12">
-
-                {/* Left: Dense Narrative Block */}
+                {/* 3. BOTTOM LEFT: Hand Cursor Graphic */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="w-full md:max-w-sm lg:max-w-md"
+                    transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute z-10"
+                    style={{ left: '3%', top: '41.6%', width: '31%' }}
                 >
-                    <div className="w-full border-t border-[#ede8d9]/20 pt-4">
-                        <span className="block text-[10px] uppercase font-mono tracking-[0.3em] text-[#e85d3a] mb-4">
-                            Manifesto / 001
-                        </span>
-                        <p className="text-xs md:text-sm text-[#ede8d9]/70 leading-[1.8] font-medium text-justify">
-                            I'm not a cog in the machine. I observe, explore, sense, and connect—bridging business needs with product delivery through clear requirement documentation and effective team communication. With proficiency in AI tools and prompt engineering, I build custom workflows and skills. I believe in agile reflection and proactive learning, constantly improving myself through observation and documentation.
-                        </p>
-                    </div>
+                    <img
+                        src={imagePng}
+                        alt="Hand reaching cursor"
+                        className="w-full h-auto object-contain drop-shadow-2xl opacity-90"
+                    />
                 </motion.div>
 
-                {/* Right: Technical Specs / Focus */}
+                {/* 4. BOTTOM RIGHT: Manifesto Paragraph */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="flex flex-col gap-6 text-left md:text-right w-full md:w-auto"
+                    transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute z-20"
+                    style={{ left: '37%', top: '50%', width: '60%' }}
                 >
-                    <div className="border-t border-[#ede8d9]/20 pt-4 md:border-none md:pt-0">
-                        <span className="block text-[10px] uppercase font-mono tracking-[0.3em] text-[#e85d3a] mb-2">
-                            Identity
-                        </span>
-                        <span className="block text-sm font-bold uppercase tracking-[0.15em] text-[#ede8d9]">
-                            The Undefined Explorer
-                        </span>
-                    </div>
-
-                    <div className="border-t border-[#ede8d9]/20 pt-4 md:border-none md:pt-0">
-                        <span className="block text-[10px] uppercase font-mono tracking-[0.3em] text-[#e85d3a] mb-2">
-                            Current Focus
-                        </span>
-                        <span className="block text-xs md:text-sm font-bold uppercase tracking-[0.1em] text-[#ede8d9] md:max-w-[320px] md:ml-auto leading-relaxed text-[#ede8d9]/90">
-                            Vibecoding / Woman in Tech / Documenting Spontaneous Insights / SaaS Product Design
-                        </span>
-                    </div>
+                    <p
+                        className="text-[#ede8d9]/80 font-medium text-justify"
+                        style={{ fontFamily: "'Space Grotesk', serif", fontSize: 'clamp(10px, 2vw, 20px)', lineHeight: 'clamp(1.4, 2.5vw, 1.8)' }}
+                    >
+                        I'm not a cog in the machine. I observe, explore, sense, and connect—bridging business needs with product delivery through clear requirement documentation and effective team communication. With proficiency in AI tools and prompt engineering, I build custom workflows and skills. I believe in agile reflection and proactive learning, constantly improving myself through observation and documentation.
+                    </p>
                 </motion.div>
+
             </div>
 
-            {/* Remove the original BOTTOM STRIP as it clashes with the new poster layout's bottom anchors */}
         </section>
     );
 };
