@@ -3,132 +3,96 @@ import { motion } from 'framer-motion';
 
 export const DispersionGradient = () => {
     return (
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#ffdac2]">
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#111210]">
             <svg
                 viewBox="0 0 100 100"
                 preserveAspectRatio="xMidYMid slice"
-                className="w-full h-full opacity-90"
+                className="w-full h-full"
             >
                 <defs>
-                    {/* 
-                      Dispersion Filter (The "Leopard" texture)
-                      Restored by popular demand, but tuned for the specific "Public Analog" dispersion look.
-                    */}
-                    <filter id="dispersion-filter" x="-50%" y="-50%" width="200%" height="200%">
-                        <feTurbulence
-                            type="fractalNoise"
-                            baseFrequency="0.6"
-                            numOctaves="4"
-                            result="noise"
-                        />
-                        <feColorMatrix
-                            type="matrix"
-                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9"
-                            in="noise"
-                            result="highContrastNoise"
-                        />
-                        {/* Displacement Map uses the noise to "shatter" the blob edges */}
-                        <feDisplacementMap
-                            in="SourceGraphic"
-                            in2="highContrastNoise"
-                            scale="15"
-                            xChannelSelector="R"
-                            yChannelSelector="G"
-                        />
-                        <feGaussianBlur stdDeviation="0.5" />
+                    <filter id="cosmic-blur" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="8" />
                     </filter>
 
-                    {/* 
-                       User's Palette Gradient 
-                       Background is #ffdac2 (Peach)
-                       Blobs are #1D3344 (Deep Slate Blue) -> #d4f2fd (Air Blue)
-                    */}
-                    <radialGradient id="blob-gradient" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stopColor="#1D3344" stopOpacity="0.8" />
-                        <stop offset="60%" stopColor="#d4f2fd" stopOpacity="0.6" />
-                        <stop offset="100%" stopColor="#ffdac2" stopOpacity="0" />
+                    {/* Warm coral-orange nebula — upper area */}
+                    <radialGradient id="blob-warm" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#e85d3a" stopOpacity="0.55" />
+                        <stop offset="50%" stopColor="#c9441c" stopOpacity="0.2" />
+                        <stop offset="100%" stopColor="#111210" stopOpacity="0" />
+                    </radialGradient>
+
+                    {/* Cool teal nebula — lower area */}
+                    <radialGradient id="blob-cool" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#4a7c9e" stopOpacity="0.45" />
+                        <stop offset="60%" stopColor="#2d5a78" stopOpacity="0.15" />
+                        <stop offset="100%" stopColor="#111210" stopOpacity="0" />
+                    </radialGradient>
+
+                    {/* Deep purple accent — right side */}
+                    <radialGradient id="blob-purple" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#7b5ea7" stopOpacity="0.35" />
+                        <stop offset="100%" stopColor="#111210" stopOpacity="0" />
                     </radialGradient>
                 </defs>
 
-                {/* THE BLOB - With Dispersion */}
-                <g style={{ filter: 'url(#dispersion-filter)' }}>
+                {/* Warm coral blob — top-left drifting */}
+                <motion.ellipse
+                    cx="20%"
+                    cy="25%"
+                    rx="38"
+                    ry="32"
+                    fill="url(#blob-warm)"
+                    filter="url(#cosmic-blur)"
+                    animate={{
+                        cx: ["20%", "28%", "18%", "20%"],
+                        cy: ["25%", "20%", "30%", "25%"],
+                    }}
+                    transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+                />
 
-                    {/* 
-                        Flowing/Diffusing Outer Layers 
-                        These circles expand outward and fade, creating the "ripple" effect
-                    */}
-                    {[1, 2, 3].map((i) => (
-                        <motion.circle
-                            key={i}
-                            cx="50%"
-                            cy="50%"
-                            r="20%"
-                            fill="#d4f2fd"
-                            initial={{ opacity: 0.4, scale: 0.8 }}
-                            animate={{
-                                opacity: [0.4, 0, 0],
-                                scale: [1, 2, 2.2]
-                            }}
-                            transition={{
-                                duration: 8,
-                                repeat: Infinity,
-                                delay: i * 2, // Staggered start
-                                ease: "easeInOut"
-                            }}
-                        />
-                    ))}
+                {/* Cool teal blob — bottom-right drifting */}
+                <motion.ellipse
+                    cx="78%"
+                    cy="72%"
+                    rx="42"
+                    ry="36"
+                    fill="url(#blob-cool)"
+                    filter="url(#cosmic-blur)"
+                    animate={{
+                        cx: ["78%", "70%", "82%", "78%"],
+                        cy: ["72%", "78%", "65%", "72%"],
+                    }}
+                    transition={{ duration: 28, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+                />
 
-                    {/* Primary Core Blob - Breathing */}
-                    <motion.circle
-                        cx="50%"
-                        cy="50%"
-                        r="25%"
-                        fill="url(#blob-gradient)"
-                        animate={{
-                            scale: [1, 1.1, 1],
-                        }}
-                        transition={{
-                            duration: 6,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                    />
+                {/* Purple accent blob — center-right */}
+                <motion.ellipse
+                    cx="65%"
+                    cy="35%"
+                    rx="28"
+                    ry="24"
+                    fill="url(#blob-purple)"
+                    filter="url(#cosmic-blur)"
+                    animate={{
+                        cx: ["65%", "72%", "60%", "65%"],
+                        cy: ["35%", "28%", "40%", "35%"],
+                        opacity: [0.7, 1, 0.7],
+                    }}
+                    transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 6 }}
+                />
 
-                    {/* Secondary Moving Blobs for Irregularity */}
-                    <motion.circle
-                        cx="40%"
-                        cy="40%"
-                        r="15%"
-                        fill="#1D3344"
-                        opacity="0.4"
-                        animate={{
-                            cx: ["40%", "45%", "40%"],
-                            cy: ["40%", "35%", "40%"],
-                        }}
-                        transition={{
-                            duration: 10,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                    />
-                    <motion.circle
-                        cx="60%"
-                        cy="60%"
-                        r="18%"
-                        fill="#d4f2fd"
-                        opacity="0.6"
-                        animate={{
-                            cx: ["60%", "55%", "60%"],
-                            cy: ["60%", "65%", "60%"],
-                        }}
-                        transition={{
-                            duration: 8,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                    />
-                </g>
-
+                {/* Diffuse warm band across top */}
+                <motion.ellipse
+                    cx="50%"
+                    cy="10%"
+                    rx="60"
+                    ry="20"
+                    fill="url(#blob-warm)"
+                    filter="url(#cosmic-blur)"
+                    opacity={0.3}
+                    animate={{ cy: ["10%", "14%", "10%"] }}
+                    transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                />
             </svg>
         </div>
     );
