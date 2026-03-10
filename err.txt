@@ -1,0 +1,21 @@
+
+> personal-portfolio@1.0.1 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 4 modules transformed.
+[31mx[39m Build failed in 275ms
+[31merror during build:
+[31m[vite:css] [postcss] D:/个人库/个人网站/index.css:3:525: Unclosed string[31m
+file: [36mD:/个人库/个人网站/index.css:3:524[31m
+    at Input.error (D:\个人库\个人网站\node_modules\postcss\lib\input.js:135:16)
+    at unclosed (D:\个人库\个人网站\node_modules\postcss\lib\tokenize.js:45:17)
+    at Object.nextToken (D:\个人库\个人网站\node_modules\postcss\lib\tokenize.js:157:15)
+    at Parser.other (D:\个人库\个人网站\node_modules\postcss\lib\parser.js:421:30)
+    at Parser.parse (D:\个人库\个人网站\node_modules\postcss\lib\parser.js:472:16)
+    at parse (D:\个人库\个人网站\node_modules\postcss\lib\parse.js:11:12)
+    at new LazyResult (D:\个人库\个人网站\node_modules\postcss\lib\lazy-result.js:165:16)
+    at Processor.process (D:\个人库\个人网站\node_modules\postcss\lib\processor.js:53:14)
+    at compileCSS (file:///D:/%E4%B8%AA%E4%BA%BA%E5%BA%93/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:59)
+    at async Object.transform (file:///D:/%E4%B8%AA%E4%BA%BA%E5%BA%93/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)[39m
