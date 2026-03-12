@@ -16,8 +16,8 @@ const timelineData = [
     {
         id: "24",
         meta: "12",
-        title: "Start to explore AI era",
-        subtitle: "Have intership in Midjourney China Lab",
+        title: "Have intership in 悠船 (Midjourney China Lab)",
+        subtitle: "Start to explore AI era",
         type: "image",
         image: vibecoderImg,
         imgWidth: 573
@@ -30,6 +30,14 @@ const timelineData = [
         type: "image",
         image: diplomaImg,
         imgWidth: 401
+    },
+    {
+        id: "26",
+        meta: "CURRENT",
+        title: "Start to explore car industry",
+        subtitle: "Business Analyst",
+        description: "Spearheading AI-driven efficiency within the automotive sector. Empowering teams to integrate AI workflows—from drafting BRDs/PRDs and developing reusable Agent Skills, to converting Figma designs into interactive code and establishing rigorous acceptance testing frameworks.",
+        type: "text"
     }
 ];
 
@@ -100,7 +108,7 @@ export const TimelineSection = () => {
                                 {/* Feed Item Row */}
                                 <div className="flex flex-col sm:flex-row w-full items-start">
 
-                                    {/* Column 2: Suffix (22, 24, 25) Starts at 427, Content at 576 -> 149px gap */}
+                                    {/* Column 2: Suffix (22, 24, 25, 26) Starts at 427, Content at 576 -> 149px gap */}
                                     {/* lg:w-[149px] provides exact spacing matching the figma file */}
                                     <div className="w-[80px] lg:w-[149px] shrink-0 mb-4 sm:mb-0">
                                         <span
@@ -116,7 +124,7 @@ export const TimelineSection = () => {
 
                                         {/* Subtitle */}
                                         <h4
-                                            className="text-[12px] font-light text-[#ede8d9] mb-2"
+                                            className="text-[12px] font-light text-[#ede8d9]/60 mb-2 uppercase tracking-wide"
                                             style={{ fontFamily: "'Inter', sans-serif" }}
                                         >
                                             {item.subtitle}
@@ -125,7 +133,7 @@ export const TimelineSection = () => {
                                         {/* Meta & Title */}
                                         <div className="flex flex-row items-baseline gap-4 mb-4">
                                             <span
-                                                className="text-[20px] lg:text-[24px] font-light text-[#ede8d9] shrink-0"
+                                                className="text-[20px] lg:text-[24px] font-light text-[#ede8d9]/40 shrink-0"
                                                 style={{ fontFamily: "'Afacad Flux', sans-serif" }}
                                             >
                                                 {item.meta}
@@ -138,6 +146,16 @@ export const TimelineSection = () => {
                                                 {item.title}
                                             </h3>
                                         </div>
+
+                                        {/* Optional Description (Detailed Text) */}
+                                        {item.description && (
+                                            <p
+                                                className="mt-2 text-sm md:text-base text-[#ede8d9]/50 leading-relaxed max-w-[500px]"
+                                                style={{ fontFamily: "'Inter', sans-serif" }}
+                                            >
+                                                {item.description}
+                                            </p>
+                                        )}
 
                                         {/* Attached Image */}
                                         {item.type === 'image' && item.image && (

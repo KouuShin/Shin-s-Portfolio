@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import vibecoderImg from '@/assets/VIBECODER.png';
 
 export const AboutSection = () => {
     const skills = [
@@ -56,13 +57,12 @@ export const AboutSection = () => {
                         className="w-1/2 md:w-2/3 flex flex-col items-start md:items-end text-left md:text-right"
                     >
                         {/* Hero Statement */}
-                        <div className="mb-4 -mt-2 md:-mt-6 lg:-mt-10">
-                            <h2
-                                className="text-[10vw] md:text-[8vw] lg:text-[110px] font-bold text-[#ede8d9] leading-[0.8] tracking-tighter"
-                                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                            >
-                                VIBE<br />CODING
-                            </h2>
+                        <div className="mb-4 -mt-2 md:-mt-6 lg:-mt-10 w-full flex justify-end">
+                            <img
+                                src={vibecoderImg}
+                                alt="Vibe Coder Sticker"
+                                className="w-[60vw] md:w-[40vw] lg:w-[420px] h-auto object-contain invert mix-blend-screen opacity-90 drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500 origin-right"
+                            />
                         </div>
 
                         {/* Content Creator Badge */}
