@@ -1,10 +1,11 @@
-import profileImage from 'figma:asset/profile-image.png';
+import { motion } from 'framer-motion';
+import profileImage from '@/assets/profile-image.png';
 
 export function Hero() {
   return (
-    <section 
+    <section
       className="relative flex flex-col items-center justify-center overflow-hidden"
-      style={{ 
+      style={{
         backgroundColor: '#000000',
         width: '100vw',
         height: '100vh',
@@ -14,7 +15,7 @@ export function Hero() {
       }}
     >
       {/* Radial glow background - centered on image */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: 'radial-gradient(circle at 50% 50%, rgba(192, 242, 0, 0.3) 0%, rgba(192, 242, 0, 0.15) 25%, transparent 50%)'
@@ -22,13 +23,13 @@ export function Hero() {
       />
 
       {/* Large Name Text with Neon Glow - Above Image */}
-      <div 
+      <div
         className="relative z-10 mb-16"
         style={{
           fontFamily: "'ZCOOL-GDH', 'Space Grotesk', sans-serif"
         }}
       >
-        <h1 
+        <h1
           className="neon-glow"
           style={{
             fontSize: '240px',
@@ -47,13 +48,13 @@ export function Hero() {
       </div>
 
       {/* Profile Image - Center with shadow and blur */}
-      <div 
+      <div
         className="relative z-10"
         style={{
           filter: 'drop-shadow(0 20px 60px rgba(192, 242, 0, 0.4))'
         }}
       >
-        <img 
+        <img
           src={profileImage}
           alt="寇欣怡"
           className="object-cover"
@@ -73,9 +74,9 @@ export function Hero() {
 // About Section - Moved to separate component
 export function About() {
   return (
-    <section 
+    <section
       className="relative flex items-center"
-      style={{ 
+      style={{
         backgroundColor: '#000000',
         width: '100vw',
         height: '100vh',
@@ -86,7 +87,7 @@ export function About() {
       }}
     >
       {/* Radial glow background - left side */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: 'radial-gradient(circle at 10% 50%, rgba(192, 242, 0, 0.2) 0%, transparent 50%)'
@@ -97,7 +98,7 @@ export function About() {
         {/* Left Content */}
         <div className="flex-1 pr-20" style={{ maxWidth: '700px' }}>
           {/* Title */}
-          <h2 
+          <h2
             className="mb-12"
             style={{
               fontFamily: "'HuXiaoBo-NanShenTi', 'Space Grotesk', sans-serif",
@@ -112,7 +113,7 @@ export function About() {
           </h2>
 
           {/* Chinese Subtitle */}
-          <h3 
+          <h3
             className="mb-16"
             style={{
               fontFamily: "'YouYou-YiSong', serif",
@@ -127,7 +128,7 @@ export function About() {
           </h3>
 
           {/* Description Text */}
-          <div 
+          <div
             className="space-y-8"
             style={{
               fontFamily: "'YouYou-YiSong', serif",
@@ -149,7 +150,7 @@ export function About() {
 
         {/* Right Image */}
         <div className="flex-shrink-0">
-          <img 
+          <img
             src={profileImage}
             alt="寇欣怡"
             className="object-cover rounded-[50px]"
