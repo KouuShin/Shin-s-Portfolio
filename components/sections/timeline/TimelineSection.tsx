@@ -1,7 +1,8 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { AiWorksModal } from '../../ui/AiWorksModal';
 import diplomaImg from '@/assets/diploma.jpg';
-import vibecoderImg from '@/assets/VIBECODER.png';
+import verticalPosterImg from '@/assets/vertical poster.png';
 
 const timelineData = [
     {
@@ -19,8 +20,10 @@ const timelineData = [
         title: "Have intership in 悠船 (Midjourney China Lab)",
         subtitle: "Start to explore AI era",
         type: "image",
-        image: vibecoderImg,
-        imgWidth: 573
+        image: verticalPosterImg,
+        imgWidth: 573,
+        actionText: "Explore more",
+        actionType: "openAiModal"
     },
     {
         id: "25",
@@ -43,6 +46,7 @@ const timelineData = [
 
 export const TimelineSection = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <section
@@ -173,6 +177,29 @@ export const TimelineSection = () => {
                                                 />
                                             </motion.div>
                                         )}
+
+                                        {/* Action Link (Explore more) */}
+                                        {item.actionText && (
+                                            <div className="mt-6 flex justify-start">
+                                                <button
+                                                    onClick={() => {
+                                                        if (item.actionType === 'openAiModal') {
+                                                            setIsModalOpen(true);
+                                                        }
+                                                    }}
+                                                    className="group flex flex-col items-start gap-1 hover:opacity-80 transition-opacity focus:outline-none"
+                                                >
+                                                    <span 
+                                                        className="text-[#ede8d9] text-[18px] md:text-[20px] tracking-widest font-light"
+                                                        style={{ fontFamily: "'Aclonica', sans-serif" }}
+                                                    >
+                                                        {item.actionText}
+                                                    </span>
+                                                    {/* Underline */}
+                                                    <div className="h-[1px] w-full bg-[#ede8d9] group-hover:scale-x-110 origin-left transition-transform duration-300" />
+                                                </button>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
 
@@ -193,6 +220,12 @@ export const TimelineSection = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Modal Components */}
+            <AiWorksModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+            />
         </section>
     );
 };

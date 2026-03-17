@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import imagePng from '@/assets/image.png';
-import vibecoderPng from '@/assets/VIBECODER.png';
+import personalPhotoImg from '@/assets/personalphoto.png';
 
 export const HeroSection = () => {
     return (
@@ -60,10 +60,9 @@ export const HeroSection = () => {
                 >
                     {/* Inverting colors and using screen blend to make white background disappear into the dark theme */}
                     <img
-                        src={vibecoderPng}
-                        alt="VIBE CODER Pixel Typography"
-                        className="w-full h-auto object-contain mix-blend-screen opacity-90"
-                        style={{ filter: 'invert(1) brightness(1.2)' }}
+                        src={personalPhotoImg}
+                        alt="XINYI KOU Personal Photo"
+                        className="w-full h-auto object-contain opacity-90 drop-shadow-2xl"
                     />
                 </motion.div>
 

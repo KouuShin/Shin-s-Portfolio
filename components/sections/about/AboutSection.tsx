@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import personalPhotoImg from '@/assets/personalphoto.png';
+import vibecoderImg from '@/assets/VIBECODER.png';
 
 export const AboutSection = () => {
     const skills = [
@@ -58,10 +58,10 @@ export const AboutSection = () => {
                     >
                         {/* Hero Statement */}
                         <div className="mb-4 -mt-2 md:-mt-6 lg:-mt-10 w-full flex justify-end">
-                            <img
-                                src={personalPhotoImg}
-                                alt="Xinyi Kou Personal Photo"
-                                className="w-[60vw] md:w-[40vw] lg:w-[420px] h-auto object-contain opacity-90 drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500 origin-right rounded-lg"
+                            <img 
+                                src={vibecoderImg} 
+                                alt="Vibe Coder Sticker" 
+                                className="w-[60vw] md:w-[40vw] lg:w-[420px] h-auto object-contain invert mix-blend-screen opacity-90 drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500 origin-right"
                             />
                         </div>
 
