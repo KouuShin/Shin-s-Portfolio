@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import synapseCoverImg from '@/assets/synapse-ai-assistant_cover_page.png';
+import dealerCoverImg from '@/assets/ai_dealer_cover_page.png';
+import beautifulCoverImg from '@/assets/ai_beautiful_cover.png';
 
 const ACCENT_COLORS = ['#e85d3a', '#4a7c9e', '#7b5ea7'];
 
@@ -15,21 +17,21 @@ const projectsData = [
     },
     {
         id: "02",
-        title: "Case Study 02",
-        role: "TBD",
-        date: "2024",
-        type: "TBD",
-        description: "Awaiting next project details from user.",
-        image: null
+        title: "AI Dealer Assistant",
+        role: "UX/UI Design",
+        date: "TBD",
+        type: "Commercial AI",
+        description: "An intelligent digital assistant designed for automotive dealerships, streamlining the sales process and providing tailored customer insights.",
+        image: dealerCoverImg
     },
     {
         id: "03",
-        title: "Case Study 03",
-        role: "TBD",
-        date: "2024",
-        type: "TBD",
-        description: "Awaiting next project details from user.",
-        image: null
+        title: "AI Beauty Platform",
+        role: "Concept & Design",
+        date: "TBD",
+        type: "Consumer App",
+        description: "A visionary platform leveraging AI to offer personalized beauty and styling recommendations, blending technology with aesthetics.",
+        image: beautifulCoverImg
     }
 ];
 
@@ -74,25 +76,27 @@ export const ProjectSection = () => {
                                 style={{ backgroundColor: ACCENT_COLORS[index] + '08', border: `1px solid ${ACCENT_COLORS[index]}15` }}
                             >
                                 {/* Background Image Integration */}
-                                {project.image ? (
-                                    <div className="absolute inset-0 w-full h-full mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity duration-700">
-                                        <img
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="w-full h-full object-cover grayscale-[40%] contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                                        />
-                                        <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700" />
-                                    </div>
-                                ) : (
+                                <div className="absolute inset-0 w-full h-full mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity duration-700">
+                                    <img
+                                        src={project.image!}
+                                        alt={project.title}
+                                        className="w-full h-full object-cover grayscale-[40%] contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                                    />
+                                    <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700" />
+                                </div>
+
+                                {/* 
+                                    TEMPLATE: "COMING SOON" PLACEHOLDER (PRESERVED FOR FUTURE USE)
+                                    If you need to add a new project without an image, you can use the following 
+                                    code block instead of the img tag above.
+
                                     <>
-                                        {/* Atmospheric center glow (fallback for empty) */}
                                         <div
                                             className="absolute inset-0"
                                             style={{
                                                 background: `radial-gradient(ellipse at 50% 40%, ${ACCENT_COLORS[index]}20 0%, transparent 70%)`
                                             }}
                                         />
-                                        {/* Orbit ring — referencing the space poster's orbital motif */}
                                         <div
                                             className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2"
                                             style={{
@@ -102,7 +106,6 @@ export const ProjectSection = () => {
                                                 borderRadius: '50%',
                                             }}
                                         />
-                                        {/* Inner planet dot */}
                                         <div
                                             className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 rounded-full group-hover:scale-110 transition-transform duration-500"
                                             style={{
@@ -112,14 +115,13 @@ export const ProjectSection = () => {
                                                 opacity: 0.6,
                                             }}
                                         />
-                                        {/* Coming soon label */}
                                         <div className="absolute bottom-5 left-0 right-0 flex justify-center">
                                             <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#ede8d9]/20">
                                                 Coming Soon
                                             </span>
                                         </div>
                                     </>
-                                )}
+                                */}
 
                                 {/* Hover overlay */}
                                 <div className="absolute inset-0 bg-[#111210]/0 group-hover:bg-[#111210]/10 transition-colors duration-500 pointer-events-none" />
