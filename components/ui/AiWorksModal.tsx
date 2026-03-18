@@ -1,30 +1,18 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import aiArt1 from '@/assets/AiArt_1.png';
+import aiArt2 from '@/assets/AiArt_2.png';
+import aiArt3 from '@/assets/AiArt_3.png';
+import aiArt4 from '@/assets/AiArt_4.png';
+import aiArt5 from '@/assets/AiArt_5.png';
 
-// Placeholder mock data for the AI works gallery.
-// In reality, you can replace 'image' with the actual high-res asset imports.
+// The local AI art assets requested by the user.
 const aiWorksData = [
-    {
-        id: 1,
-        title: "界·通道 (Threshold: The Passage)",
-        description: "AI-generated visual exploration of liminal spaces and brutalist architecture.",
-        type: "Concept Art",
-        image: "https://images.unsplash.com/photo-1601569561019-8350cce0eff5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaXR5JTIwYXJjaGl0ZWN0dXJlJTIwYmxhY2slMjB3aGl0ZXxlbnwxfHx8fDE3NjIyMjU4MzB8MA&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-    {
-        id: 2,
-        title: "Synapse AI Identity",
-        description: "Brand identity and UI concept generation for the internal AI agent platform.",
-        type: "Design System",
-        image: "https://images.unsplash.com/photo-1750306957357-bf6e1f8e7da8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjaGFpciUyMGRlc2lnbnxlbnwxfHx8fDE3NjIxNTIwMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-    {
-        id: 3,
-        title: "Automotive Interaction Concepts",
-        description: "Midjourney explorations for future in-car digital interfaces.",
-        type: "UI/UX Vision",
-        image: "https://images.unsplash.com/photo-1593086784152-b060f8109e0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjBjb2RpbmclMjBzY3JlZW58ZW58MXx8fHwxNzYyMTUzNTI1fDA&ixlib=rb-4.1.0&q=80&w=1080"
-    }
+    { id: 1, image: aiArt1 },
+    { id: 2, image: aiArt2 },
+    { id: 3, image: aiArt3 },
+    { id: 4, image: aiArt4 },
+    { id: 5, image: aiArt5 }
 ];
 
 interface AiWorksModalProps {
@@ -66,11 +54,7 @@ export const AiWorksModal = ({ isOpen, onClose }: AiWorksModalProps) => {
         }
     };
 
-    // 3D variants for page flip simulation using rotateY
-    // 1. Enter from the right (like opening a new page) -> rotateY starts at 90deg, animates to 0deg
-    // 2. Center (currently viewed page) -> rotateY is 0deg
-    // 3. Exit to the left (like turning the page over) -> rotateY goes to -90deg
-    const pageVariants = {
+    const pageVariants: any = {
         enter: (direction: number) => ({
             rotateY: direction > 0 ? 90 : -90,
             opacity: 0,
@@ -82,7 +66,7 @@ export const AiWorksModal = ({ isOpen, onClose }: AiWorksModalProps) => {
             z: 0,
             transition: {
                 duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.16, 1, 0.3, 1]
             }
         },
         exit: (direction: number) => ({
@@ -91,7 +75,7 @@ export const AiWorksModal = ({ isOpen, onClose }: AiWorksModalProps) => {
             z: -100,
             transition: {
                 duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.16, 1, 0.3, 1]
             }
         })
     };
@@ -156,38 +140,19 @@ export const AiWorksModal = ({ isOpen, onClose }: AiWorksModalProps) => {
                                     {/* The user requested super-HD single image with 20% size increase. 
                                         We constrain it by height so it fits impeccably. */}
                                     <div className="relative w-full max-w-5xl h-full bg-[#111210]/50 border border-[#ede8d9]/10 rounded-2xl md:rounded-[32px] overflow-hidden shadow-2xl p-2 pointer-events-auto">
-                                        <div className="w-full h-full relative overflow-hidden rounded-xl md:rounded-[24px]">
+                                        <div className="w-full h-full relative overflow-hidden rounded-xl md:rounded-[24px] bg-[#111210]">
+                                            {/* Blurred ambient background to gracefully handle different aspect ratios */}
+                                            <div 
+                                                className="absolute inset-0 bg-cover bg-center blur-3xl opacity-50 scale-125"
+                                                style={{ backgroundImage: `url(${currentWork.image})` }}
+                                            />
                                             <img 
                                                 src={currentWork.image} 
-                                                alt={currentWork.title} 
-                                                className="w-full h-full object-cover"
+                                                alt={`AI Art ${currentIndex + 1}`} 
+                                                className="relative z-10 w-full h-full object-contain"
                                                 loading="lazy"
                                                 draggable={false}
                                             />
-                                            {/* Gradient fade at bottom for text overlay */}
-                                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-                                            
-                                            {/* Info Block placed directly on the image */}
-                                            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-left pointer-events-none">
-                                                <span 
-                                                    className="inline-block text-[#C0F200] text-xs md:text-sm font-bold uppercase tracking-widest mb-3"
-                                                    style={{ fontFamily: "'Inter', sans-serif" }}
-                                                >
-                                                    {currentWork.type}
-                                                </span>
-                                                <h2 
-                                                    className="text-[#ede8d9] text-3xl md:text-5xl font-light mb-4"
-                                                    style={{ fontFamily: "'Aclonica', sans-serif" }}
-                                                >
-                                                    {currentWork.title}
-                                                </h2>
-                                                <p 
-                                                    className="text-[#ede8d9]/70 text-base md:text-xl font-light max-w-3xl leading-relaxed"
-                                                    style={{ fontFamily: "'Space Grotesk', serif" }}
-                                                >
-                                                    {currentWork.description}
-                                                </p>
-                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>
