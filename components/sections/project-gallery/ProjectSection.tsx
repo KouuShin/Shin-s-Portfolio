@@ -1,7 +1,25 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { AiWorksModal, GalleryImage } from '../../ui/AiWorksModal';
+
 import synapseCoverImg from '@/assets/synapse-ai-assistant_cover_page.png';
 import dealerCoverImg from '@/assets/ai_dealer_cover_page.png';
 import beautifulCoverImg from '@/assets/ai_beautiful_cover.png';
+
+// Synapse AI custom gallery images
+import synImg1 from '@/assets/synapse-ai-assistant.png';
+import synImg2 from '@/assets/synapse-ai-coverpage.jpg';
+import synImg3 from '@/assets/synapse-dashboard.png';
+import synImg4 from '@/assets/synapse-login.png';
+import synImg5 from '@/assets/synapse-workflow.png';
+
+const synapseGalleryData: GalleryImage[] = [
+    { id: 1, image: synImg2 }, // Putting coverpage first might make sense, or assistant. Let's start with coverpage.
+    { id: 2, image: synImg1 },
+    { id: 3, image: synImg3 },
+    { id: 4, image: synImg4 },
+    { id: 5, image: synImg5 }
+];
 
 const ACCENT_COLORS = ['#e85d3a', '#4a7c9e', '#7b5ea7'];
 
@@ -36,6 +54,8 @@ const projectsData = [
 ];
 
 export const ProjectSection = () => {
+    const [isSynapseModalOpen, setIsSynapseModalOpen] = useState(false);
+
     return (
         <section id="projects" className="relative z-20 min-h-screen py-32 mt-24 bg-transparent">
 
@@ -68,6 +88,11 @@ export const ProjectSection = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: index * 0.15 }}
+                            onClick={() => {
+                                if (project.id === "01") {
+                                    setIsSynapseModalOpen(true);
+                                }
+                            }}
                             className="group relative w-full flex flex-col hover:-translate-y-2 transition-transform duration-500 cursor-pointer"
                         >
                             {/* Graphic Area */}
@@ -155,6 +180,13 @@ export const ProjectSection = () => {
                 </div>
 
             </div>
+
+            {/* Reusable Gallery Modal for Synapse AI */}
+            <AiWorksModal 
+                isOpen={isSynapseModalOpen} 
+                onClose={() => setIsSynapseModalOpen(false)} 
+                images={synapseGalleryData}
+            />
         </section>
     );
 };

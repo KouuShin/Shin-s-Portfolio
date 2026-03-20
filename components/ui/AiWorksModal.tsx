@@ -1,26 +1,18 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import aiArt1 from '@/assets/AiArt_1.png';
-import aiArt2 from '@/assets/AiArt_2.png';
-import aiArt3 from '@/assets/AiArt_3.png';
-import aiArt4 from '@/assets/AiArt_4.png';
-import aiArt5 from '@/assets/AiArt_5.png';
 
-// The local AI art assets requested by the user.
-const aiWorksData = [
-    { id: 1, image: aiArt1 },
-    { id: 2, image: aiArt2 },
-    { id: 3, image: aiArt3 },
-    { id: 4, image: aiArt4 },
-    { id: 5, image: aiArt5 }
-];
+export interface GalleryImage {
+    id: string | number;
+    image: string;
+}
 
 interface AiWorksModalProps {
     isOpen: boolean;
     onClose: () => void;
+    images: GalleryImage[];
 }
 
-export const AiWorksModal = ({ isOpen, onClose }: AiWorksModalProps) => {
+export const AiWorksModal = ({ isOpen, onClose, images }: AiWorksModalProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
 
@@ -40,7 +32,7 @@ export const AiWorksModal = ({ isOpen, onClose }: AiWorksModalProps) => {
 
     const handleNext = (e: React.MouseEvent) => {
         e.stopPropagation();
-        if (currentIndex < aiWorksData.length - 1) {
+        if (images && currentIndex < images.length - 1) {
             setDirection(1);
             setCurrentIndex((prev) => prev + 1);
         }
@@ -80,7 +72,9 @@ export const AiWorksModal = ({ isOpen, onClose }: AiWorksModalProps) => {
         })
     };
 
-    const currentWork = aiWorksData[currentIndex];
+    if (!images || images.length === 0) return null;
+
+    const currentWork = images[currentIndex] || images[0];
 
     return (
         <AnimatePresence>
@@ -175,13 +169,13 @@ export const AiWorksModal = ({ isOpen, onClose }: AiWorksModalProps) => {
                             </button>
 
                             <div className="text-[#ede8d9]/40 tracking-widest font-light text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                {currentIndex + 1} / {aiWorksData.length}
+                                {currentIndex + 1} / {images.length}
                             </div>
 
                             <button
                                 onClick={handleNext}
-                                disabled={currentIndex === aiWorksData.length - 1}
-                                className={`flex items-center gap-3 px-6 py-4 rounded-full transition-all ${currentIndex === aiWorksData.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-[#ede8d9]/10 text-[#ede8d9]'}`}
+                                disabled={currentIndex === images.length - 1}
+                                className={`flex items-center gap-3 px-6 py-4 rounded-full transition-all ${currentIndex === images.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-[#ede8d9]/10 text-[#ede8d9]'}`}
                             >
                                 <span className="font-light tracking-widest uppercase text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>
                                     Next

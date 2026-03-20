@@ -1,8 +1,22 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { AiWorksModal } from '../../ui/AiWorksModal';
+import { AiWorksModal, GalleryImage } from '../../ui/AiWorksModal';
 import diplomaImg from '@/assets/diploma.jpg';
 import verticalPosterImg from '@/assets/vertical poster.png';
+
+import aiArt1 from '@/assets/AiArt_1.png';
+import aiArt2 from '@/assets/AiArt_2.png';
+import aiArt3 from '@/assets/AiArt_3.png';
+import aiArt4 from '@/assets/AiArt_4.png';
+import aiArt5 from '@/assets/AiArt_5.png';
+
+const timelineAiWorksData: GalleryImage[] = [
+    { id: 1, image: aiArt1 },
+    { id: 2, image: aiArt2 },
+    { id: 3, image: aiArt3 },
+    { id: 4, image: aiArt4 },
+    { id: 5, image: aiArt5 }
+];
 
 const timelineData = [
     {
@@ -225,6 +239,7 @@ export const TimelineSection = () => {
             <AiWorksModal 
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 
+                images={timelineAiWorksData}
             />
         </section>
     );
