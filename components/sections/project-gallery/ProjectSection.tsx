@@ -18,11 +18,11 @@ import synImg4 from '@/assets/synapse-login.png';
 import synImg5 from '@/assets/synapse-workflow.png';
 
 const synapseGalleryData: GalleryImage[] = [
-    { id: 1, image: synImg2 }, // Putting coverpage first might make sense, or assistant. Let's start with coverpage.
-    { id: 2, image: synImg1 },
-    { id: 3, image: synImg3 },
-    { id: 4, image: synImg4 },
-    { id: 5, image: synImg5 }
+    { id: 1, image: synImg2 }, // coverpage
+    { id: 2, image: synImg4 }, // login
+    { id: 3, image: synImg1 }, // assistant
+    { id: 4, image: synImg3 }, // dashboard
+    { id: 5, image: synImg5 }  // workflow
 ];
 
 const ACCENT_COLORS = ['#e85d3a', '#4a7c9e', '#7b5ea7'];
@@ -50,21 +50,21 @@ const projectsData: ProjectData[] = [
     },
     {
         id: "02",
-        title: "AI Dealer Assistant",
+        title: "C2C Bike Rental",
         role: "UX/UI Design",
         date: "TBD",
-        type: "Commercial AI",
-        description: "An intelligent digital assistant designed for automotive dealerships, streamlining the sales process and providing tailored customer insights.",
+        type: "Commercial App",
+        description: "An intuitive C2C platform designed for seamless peer-to-peer bike rentals, streamlining the urban mobility and sharing experience.",
         image: dealerCoverImg,
         video: bikerentalVideo
     },
     {
         id: "03",
-        title: "AI Beauty Platform",
+        title: "AI Sleep Companion",
         role: "Concept & Design",
         date: "TBD",
         type: "Consumer App",
-        description: "A visionary platform leveraging AI to offer personalized beauty and styling recommendations, blending technology with aesthetics.",
+        description: "A visionary platform leveraging AI to offer personalized soundscapes and sleep recommendations, helping users achieve deeper, more restful sleep.",
         image: beautifulCoverImg,
         video: beautyVideo
     }
