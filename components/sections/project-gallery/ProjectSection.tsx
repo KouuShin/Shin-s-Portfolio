@@ -27,7 +27,18 @@ const synapseGalleryData: GalleryImage[] = [
 
 const ACCENT_COLORS = ['#e85d3a', '#4a7c9e', '#7b5ea7'];
 
-const projectsData = [
+interface ProjectData {
+    id: string;
+    title: string;
+    role: string;
+    date: string;
+    type: string;
+    description: string;
+    image?: string;
+    video?: string;
+}
+
+const projectsData: ProjectData[] = [
     {
         id: "01",
         title: "Synapse AI Platform",
