@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { AiWorksModal, GalleryImage } from '../../ui/AiWorksModal';
+import { VideoModal } from '../../ui/VideoModal';
 
 import synapseCoverImg from '@/assets/synapse-ai-assistant_cover_page.png';
 import dealerCoverImg from '@/assets/ai_dealer_cover_page.png';
+import beautifulCoverImg from '@/assets/ai_beautiful_cover.png';
+import bikerentalVideo from '@/assets/bikerental_demo.mp4';
+import beautyVideo from '@/assets/助眠demo.mp4';
 import beautifulCoverImg from '@/assets/ai_beautiful_cover.png';
 
 // Synapse AI custom gallery images
@@ -40,7 +44,8 @@ const projectsData = [
         date: "TBD",
         type: "Commercial AI",
         description: "An intelligent digital assistant designed for automotive dealerships, streamlining the sales process and providing tailored customer insights.",
-        image: dealerCoverImg
+        image: dealerCoverImg,
+        video: bikerentalVideo
     },
     {
         id: "03",
@@ -49,12 +54,15 @@ const projectsData = [
         date: "TBD",
         type: "Consumer App",
         description: "A visionary platform leveraging AI to offer personalized beauty and styling recommendations, blending technology with aesthetics.",
-        image: beautifulCoverImg
+        image: beautifulCoverImg,
+        video: beautyVideo
     }
 ];
 
 export const ProjectSection = () => {
     const [isSynapseModalOpen, setIsSynapseModalOpen] = useState(false);
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+    const [currentVideoUrl, setCurrentVideoUrl] = useState<string | null>(null);
 
     return (
         <section id="projects" className="relative z-20 min-h-screen py-32 mt-24 bg-transparent">
@@ -91,6 +99,9 @@ export const ProjectSection = () => {
                             onClick={() => {
                                 if (project.id === "01") {
                                     setIsSynapseModalOpen(true);
+                                } else if (project.video) {
+                                    setCurrentVideoUrl(project.video);
+                                    setIsVideoModalOpen(true);
                                 }
                             }}
                             className="group relative w-full flex flex-col hover:-translate-y-2 transition-transform duration-500 cursor-pointer"
@@ -186,6 +197,17 @@ export const ProjectSection = () => {
                 isOpen={isSynapseModalOpen} 
                 onClose={() => setIsSynapseModalOpen(false)} 
                 images={synapseGalleryData}
+            />
+
+            {/* Video Modal for Demo Videos */}
+            <VideoModal 
+                isOpen={isVideoModalOpen} 
+                onClose={() => {
+                    setIsVideoModalOpen(false);
+                    // Slight delay to allow fade out before removing video source
+                    setTimeout(() => setCurrentVideoUrl(null), 300);
+                }} 
+                videoUrl={currentVideoUrl}
             />
         </section>
     );
