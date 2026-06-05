@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visual Direction Palette Study</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap");
+
+    :root {
+      --ink: #161616;
+      --paper: #f6f3ec;
+      --muted: #6f6a62;
+      --line: rgba(22, 22, 22, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #ece8df;
+      color: var(--ink);
+      font-family: "IBM Plex Sans", "Noto Serif SC", sans-serif;
+    }
+
+    main {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 44px clamp(18px, 4vw, 64px) 72px;
+    }
+
+    .intro {
+      min-height: 72vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: clamp(32px, 7vw, 96px);
+      align-items: end;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 44px;
+    }
+
+    .kicker {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 920px;
+      font-family: "Noto Serif SC", serif;
+      font-size: clamp(46px, 9vw, 132px);
+      font-weight: 500;
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 1.5vw, 19px);
+      line-height: 1.78;
+    }
+
+    .directions {
+      display: grid;
+      gap: 38px;
+      padding-top: 44px;
+    }
+
+    .direction {
+      min-height: 680px;
+      border: 1px solid rgba(22, 22, 22, 0.13);
+      display: grid;
+      grid-template-columns: 38% 62%;
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .panel {
+      padding: clamp(24px, 4vw, 48px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid rgba(22, 22, 22, 0.11);
+    }
+
+    .panel h2 {
+      margin: 0 0 18px;
+      font-family: "Noto Serif SC", serif;
+      font-weight: 500;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .panel .desc {
+      max-width: 360px;
+      margin: 0;
+      color: rgba(22, 22, 22, 0.64);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .chip {
+      border: 1px solid rgba(22, 22, 22, 0.16);
+      padding: 7px 10px;
+      font-size: 12px;
+      color: rgba(22, 22, 22, 0.65);
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 34px;
+    }
+
+    .swatch {
+      min-height: 92px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: end;
+      padding: 9px;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .stage {
+      position: relative;
+      padding: clamp(24px, 4vw, 52px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 34px;
+      overflow: hidden;
+    }
+
+    .stage-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(22, 22, 22, 0.54);
+    }
+
+    .number {
+      font-family: "Playfair Display", serif;
+      font-size: 54px;
+      line-height: 1;
+      color: rgba(22, 22, 22, 0.42);
+    }
+
+    .mock {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .poster {
+      min-height: 410px;
+      border: 1px solid rgba(22, 22, 22, 0.13);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 22px 80px rgba(0, 0, 0, 0.08);
+    }
+
+    .poster h3 {
+      margin: 0;
+      font-family: "Noto Serif SC", serif;
+      font-size: clamp(30px, 4vw, 56px);
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .poster p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.72;
+      color: rgba(22, 22, 22, 0.62);
+    }
+
+    .case {
+      display: grid;
+      gap: 14px;
+    }
+
+    .case-row {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 20px;
+      border-top: 1px solid rgba(22, 22, 22, 0.13);
+      padding-top: 16px;
+    }
+
+    .case-row strong {
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .case-row span {
+      color: rgba(22, 22, 22, 0.62);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .bottom-note {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid rgba(22, 22, 22, 0.13);
+      padding-top: 18px;
+      color: rgba(22, 22, 22, 0.56);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .warm {
+      --paper: #f7f2e8;
+    }
+
+    .warm .stage {
+      background:
+        radial-gradient(circle at 80% 18%, rgba(255, 255, 255, 0.82), transparent 22%),
+        linear-gradient(130deg, #faf8f1 0%, #efe2cf 46%, #d7b89b 100%);
+    }
+
+    .warm .poster {
+      background: rgba(255, 253, 247, 0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .warm .accent {
+      color: #b46a43;
+    }
+
+    .mono {
+      --paper: #f4f4f0;
+    }
+
+    .mono .stage {
+      background:
+        linear-gradient(90deg, rgba(22, 22, 22, 0.06) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(22, 22, 22, 0.06) 1px, transparent 1px),
+        #f7f7f2;
+      background-size: 52px 52px;
+    }
+
+    .mono .poster {
+      background: #ffffff;
+      color: #101010;
+    }
+
+    .mono .accent {
+      color: #d8ff36;
+      text-shadow: 0 0 1px #111;
+    }
+
+    .dark {
+      --paper: #111313;
+      color: #f0eee6;
+      border-color: rgba(240, 238, 230, 0.14);
+    }
+
+    .dark .panel,
+    .dark .stage {
+      border-color: rgba(240, 238, 230, 0.12);
+    }
+
+    .dark .panel {
+      background: #101111;
+    }
+
+    .dark .panel .desc,
+    .dark .chip,
+    .dark .label,
+    .dark .bottom-note,
+    .dark .case-row span {
+      color: rgba(240, 238, 230, 0.62);
+    }
+
+    .dark .chip {
+      border-color: rgba(240, 238, 230, 0.18);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .dark .stage {
+      background:
+        radial-gradient(circle at 72% 22%, rgba(255, 249, 216, 0.2), transparent 18%),
+        radial-gradient(circle at 12% 76%, rgba(108, 189, 185, 0.2), transparent 24%),
+        linear-gradient(135deg, #101111 0%, #1c1f1d 55%, #0d0e0e 100%);
+    }
+
+    .dark .poster {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(240, 238, 230, 0.16);
+      box-shadow: 0 22px 90px rgba(0, 0, 0, 0.34);
+    }
+
+    .dark .poster p,
+    .dark .number {
+      color: rgba(240, 238, 230, 0.58);
+    }
+
+    .dark .case-row,
+    .dark .bottom-note {
+      border-color: rgba(240, 238, 230, 0.13);
+    }
+
+    .dark .accent {
+      color: #f2d56b;
+    }
+
+    @media (max-width: 900px) {
+      .intro,
+      .direction,
+      .mock {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        border-right: 0;
+        border-bottom: 1px solid rgba(22, 22, 22, 0.11);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="intro">
+      <div>
+        <div class="kicker">Palette study / personal website upgrade</div>
+        <h1>透亮、高清、平和，但不平。</h1>
+      </div>
+      <p>
+        这页不是最终设计稿，而是三种视觉语言的色卡和案例感预览。请重点看：
+        亮色是否高级、留白是否舒服、字体和版式是否有你说的那种平衡感。
+      </p>
+    </section>
+
+    <section class="directions">
+      <article class="direction warm">
+        <aside class="panel">
+          <div>
+            <div class="kicker">Direction A</div>
+            <h2>暖白纸感<br><span class="accent">Bright Editorial</span></h2>
+            <p class="desc">
+              像品牌画册、展览手册、设计事务所案例页。亮色来自纸张、光感和照片边缘，
+              不靠大面积高饱和色硬顶。
+            </p>
+            <div class="chips">
+              <span class="chip">高级画册</span>
+              <span class="chip">温和</span>
+              <span class="chip">适合个人叙事</span>
+              <span class="chip">最透亮</span>
+            </div>
+          </div>
+          <div class="palette">
+            <div class="swatch" style="background:#fbf8ef">#FBF8EF</div>
+            <div class="swatch" style="background:#efe2cf">#EFE2CF</div>
+            <div class="swatch" style="background:#d7b89b">#D7B89B</div>
+            <div class="swatch" style="background:#b46a43;color:white">#B46A43</div>
+            <div class="swatch" style="background:#191713;color:white">#191713</div>
+          </div>
+        </aside>
+        <div class="stage">
+          <div class="stage-top">
+            <div class="label">Case feeling: portfolio as printed dossier</div>
+            <div class="number">01</div>
+          </div>
+          <div class="mock">
+            <div class="poster">
+              <h3>AI 明检<br>销售能力评估系统</h3>
+              <p>把传统人工明检升级为 AI 对话式考核，从任务配置、角色权限、语音实战到个性化报告形成训练闭环。</p>
+            </div>
+            <div class="case">
+              <div class="case-row"><strong>01</strong><span>大标题像书籍封面，图片和文字都安静地落在网格里。</span></div>
+              <div class="case-row"><strong>02</strong><span>适合放你的个人经历、设计思考、项目浓缩故事。</span></div>
+              <div class="case-row"><strong>03</strong><span>风险是如果图片质量不够，页面会显得太素，需要靠排版撑住。</span></div>
+            </div>
+          </div>
+          <div class="bottom-note">
+            <span>关键词：warm white / art book / quiet luxury / editorial grid</span>
+            <span>适合：想让个人网站更像设计作品集画册。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="direction mono">
+        <aside class="panel">
+          <div>
+            <div class="kicker">Direction B</div>
+            <h2>黑白灰网格<br><span class="accent">Sharp Neutral</span></h2>
+            <p class="desc">
+              最克制，也最考验比例。亮色只作为标记、编号、悬停状态出现，
+              主体靠强字体、强对齐和图像大小关系制造高级感。
+            </p>
+            <div class="chips">
+              <span class="chip">设计师感</span>
+              <span class="chip">理性</span>
+              <span class="chip">强排版</span>
+              <span class="chip">不容易土</span>
+            </div>
+          </div>
+          <div class="palette">
+            <div class="swatch" style="background:#ffffff">#FFFFFF</div>
+            <div class="swatch" style="background:#f4f4f0">#F4F4F0</div>
+            <div class="swatch" style="background:#cfcfc7">#CFCFC7</div>
+            <div class="swatch" style="background:#d8ff36">#D8FF36</div>
+            <div class="swatch" style="background:#101010;color:white">#101010</div>
+          </div>
+        </aside>
+        <div class="stage">
+          <div class="stage-top">
+            <div class="label">Case feeling: studio archive / Swiss grid</div>
+            <div class="number">02</div>
+          </div>
+          <div class="mock">
+            <div class="poster">
+              <h3>Curiosity<br><span class="accent">as System</span></h3>
+              <p>页面像一套可翻阅的档案：个人介绍、时间线、项目案例用统一编号系统串起来。</p>
+            </div>
+            <div class="case">
+              <div class="case-row"><strong>01</strong><span>视觉重点靠字号反差、编号、细线和图片比例，不靠装饰。</span></div>
+              <div class="case-row"><strong>02</strong><span>适合突出你的产品分析、AI 工作流、需求文档能力。</span></div>
+              <div class="case-row"><strong>03</strong><span>风险是会更冷，需要用个人照片或一两个温暖细节补人味。</span></div>
+            </div>
+          </div>
+          <div class="bottom-note">
+            <span>关键词：Swiss grid / monochrome / acid accent / disciplined spacing</span>
+            <span>适合：想让作品集看起来最专业、最耐看。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="direction dark">
+        <aside class="panel">
+          <div>
+            <div class="kicker">Direction C</div>
+            <h2>深色透光<br><span class="accent">Luminous Dark</span></h2>
+            <p class="desc">
+              保留你现在的深色基因，但去掉平面感。亮色像屏幕光、玻璃反射和夜间展厅，
+              不是霓虹堆叠，也不是紫蓝渐变。
+            </p>
+            <div class="chips">
+              <span class="chip">沉静</span>
+              <span class="chip">科技但不俗</span>
+              <span class="chip">适合 AI 项目</span>
+              <span class="chip">延续现有气质</span>
+            </div>
+          </div>
+          <div class="palette">
+            <div class="swatch" style="background:#0d0e0e;color:white">#0D0E0E</div>
+            <div class="swatch" style="background:#1c1f1d;color:white">#1C1F1D</div>
+            <div class="swatch" style="background:#f0eee6">#F0EEE6</div>
+            <div class="swatch" style="background:#f2d56b">#F2D56B</div>
+            <div class="swatch" style="background:#6cbdb9">#6CBDB9</div>
+          </div>
+        </aside>
+        <div class="stage">
+          <div class="stage-top">
+            <div class="label">Case feeling: night gallery / AI interface light</div>
+            <div class="number">03</div>
+          </div>
+          <div class="mock">
+            <div class="poster">
+              <h3>Dialogue<br><span class="accent">Evaluation</span></h3>
+              <p>用更深的黑、更干净的白和少量暖光，承载 AI 明检、Synapse 等项目的技术叙事。</p>
+            </div>
+            <div class="case">
+              <div class="case-row"><strong>01</strong><span>适合做滚动中的光影层次、截图玻璃感、项目详情弹窗。</span></div>
+              <div class="case-row"><strong>02</strong><span>比现在更高级的关键：减少彩色雾化背景，增加排版秩序。</span></div>
+              <div class="case-row"><strong>03</strong><span>风险是如果光效太多，会回到“网页特效感”，要克制。</span></div>
+            </div>
+          </div>
+          <div class="bottom-note">
+            <span>关键词：luminous dark / glass light / editorial tech / quiet AI</span>
+            <span>适合：想保留神秘感，同时让页面更活。</span>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

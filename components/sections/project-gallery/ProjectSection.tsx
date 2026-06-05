@@ -1,223 +1,156 @@
-import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { AiWorksModal, GalleryImage } from '../../ui/AiWorksModal';
 import { VideoModal } from '../../ui/VideoModal';
+import { PortfolioProject, projects } from '../../portfolioContent';
 
-import synapseCoverImg from '@/assets/synapse-ai-assistant_cover_page.png';
-import dealerCoverImg from '@/assets/ai_dealer_cover_page.png';
-import beautifulCoverImg from '@/assets/ai_beautiful_cover.png';
-import bikerentalVideo from '@/assets/bikerental_demo.mp4';
-import beautyVideo from '@/assets/助眠demo.mp4';
-import beautifulCoverImg from '@/assets/ai_beautiful_cover.png';
-
-// Synapse AI custom gallery images
-import synImg1 from '@/assets/synapse-ai-assistant.png';
-import synImg2 from '@/assets/synapse-ai-coverpage.jpg';
-import synImg3 from '@/assets/synapse-dashboard.png';
-import synImg4 from '@/assets/synapse-login.png';
-import synImg5 from '@/assets/synapse-workflow.png';
-
-const synapseGalleryData: GalleryImage[] = [
-    { id: 1, image: synImg2 }, // coverpage
-    { id: 2, image: synImg4 }, // login
-    { id: 3, image: synImg1 }, // assistant
-    { id: 4, image: synImg3 }, // dashboard
-    { id: 5, image: synImg5 }  // workflow
-];
-
-const ACCENT_COLORS = ['#e85d3a', '#4a7c9e', '#7b5ea7'];
-
-interface ProjectData {
-    id: string;
-    title: string;
-    role: string;
-    date: string;
-    type: string;
-    description: string;
-    image?: string;
-    video?: string;
-}
-
-const projectsData: ProjectData[] = [
-    {
-        id: "01",
-        title: "Synapse AI Platform",
-        role: "Product & UX/UI",
-        date: "Jun 2025",
-        type: "Internal AI Tool",
-        description: "An internal AI-driven platform designed to supercharge product and engineering workflows. Synapse seamlessly integrates into daily operations to assist generating PRDs and BRDs, utilizing lossless Markdown translation to eliminate communication friction between human teams and AI agents.",
-        image: synapseCoverImg
-    },
-    {
-        id: "02",
-        title: "C2C Bike Rental",
-        role: "UX/UI Design",
-        date: "TBD",
-        type: "Commercial App",
-        description: "An intuitive C2C platform designed for seamless peer-to-peer bike rentals, streamlining the urban mobility and sharing experience.",
-        image: dealerCoverImg,
-        video: bikerentalVideo
-    },
-    {
-        id: "03",
-        title: "AI Sleep Companion",
-        role: "Concept & Design",
-        date: "TBD",
-        type: "Consumer App",
-        description: "A visionary platform leveraging AI to offer personalized soundscapes and sleep recommendations, helping users achieve deeper, more restful sleep.",
-        image: beautifulCoverImg,
-        video: beautyVideo
-    }
-];
+const getGalleryImages = (project: PortfolioProject): GalleryImage[] =>
+    (project.images ?? []).map((image, index) => ({ id: index + 1, image }));
 
 export const ProjectSection = () => {
-    const [isSynapseModalOpen, setIsSynapseModalOpen] = useState(false);
-    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+    const [galleryImages, setGalleryImages] = useState<GalleryImage[] | null>(null);
     const [currentVideoUrl, setCurrentVideoUrl] = useState<string | null>(null);
 
+    const openProject = (project: PortfolioProject) => {
+        if (project.kind === 'gallery' && project.images?.length) {
+            setGalleryImages(getGalleryImages(project));
+            return;
+        }
+
+        if (project.kind === 'video' && project.video) {
+            setCurrentVideoUrl(project.video);
+        }
+    };
+
     return (
-        <section id="projects" className="relative z-20 min-h-screen py-32 mt-24 bg-transparent">
-
-            <div className="container mx-auto px-6 md:px-12">
-
-                {/* Section Header */}
-                <div className="mb-20 pt-12 border-t border-[#ede8d9]/10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <span className="text-xs font-mono uppercase tracking-widest text-[#ede8d9]/35">
-                            (02) Selected Works
-                        </span>
-                        <h2 className="text-5xl md:text-6xl font-bold mt-4 text-[#ede8d9]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                            Project Gallery
+        <section id="case-files" className="bg-[#f7f6f1] px-4 py-24 text-[#111111] md:px-8 lg:px-10">
+            <div className="mx-auto w-[min(1480px,100%)]">
+                <div className="grid grid-cols-1 gap-8 border-t border-[#111111]/20 pt-10 md:grid-cols-12 md:gap-5">
+                    <div className="font-mono-ui text-xs uppercase leading-tight text-[#111111]/60 md:col-span-2">
+                        017 / Case Files
+                    </div>
+                    <div className="md:col-span-7">
+                        <h2 className="m-0 text-[clamp(52px,8vw,136px)] font-semibold leading-[0.9] tracking-[-0.06em]">
+                            Selected work as exhibits.
                         </h2>
-                        <p className="text-lg text-[#ede8d9]/45 mt-4 max-w-2xl leading-relaxed">
-                            A curated collection of design explorations, product work, and creative experiments.
-                        </p>
-                    </motion.div>
+                    </div>
+                    <p className="m-0 max-w-sm text-base leading-[1.65] text-[#111111]/62 md:col-span-3">
+                        Each case file is treated as an exhibit: context, role, product decisions,
+                        deliverables, and what the project says about how I think.
+                    </p>
                 </div>
 
-                {/* Project Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
-                    {projectsData.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
+                <div className="mt-20 grid grid-cols-1 gap-6">
+                    {projects.map((project, index) => (
+                        <motion.article
+                            key={project.id}
+                            initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: index * 0.15 }}
-                            onClick={() => {
-                                if (project.id === "01") {
-                                    setIsSynapseModalOpen(true);
-                                } else if (project.video) {
-                                    setCurrentVideoUrl(project.video);
-                                    setIsVideoModalOpen(true);
-                                }
-                            }}
-                            className="group relative w-full flex flex-col hover:-translate-y-2 transition-transform duration-500 cursor-pointer"
+                            viewport={{ once: true, margin: '-80px' }}
+                            transition={{ duration: 0.55, delay: index * 0.04 }}
+                            className="group grid min-h-[420px] grid-cols-1 overflow-hidden rounded-[28px] border-2 border-[#111111] bg-[#f7f6f1] md:grid-cols-12"
                         >
-                            {/* Graphic Area */}
-                            <div
-                                className="w-full aspect-[4/5] overflow-hidden relative rounded-sm"
-                                style={{ backgroundColor: ACCENT_COLORS[index] + '08', border: `1px solid ${ACCENT_COLORS[index]}15` }}
-                            >
-                                {/* Background Image Integration */}
-                                <div className="absolute inset-0 w-full h-full mix-blend-screen opacity-70 group-hover:opacity-100 transition-opacity duration-700">
-                                    <img
-                                        src={project.image!}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover grayscale-[40%] contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                                    />
-                                    <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700" />
+                            <div className="relative min-h-[260px] border-b-2 border-[#111111] bg-[#030303] p-5 text-[#f7f6f1] md:col-span-5 md:border-b-0 md:border-r-2">
+                                <div className="font-mono-ui text-xs uppercase leading-tight text-[#f7f6f1]/72">
+                                    {project.index}
+                                    <br />
+                                    -
+                                    <br />
+                                    {project.label}
                                 </div>
 
-                                {/* 
-                                    TEMPLATE: "COMING SOON" PLACEHOLDER (PRESERVED FOR FUTURE USE)
-                                    If you need to add a new project without an image, you can use the following 
-                                    code block instead of the img tag above.
-
-                                    <>
-                                        <div
-                                            className="absolute inset-0"
-                                            style={{
-                                                background: `radial-gradient(ellipse at 50% 40%, ${ACCENT_COLORS[index]}20 0%, transparent 70%)`
-                                            }}
-                                        />
-                                        <div
-                                            className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2"
-                                            style={{
-                                                width: '55%',
-                                                paddingTop: '55%',
-                                                border: `1px solid ${ACCENT_COLORS[index]}30`,
-                                                borderRadius: '50%',
-                                            }}
-                                        />
-                                        <div
-                                            className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 rounded-full group-hover:scale-110 transition-transform duration-500"
-                                            style={{
-                                                width: '28%',
-                                                paddingTop: '28%',
-                                                backgroundColor: ACCENT_COLORS[index],
-                                                opacity: 0.6,
-                                            }}
-                                        />
-                                        <div className="absolute bottom-5 left-0 right-0 flex justify-center">
-                                            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#ede8d9]/20">
-                                                Coming Soon
+                                <div className="absolute inset-x-5 bottom-5">
+                                    {project.image ? (
+                                        <button
+                                            type="button"
+                                            onClick={() => openProject(project)}
+                                            className="relative block w-full bg-[#f7f6f1] p-3 pb-10 text-left shadow-[0_3px_14px_rgba(0,0,0,0.28)] transition duration-200 group-hover:-translate-y-1"
+                                        >
+                                            <img
+                                                src={project.image}
+                                                alt={project.title}
+                                                loading="eager"
+                                                decoding="async"
+                                                className="aspect-[16/10] w-full object-cover grayscale transition duration-300 group-hover:grayscale-0"
+                                            />
+                                            <span className="font-mono-ui absolute bottom-4 left-8 text-[8px] uppercase text-[#111111]">
+                                                {project.title} / {project.type}
                                             </span>
-                                        </div>
-                                    </>
-                                */}
-
-                                {/* Hover overlay */}
-                                <div className="absolute inset-0 bg-[#111210]/0 group-hover:bg-[#111210]/10 transition-colors duration-500 pointer-events-none" />
-                            </div>
-
-                            {/* Content Area (Bottom ~25%) */}
-                            <div className="mt-8 flex flex-col flex-shrink-0">
-                                <h3 className="text-lg md:text-xl font-bold text-[#ede8d9] tracking-[0.05em] uppercase mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                                    {project.title}
-                                </h3>
-
-                                <div className="flex justify-between items-start gap-8">
-                                    {/* Left — Specs */}
-                                    <div className="flex-1">
-                                        <p className="text-xs text-[#ede8d9]/40 font-mono leading-[1.8]">
-                                            Role: {project.role}<br />
-                                            Date: {project.date}<br />
-                                            Type: {project.type}
-                                        </p>
-                                    </div>
-                                    {/* Right — Description */}
-                                    <div className="flex-[2]">
-                                        <p className="text-sm md:text-base text-[#ede8d9]/60 leading-[1.8] font-medium">
-                                            {project.description}
-                                        </p>
-                                    </div>
+                                        </button>
+                                    ) : (
+                                        <button
+                                            type="button"
+                                            onClick={() => openProject(project)}
+                                            className="relative grid aspect-[16/10] w-full place-items-center border-2 border-[#f7f6f1] bg-[#030303] text-[#f7f6f1] transition duration-200 group-hover:-translate-y-1"
+                                        >
+                                            <div className="aspect-square w-[58%] rotate-45 border-2 border-[#f7f6f1]" />
+                                            <span className="absolute text-[clamp(34px,5vw,72px)] font-light tracking-[-0.075em]">
+                                                {project.title}
+                                            </span>
+                                        </button>
+                                    )}
                                 </div>
                             </div>
-                        </motion.div>
+
+                            <div className="grid gap-8 p-5 md:col-span-7 md:grid-cols-7 md:p-8">
+                                <div className="md:col-span-4">
+                                    <div
+                                        className="mb-8 h-4 w-4 rounded-full"
+                                        style={{ backgroundColor: project.accent }}
+                                    />
+                                    <h3 className="m-0 text-[clamp(42px,6vw,96px)] font-semibold leading-[0.88] tracking-[-0.065em]">
+                                        {project.title}
+                                    </h3>
+                                    <p className="mt-6 max-w-xl text-[clamp(16px,1.5vw,21px)] font-medium leading-[1.35] tracking-[-0.04em] text-[#111111]/72">
+                                        {project.description}
+                                    </p>
+                                </div>
+
+                                <div className="md:col-span-3">
+                                    <div className="grid gap-4 border-b border-[#111111]/20 pb-6 font-mono-ui text-xs uppercase leading-[1.45] text-[#111111]/62">
+                                        <span>Role: {project.role}</span>
+                                        <span>Date: {project.date}</span>
+                                        <span>Type: {project.type}</span>
+                                    </div>
+
+                                    <ul className="m-0 mt-6 grid list-none gap-3 p-0">
+                                        {project.contribution.map((item) => (
+                                            <li
+                                                key={item}
+                                                className="border-t border-[#111111]/18 pt-3 text-sm leading-[1.55] text-[#111111]/70"
+                                            >
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {(project.kind === 'gallery' || project.kind === 'video') && (
+                                        <button
+                                            type="button"
+                                            onClick={() => openProject(project)}
+                                            className="mt-8 border-2 border-[#111111] bg-[#f7f6f1] px-4 py-3 font-mono-ui text-xs uppercase transition duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#111111]"
+                                        >
+                                            Open exhibit
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        </motion.article>
                     ))}
                 </div>
-
             </div>
 
-            {/* Reusable Gallery Modal for Synapse AI */}
-            <AiWorksModal 
-                isOpen={isSynapseModalOpen} 
-                onClose={() => setIsSynapseModalOpen(false)} 
-                images={synapseGalleryData}
+            <AiWorksModal
+                isOpen={Boolean(galleryImages)}
+                onClose={() => setGalleryImages(null)}
+                images={galleryImages ?? []}
             />
 
-            {/* Video Modal for Demo Videos */}
-            <VideoModal 
-                isOpen={isVideoModalOpen} 
+            <VideoModal
+                isOpen={Boolean(currentVideoUrl)}
                 onClose={() => {
-                    setIsVideoModalOpen(false);
-                    // Slight delay to allow fade out before removing video source
-                    setTimeout(() => setCurrentVideoUrl(null), 300);
-                }} 
+                    setCurrentVideoUrl(null);
+                }}
                 videoUrl={currentVideoUrl}
             />
         </section>

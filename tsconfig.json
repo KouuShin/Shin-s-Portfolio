@@ -29,8 +29,13 @@
     }
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx"
+    "vite-env.d.ts",
+    "main.tsx",
+    "App.tsx",
+    "components/portfolioContent.ts",
+    "components/sections/**/*.tsx",
+    "components/ui/AiWorksModal.tsx",
+    "components/ui/VideoModal.tsx"
   ],
   "exclude": [
     "node_modules",

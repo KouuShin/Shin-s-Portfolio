@@ -51,6 +51,7 @@ function figmaAssetPlugin() {
 }
 
 export default defineConfig({
+  base: './',
   plugins: [react(), figmaAssetPlugin()],
   server: {
     port: 884,
@@ -63,4 +64,3 @@ export default defineConfig({
     },
   },
 });
-

@@ -1,245 +1,83 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AiWorksModal, GalleryImage } from '../../ui/AiWorksModal';
-import diplomaImg from '@/assets/diploma.jpg';
-import verticalPosterImg from '@/assets/vertical poster.png';
-
-import aiArt1 from '@/assets/AiArt_1.png';
-import aiArt2 from '@/assets/AiArt_2.png';
-import aiArt3 from '@/assets/AiArt_3.png';
-import aiArt4 from '@/assets/AiArt_4.png';
-import aiArt5 from '@/assets/AiArt_5.png';
-
-const timelineAiWorksData: GalleryImage[] = [
-    { id: 1, image: aiArt1 },
-    { id: 2, image: aiArt2 },
-    { id: 3, image: aiArt3 },
-    { id: 4, image: aiArt4 },
-    { id: 5, image: aiArt5 }
-];
-
-const timelineData = [
-    {
-        id: "22",
-        meta: "02",
-        title: "University of Melbourne",
-        subtitle: "Start my Uni life in ",
-        type: "text",
-        image: null,
-        imgWidth: null
-    },
-    {
-        id: "24",
-        meta: "12",
-        title: "Have intership in 悠船 (Midjourney China Lab)",
-        subtitle: "Start to explore AI era",
-        type: "image",
-        image: verticalPosterImg,
-        imgWidth: 573,
-        actionText: "Explore more",
-        actionType: "openAiModal"
-    },
-    {
-        id: "25",
-        meta: "02",
-        title: "Granduaste in Bachelor Degree",
-        subtitle: "Congrauation about me！",
-        type: "image",
-        image: diplomaImg,
-        imgWidth: 401
-    },
-    {
-        id: "26",
-        meta: "CURRENT",
-        title: "Start to explore car industry",
-        subtitle: "Business Analyst",
-        description: "Spearheading AI-driven efficiency within the automotive sector. Empowering teams to integrate AI workflows—from drafting BRDs/PRDs and developing reusable Agent Skills, to converting Figma designs into interactive code and establishing rigorous acceptance testing frameworks.",
-        type: "text"
-    }
-];
+import { timelineEntries } from '../../portfolioContent';
 
 export const TimelineSection = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [gallery, setGallery] = useState<GalleryImage[] | null>(null);
 
     return (
-        <section
-            ref={containerRef}
-            className="w-full bg-transparent pt-[15vh] pb-64 text-[#ede8d9] overflow-hidden"
-        >
-            {/* 1:1 Design Constraint: 1400px Wrapper */}
-            <div className="w-full max-w-[1400px] mx-auto relative px-6 lg:px-0">
-
-                {/* Header (TimeLine) at x=602 -> roughly 43% of 1400px */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ margin: "-50px", once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="w-full mb-32 md:mb-48 hidden lg:block"
-                    style={{ paddingLeft: '43%' }}
-                >
-                    <h2
-                        className="text-[40px] md:text-[56px] font-normal tracking-wide leading-none"
-                        style={{ fontFamily: "'Adamina', serif" }}
-                    >
-                        TimeLine
-                    </h2>
-                </motion.div>
-
-                {/* Mobile Header */}
-                <h2
-                    className="text-[40px] font-normal tracking-wide leading-none mb-16 lg:hidden"
-                    style={{ fontFamily: "'Adamina', serif" }}
-                >
-                    TimeLine
-                </h2>
-
-                {/* Main Content Layout starts at x=271 -> roughly 19.3% in desktop */}
-                <div className="flex flex-col lg:flex-row w-full lg:pl-[19.3%]">
-
-                    {/* Column 1: Sticky 20 (x=271 to 427 -> 156px gap) */}
-                    {/* lg:w-[156px] handles the exact spacing between '20' (x=271) and '22' (x=427) */}
-                    <div className="w-full lg:w-[156px] shrink-0 relative mb-16 lg:mb-0">
-                        {/* top-[35vh] ensures '20' is sticky vertically centered as content scrolls past */}
-                        <div className="lg:sticky lg:top-[35vh] pointer-events-none">
-                            <span
-                                style={{ fontFamily: "'Aclonica', sans-serif" }}
-                                className="text-[64px] lg:text-[72px] font-light leading-none block"
-                            >
-                                20
-                            </span>
-                        </div>
+        <section id="memory" className="bg-[#030303] px-4 py-24 text-[#f7f6f1] md:px-8 lg:px-10">
+            <div className="mx-auto w-[min(1480px,100%)]">
+                <div className="grid grid-cols-1 gap-8 border-t border-[#f7f6f1]/20 pt-10 md:grid-cols-12 md:gap-5">
+                    <div className="font-mono-ui text-xs uppercase leading-tight text-[#f7f6f1]/55 md:col-span-2">
+                        009 / Memory Layer
                     </div>
 
-                    {/* Column 2 & 3: The Scrolling Feed (Starts at x=427) */}
-                    <div className="flex-1 flex flex-col pt-0 lg:pt-[5vh] pb-32">
-                        {timelineData.map((item, index) => (
-                            <motion.div
-                                key={index}
-                                className="flex flex-col w-full relative"
-                                initial={{ opacity: 0, y: 30 }}
+                    <div className="md:col-span-7">
+                        <h2 className="m-0 text-[clamp(52px,8vw,136px)] font-semibold leading-[0.9] tracking-[-0.06em]">
+                            Memory as evidence.
+                        </h2>
+                    </div>
+
+                    <p className="m-0 text-base leading-[1.65] text-[#f7f6f1]/62 md:col-span-3">
+                        Not a resume timeline. These are samples of where the map came from: UX,
+                        AI image culture, automotive systems, and current AI product research.
+                    </p>
+                </div>
+
+                <div className="mt-20 grid grid-cols-1 gap-5 md:grid-cols-12">
+                    {timelineEntries.map((entry, index) => {
+                        const spanClass = index === 1 || index === 4 ? 'md:col-span-5' : 'md:col-span-4';
+
+                        return (
+                            <motion.article
+                                key={`${entry.year}-${entry.title}`}
+                                initial={{ opacity: 0, y: 24 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ margin: "-15% 0px -15% 0px", amount: 0.2 }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                viewport={{ once: true, margin: '-80px' }}
+                                transition={{ duration: 0.55, delay: index * 0.04 }}
+                                className={`group min-h-[280px] rounded-[24px] border border-[#f7f6f1]/22 bg-[#f7f6f1] p-5 text-[#111111] transition duration-200 hover:-translate-y-1 hover:shadow-[10px_10px_0_rgba(247,246,241,0.3)] ${spanClass}`}
                             >
-                                {/* Feed Item Row */}
-                                <div className="flex flex-col sm:flex-row w-full items-start">
-
-                                    {/* Column 2: Suffix (22, 24, 25, 26) Starts at 427, Content at 576 -> 149px gap */}
-                                    {/* lg:w-[149px] provides exact spacing matching the figma file */}
-                                    <div className="w-[80px] lg:w-[149px] shrink-0 mb-4 sm:mb-0">
-                                        <span
-                                            className="text-[56px] lg:text-[64px] font-light leading-none block"
-                                            style={{ fontFamily: "'Aclonica', sans-serif" }}
-                                        >
-                                            {item.id}
-                                        </span>
-                                    </div>
-
-                                    {/* Column 3: Content (Starts at x=576) */}
-                                    <div className="flex-1 flex flex-col pt-2 md:pt-4">
-
-                                        {/* Subtitle */}
-                                        <h4
-                                            className="text-[12px] font-light text-[#ede8d9]/60 mb-2 uppercase tracking-wide"
-                                            style={{ fontFamily: "'Inter', sans-serif" }}
-                                        >
-                                            {item.subtitle}
-                                        </h4>
-
-                                        {/* Meta & Title */}
-                                        <div className="flex flex-row items-baseline gap-4 mb-4">
-                                            <span
-                                                className="text-[20px] lg:text-[24px] font-light text-[#ede8d9]/40 shrink-0"
-                                                style={{ fontFamily: "'Afacad Flux', sans-serif" }}
-                                            >
-                                                {item.meta}
-                                            </span>
-
-                                            <h3
-                                                className="text-[20px] lg:text-[24px] font-normal leading-tight text-[#ede8d9]"
-                                                style={{ fontFamily: "'Aclonica', sans-serif" }}
-                                            >
-                                                {item.title}
-                                            </h3>
-                                        </div>
-
-                                        {/* Optional Description (Detailed Text) */}
-                                        {item.description && (
-                                            <p
-                                                className="mt-2 text-sm md:text-base text-[#ede8d9]/50 leading-relaxed max-w-[500px]"
-                                                style={{ fontFamily: "'Inter', sans-serif" }}
-                                            >
-                                                {item.description}
-                                            </p>
-                                        )}
-
-                                        {/* Attached Image */}
-                                        {item.type === 'image' && item.image && (
-                                            <motion.div
-                                                className={`relative mt-6 lg:mt-8 overflow-hidden mix-blend-screen opacity-90 ${index === 2 ? 'rounded-[16px]' : 'rounded-[8px]'}`}
-                                                style={{ maxWidth: item.imgWidth ? `${item.imgWidth}px` : '100%', width: '100%' }}
-                                                whileHover={{ scale: 1.02, opacity: 1 }}
-                                                transition={{ duration: 0.4, ease: "easeOut" }}
-                                            >
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.title}
-                                                    className="w-full h-auto object-cover grayscale-[15%] brightness-110 contrast-125 transition-all duration-700 hover:grayscale-0 hover:brightness-100"
-                                                    loading="lazy"
-                                                />
-                                            </motion.div>
-                                        )}
-
-                                        {/* Action Link (Explore more) */}
-                                        {item.actionText && (
-                                            <div className="mt-6 flex justify-start">
-                                                <button
-                                                    onClick={() => {
-                                                        if (item.actionType === 'openAiModal') {
-                                                            setIsModalOpen(true);
-                                                        }
-                                                    }}
-                                                    className="group flex flex-col items-start gap-1 hover:opacity-80 transition-opacity focus:outline-none"
-                                                >
-                                                    <span 
-                                                        className="text-[#ede8d9] text-[18px] md:text-[20px] tracking-widest font-light"
-                                                        style={{ fontFamily: "'Aclonica', sans-serif" }}
-                                                    >
-                                                        {item.actionText}
-                                                    </span>
-                                                    {/* Underline */}
-                                                    <div className="h-[1px] w-full bg-[#ede8d9] group-hover:scale-x-110 origin-left transition-transform duration-300" />
-                                                </button>
-                                            </div>
-                                        )}
-                                    </div>
+                                <div className="flex items-start justify-between gap-4">
+                                    <div className="font-mono-ui text-xs uppercase text-[#111111]/50">{entry.meta}</div>
+                                    <div className="font-mono-ui text-sm">{entry.year}</div>
                                 </div>
 
-                                {/* Divider Line (Starts at 427 -> fits nicely inside the wrapper, maps exactly to 749px width height 7px) */}
-                                {index < timelineData.length - 1 && (
-                                    <div
-                                        className="h-[7px] bg-[#ede8d9]/10 rounded-full"
-                                        style={{
-                                            maxWidth: '749px',
-                                            width: '100%',
-                                            marginTop: index === 0 ? '60px' : '90px', // Exact visual gaps from design
-                                            marginBottom: '40px'
+                                {entry.image && (
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            if (entry.gallery) {
+                                                setGallery(entry.gallery.map((image, i) => ({ id: i + 1, image })));
+                                            }
                                         }}
-                                    />
+                                        className="mt-8 block w-full overflow-hidden rounded-[18px] border border-[#111111]/15 bg-[#ebe8df] p-2 text-left"
+                                    >
+                                        <img
+                                            src={entry.image}
+                                            alt={entry.title}
+                                            className="aspect-[16/10] w-full rounded-[12px] object-cover grayscale transition duration-300 group-hover:grayscale-0"
+                                            loading="eager"
+                                            decoding="async"
+                                        />
+                                    </button>
                                 )}
-                            </motion.div>
-                        ))}
-                    </div>
+
+                                <h3 className="mb-4 mt-8 text-[clamp(28px,3vw,46px)] font-semibold leading-[0.95] tracking-[-0.055em]">
+                                    {entry.title}
+                                </h3>
+                                <p className="m-0 max-w-xl text-sm leading-[1.65] text-[#111111]/65">{entry.body}</p>
+                            </motion.article>
+                        );
+                    })}
                 </div>
             </div>
 
-            {/* Modal Components */}
-            <AiWorksModal 
-                isOpen={isModalOpen} 
-                onClose={() => setIsModalOpen(false)} 
-                images={timelineAiWorksData}
+            <AiWorksModal
+                isOpen={Boolean(gallery)}
+                onClose={() => setGallery(null)}
+                images={gallery ?? []}
             />
         </section>
     );

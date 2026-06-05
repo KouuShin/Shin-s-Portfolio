@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognitive City Wireframe</title>
+  <style>
+    :root {
+      --bg: #101111;
+      --panel: #171918;
+      --ink: #ece8dd;
+      --muted: rgba(236, 232, 221, 0.62);
+      --line: rgba(236, 232, 221, 0.22);
+      --soft: rgba(236, 232, 221, 0.08);
+      --accent: #caa96a;
+      --blue: #9ab7c8;
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+    }
+
+    .page {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 28px clamp(18px, 4vw, 64px) 70px;
+    }
+
+    .note {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .topbar {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .topbar strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .topbar nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 86px);
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(26px, 5vw, 72px);
+      align-items: center;
+      padding: 48px 0 58px;
+    }
+
+    .manifesto {
+      display: grid;
+      gap: 24px;
+    }
+
+    .tag {
+      width: fit-content;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 96px);
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .quote {
+      max-width: 580px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(17px, 1.6vw, 22px);
+      line-height: 1.7;
+    }
+
+    .ability-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .ability {
+      min-height: 112px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: var(--soft);
+    }
+
+    .ability b {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ability span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .map-shell {
+      position: relative;
+      aspect-ratio: 1.08 / 1;
+      min-height: 560px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(90deg, rgba(236, 232, 221, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(236, 232, 221, 0.05) 1px, transparent 1px),
+        rgba(236, 232, 221, 0.035);
+      background-size: 48px 48px;
+      overflow: hidden;
+    }
+
+    .map-title {
+      position: absolute;
+      left: 24px;
+      top: 22px;
+      z-index: 2;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .route {
+      position: absolute;
+      inset: 78px 70px 70px 58px;
+    }
+
+    .route svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .route path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 2;
+      stroke-dasharray: 8 10;
+    }
+
+    .node {
+      position: absolute;
+      width: 142px;
+      min-height: 78px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px;
+      background: rgba(16, 17, 17, 0.78);
+      backdrop-filter: blur(10px);
+    }
+
+    .node::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: -9px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(202, 169, 106, 0.55);
+    }
+
+    .node b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .node span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .node.origin {
+      left: 42%;
+      top: 42%;
+      border-color: rgba(202, 169, 106, 0.55);
+      transform: translate(-50%, -50%);
+    }
+
+    .node.ai-check {
+      right: 10%;
+      top: 17%;
+    }
+
+    .node.knowledge {
+      left: 8%;
+      bottom: 18%;
+    }
+
+    .node.lab {
+      right: 13%;
+      bottom: 16%;
+      border-style: dashed;
+    }
+
+    .node.memory {
+      left: 14%;
+      top: 15%;
+    }
+
+    .node.creative {
+      left: 42%;
+      bottom: 8%;
+    }
+
+    .case-preview {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      width: min(360px, calc(100% - 48px));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(16, 17, 17, 0.86);
+      padding: 18px;
+    }
+
+    .case-preview .label {
+      color: var(--blue);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .case-preview h2 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .case-preview p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 46px;
+    }
+
+    .step {
+      min-height: 190px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: var(--soft);
+    }
+
+    .step small {
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .step h3 {
+      margin: 24px 0 12px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .map-shell {
+        min-height: 720px;
+      }
+
+      .node {
+        width: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="note">Wireframe only / structure and interaction concept</p>
+
+    <header class="topbar">
+      <strong>Xinyi Kou</strong>
+      <nav>
+        <span>Map</span>
+        <span>Case Files</span>
+        <span>Memory</span>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="manifesto">
+        <span class="tag">Default first impression</span>
+        <h1>我把好奇心<br />画成地图。</h1>
+        <p class="quote">
+          I map my curiosity through products, systems, and observations.
+          这里不是一份简历，而是一张关于我如何观察复杂业务、转译 AI 能力、沉淀知识和推动交付的认知地图。
+        </p>
+
+        <div class="ability-grid">
+          <div class="ability">
+            <b>Product Translation</b>
+            <span>把复杂 AI 能力转化为业务人员可理解、可配置、可操作的产品流程。</span>
+          </div>
+          <div class="ability">
+            <b>Business Analysis</b>
+            <span>从宏观流程拆解规则、角色、页面路径、异常场景与交付边界。</span>
+          </div>
+          <div class="ability">
+            <b>AI Workflow</b>
+            <span>用 Prompt、Skill、RAG 和 Agent 工作流处理大量历史文档与业务信息。</span>
+          </div>
+          <div class="ability">
+            <b>Interface Craft</b>
+            <span>产出 PRD、流程图、用户故事、测试用例、高保真原型与方案宣讲。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-shell">
+        <div class="map-title">Cognitive City / System map + memory map</div>
+        <div class="route">
+          <svg viewBox="0 0 620 520" aria-hidden="true">
+            <path d="M120 105 C210 60, 285 180, 330 215 C405 275, 470 115, 560 90" />
+            <path d="M330 215 C230 275, 180 365, 85 410" />
+            <path d="M330 215 C410 288, 455 390, 540 420" />
+            <path d="M330 215 C330 315, 335 405, 330 486" />
+          </svg>
+        </div>
+
+        <div class="node memory">
+          <b>Memory Layer</b>
+          <span>墨尔本 / UX / 小红书 / 拳击 / Hackathon</span>
+        </div>
+
+        <div class="node ai-check">
+          <b>AI 明检</b>
+          <span>AI 客户智能体、考核任务、评分报告闭环</span>
+        </div>
+
+        <div class="node origin">
+          <b>Observer Core</b>
+          <span>人生格言、能力、现在的我</span>
+        </div>
+
+        <div class="node knowledge">
+          <b>Knowledge Engine</b>
+          <span>零件业务流程、历史 PRD、OCR、知识沉淀</span>
+        </div>
+
+        <div class="node lab">
+          <b>Digital Employee Lab</b>
+          <span>文档更新 Agent、PRD Writer、代码校验</span>
+        </div>
+
+        <div class="node creative">
+          <b>Creative AI Origin</b>
+          <span>Midjourney 实习、AIGC 内容、视觉趋势</span>
+        </div>
+
+        <aside class="case-preview">
+          <div class="label">Hover / click preview example</div>
+          <h2>AI 明检 Case File</h2>
+          <p>
+            传统人工明检成本高、标准不统一。方案把大模型封装成可配置客户智能体，
+            用语音对话、评分维度和 AI 报告形成训练闭环。
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="flow">
+      <article class="step">
+        <small>Interaction 01</small>
+        <h3>Explore Map</h3>
+        <p>用户先看到人生格言和能力概览，再通过地图节点探索你的经历。</p>
+      </article>
+      <article class="step">
+        <small>Interaction 02</small>
+        <h3>Open Case File</h3>
+        <p>点击项目地标，打开案例档案：背景、角色、决策、产物、反思。</p>
+      </article>
+      <article class="step">
+        <small>Interaction 03</small>
+        <h3>Memory Notes</h3>
+        <p>记忆标记以照片、注释、短句出现，补充“你是谁”。</p>
+      </article>
+      <article class="step">
+        <small>Interaction 04</small>
+        <h3>Lab Signal</h3>
+        <p>数字员工研究作为持续更新区域，展示你现在正在思考的问题。</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
