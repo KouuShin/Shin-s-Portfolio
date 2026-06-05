@@ -94,7 +94,7 @@ export const HeroSection = () => {
                         </div>
                     </motion.div>
 
-                    <div className="relative z-30 mt-4 grid w-full grid-cols-2 gap-3 md:hidden">
+                    <div className="relative z-30 mt-4 hidden w-full grid-cols-2 gap-3 sm:grid md:hidden">
                         {exhibitionNodes.map((node) => (
                             <a
                                 key={node.id}
@@ -112,7 +112,7 @@ export const HeroSection = () => {
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative z-30 m-0 mt-6 max-w-[1080px] pb-1 text-[clamp(30px,4vw,58px)] font-semibold leading-[0.98] tracking-[-0.05em] md:mt-0"
+                    className="relative z-30 m-0 mt-6 max-w-[1080px] pb-1 text-[clamp(24px,4vw,58px)] font-semibold leading-[1] tracking-[-0.04em] md:mt-0"
                 >
                     <span className="block">{statementLines[0]}</span>
                     <span className="block pl-[clamp(24px,8vw,128px)]">{statementLines[1]}</span>
