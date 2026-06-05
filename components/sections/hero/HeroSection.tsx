@@ -90,7 +90,7 @@ export const HeroSection = () => {
                         ))}
 
                         <div className="absolute left-1/2 top-[42%] z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(38px,5vw,68px)] font-light leading-none tracking-[-0.07em]">
-                            Xinyi Map
+                            Xinyi Kou
                         </div>
                     </motion.div>
 

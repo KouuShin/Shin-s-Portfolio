@@ -60,7 +60,7 @@ export const exhibitionNodes = [
   {
     id: 'ai-check',
     label: 'Case File 01',
-    title: 'AI Mingjian',
+    title: 'AI 明检',
     color: '#2457ff',
     position: 'rightTop',
     summary:
@@ -159,7 +159,7 @@ export const projects: PortfolioProject[] = [
   {
     id: 'ai-check',
     index: '017',
-    title: 'AI Mingjian',
+    title: 'AI 明检',
     label: 'Main Case / AI Assessment',
     date: '2026.05 - Now',
     role: 'AI Product Design / BA / Prototype',
