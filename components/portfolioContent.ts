@@ -15,6 +15,7 @@ import synapseLogin from '@/assets/synapse-login.png';
 import synapseWorkflow from '@/assets/synapse-workflow.png';
 import bikeRentalVideo from '@/assets/bikerental_demo.mp4';
 import bikeRentalCover from '@/assets/ai_dealer_cover_page.png';
+import aiMingjianCover from '@/assets/ai-mingjian_cover_page.png';
 import sleepCover from '@/assets/ai_beautiful_cover.png';
 import sleepVideo from '@/assets/助眠demo.mp4';
 
@@ -163,17 +164,21 @@ export const projects: PortfolioProject[] = [
     label: 'Main Case / AI Assessment',
     date: '2026.05 - Now',
     role: 'AI Product Design / BA / Prototype',
-    type: 'Automotive sales training and assessment',
+    type: 'Volvo sales training and assessment system',
     description:
-      'Designed an AI dialogue interaction and assessment system for automotive inspection training. It upgrades manual exam scoring into a configurable loop of simulated customers, voice exams, custom scoring dimensions, and AI improvement reports.',
+      'Designed a Volvo sales assessment product that turns manual “Mingjian” checks into an AI dialogue, scoring, and coaching loop. The system connects PC-side task configuration, AI customer agents, App-side voice exams, role-based dashboards, and personalized AI improvement reports.',
     contribution: [
-      'Designed AI customer agent configuration for non-technical business users.',
-      'Covered App-side learner exams and PC/SaaS-side task, agent, scoring, and report management.',
-      'Translated custom scoring rules into prompt-controlled model evaluation logic.',
-      'Delivered PRD, flow diagrams, high-fidelity prototypes, user stories, test cases, and presentation materials.',
+      'Defined the product background: replace costly, inconsistent manual sales checks with a reusable AI dialogue assessment workflow.',
+      'Mapped four role boundaries: group business team, AI customer agent, store manager, and frontline sales learner.',
+      'Designed PC-side flows for AI customer agent management, Mingjian task creation, custom scoring dimensions, dealer dispatch scope, and data dashboards.',
+      'Designed App and PC learner flows for task calendar, exam detail, anti-cheating check, voice-based customer simulation, scoring-in-progress state, and final report review.',
+      'Specified AI behavior: prompt-controlled customer persona loading, dynamic objections, guided dialogue continuation, time-limit handling, multi-question switching, transcript analysis, custom-dimension scoring, and personalized improvement advice.',
+      'Produced PRD, cross-role business flow, PC/App HTML prototypes, permission rules, status transitions, validation rules, and report interaction logic.',
     ],
+    image: aiMingjianCover,
+    images: [aiMingjianCover],
     accent: '#2457ff',
-    kind: 'plate',
+    kind: 'gallery',
   },
   {
     id: 'knowledge-engine',

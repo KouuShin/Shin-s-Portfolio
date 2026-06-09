@@ -15,16 +15,10 @@ const mobileNodeClass: Record<string, string> = {
     leftTop: 'border-[#f0c62d]',
 };
 
-const statementLines = [
-    'I do not define myself by any title.',
-    'I define myself by curiosity,',
-    'and by the progress I keep making.',
-];
-
 export const HeroSection = () => {
     return (
         <section id="map" className="relative min-h-screen overflow-hidden bg-[#f7f6f1] px-4 py-4 text-[#111111] md:px-8 md:py-6">
-            <div className="relative grid min-h-[calc(100vh-32px)] grid-rows-[auto_minmax(430px,1fr)_auto] overflow-hidden bg-[#f7f6f1] md:min-h-[calc(100vh-48px)] md:grid-rows-[auto_minmax(600px,1fr)_auto]">
+            <div className="relative grid min-h-[calc(100vh-32px)] grid-rows-[auto_minmax(430px,1fr)] overflow-hidden bg-[#f7f6f1] md:min-h-[calc(100vh-48px)] md:grid-rows-[auto_minmax(600px,1fr)]">
                 <header className="relative z-40 flex items-start justify-between text-[11px] uppercase leading-tight tracking-normal text-[#111111]/70 md:text-xs">
                     <div className="font-mono-ui grid gap-4">
                         <span>{manifesto.index}</span>
@@ -41,14 +35,14 @@ export const HeroSection = () => {
                     </nav>
                 </header>
 
-                <div className="pointer-events-none absolute right-0 top-0 z-20 hidden font-mono-ui text-[11px] uppercase tracking-[0.08em] text-[#111111]/45 [writing-mode:vertical-rl] md:block">
+                <div className="pointer-events-none absolute right-0 top-20 z-20 hidden font-mono-ui text-[11px] uppercase tracking-[0.08em] text-[#111111]/45 [writing-mode:vertical-rl] md:block">
                     move through the archive / hover the exhibits
                 </div>
 
                 <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,rgba(3,3,3,0.035)_0_1px,transparent_1px)] bg-[length:100%_84px]" />
 
                 <div className="relative z-10 grid min-h-[430px] place-items-center pt-8 md:min-h-[600px] md:px-[5vw] md:pt-0">
-                    <div className="absolute inset-x-0 top-10 hidden min-h-[520px] grid-cols-[minmax(150px,210px)_1fr_minmax(150px,210px)] grid-rows-2 gap-x-[4vw] gap-y-16 md:grid">
+                    <div className="absolute inset-x-[15px] top-10 hidden min-h-[520px] grid-cols-[minmax(150px,210px)_1fr_minmax(150px,210px)] grid-rows-2 gap-x-[4vw] gap-y-16 md:grid">
                         {exhibitionNodes.map((node, index) => (
                             <motion.a
                                 key={node.id}
@@ -107,17 +101,6 @@ export const HeroSection = () => {
                         ))}
                     </div>
                 </div>
-
-                <motion.h1
-                    initial={{ opacity: 0, y: 28 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative z-30 m-0 mt-6 max-w-[1080px] pb-1 text-[clamp(24px,4vw,58px)] font-semibold leading-[1] tracking-[-0.04em] md:mt-0"
-                >
-                    <span className="block">{statementLines[0]}</span>
-                    <span className="block pl-[clamp(24px,8vw,128px)]">{statementLines[1]}</span>
-                    <span className="block pl-[clamp(58px,14vw,230px)]">{statementLines[2]}</span>
-                </motion.h1>
             </div>
         </section>
     );
