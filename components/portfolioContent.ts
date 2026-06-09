@@ -236,7 +236,7 @@ export const projects: PortfolioProject[] = [
     index: '041',
     title: 'C2C Bike Rental',
     label: 'UX/UI Design',
-    date: 'TBD',
+    date: '2025.09',
     role: 'UX/UI Design',
     type: 'Commercial app',
     description:
@@ -255,7 +255,7 @@ export const projects: PortfolioProject[] = [
     index: '046',
     title: 'AI Sleep Companion',
     label: 'Concept & Design',
-    date: 'TBD',
+    date: '2025.11',
     role: 'Concept & Design',
     type: 'Consumer AI app',
     description:
