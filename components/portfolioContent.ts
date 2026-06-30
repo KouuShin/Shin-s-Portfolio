@@ -149,6 +149,15 @@ export interface PortfolioProject {
   type: string;
   description: string;
   contribution: string[];
+  cardHighlights?: string[];
+  problem?: string;
+  outcome?: string;
+  skills?: string[];
+  detailSections?: Array<{
+    title: string;
+    body?: string;
+    items?: string[];
+  }>;
   image?: string;
   images?: string[];
   video?: string;
@@ -174,6 +183,53 @@ export const projects: PortfolioProject[] = [
       'Designed App and PC learner flows for task calendar, exam detail, anti-cheating check, voice-based customer simulation, scoring-in-progress state, and final report review.',
       'Specified AI behavior: prompt-controlled customer persona loading, dynamic objections, guided dialogue continuation, time-limit handling, multi-question switching, transcript analysis, custom-dimension scoring, and personalized improvement advice.',
       'Produced PRD, cross-role business flow, PC/App HTML prototypes, permission rules, status transitions, validation rules, and report interaction logic.',
+    ],
+    cardHighlights: [
+      'Achievement: transformed manual Mingjian checks into an AI dialogue, scoring, and coaching workflow.',
+      'Role: owned PRD structure, cross-role flows, PC/App prototype logic, scoring rules, and permissions.',
+      'Skills: AI agent configuration, custom rubrics, voice exam flow, dashboard logic, report design.',
+    ],
+    problem:
+      'Traditional manual Mingjian checks were expensive, inconsistent, hard to scale, and difficult to turn into continuous coaching.',
+    outcome:
+      'A reusable assessment workflow connecting task setup, AI customer simulation, voice examination, scoring, dashboards, and personalized improvement reports.',
+    skills: [
+      'AI product design',
+      'Business analysis',
+      'Prompt-controlled scoring',
+      'PC/App prototyping',
+      'Role permission modeling',
+    ],
+    detailSections: [
+      {
+        title: 'Product Background',
+        body:
+          'The project replaces one-off manual sales inspections with a standardized AI assessment loop. Business teams can configure tasks and scoring dimensions, learners complete voice-based customer simulations, and managers review reports and improvement suggestions.',
+      },
+      {
+        title: 'System Roles',
+        items: [
+          'Group business team: creates Mingjian tasks, configures AI customer agents, defines scoring dimensions, and dispatches dealer scope.',
+          'AI customer agent: loads persona, product background, objection strategy, and dialogue rules through prompt-controlled behavior.',
+          'Store manager: tracks completion, reviews learner progress, and manages team-side assessment follow-up.',
+          'Frontline learner: receives tasks, enters voice simulation, completes anti-cheating checks, and reviews scoring reports.',
+        ],
+      },
+      {
+        title: 'Core Product Design',
+        items: [
+          'PC-side task configuration: agent management, Mingjian task setup, custom scoring dimensions, dealer dispatch, and data dashboard.',
+          'App/PC learner path: task calendar, exam detail, anti-cheating check, voice customer simulation, scoring state, and final report review.',
+          'AI behavior rules: dynamic objections, guided continuation, time-limit handling, multi-question switching, transcript analysis, and personalized coaching.',
+        ],
+      },
+      {
+        title: 'Deliverables',
+        items: [
+          'PRD v1.0, cross-role business flow, permission rules, status transitions, validation logic, and report interaction rules.',
+          'PC and App HTML prototype direction for task creation, customer agent configuration, exam execution, and result review.',
+        ],
+      },
     ],
     image: aiMingjianCover,
     images: [aiMingjianCover],
