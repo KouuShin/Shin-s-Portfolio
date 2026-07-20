@@ -42,7 +42,7 @@ export const HeroSection = () => {
                 <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,rgba(3,3,3,0.035)_0_1px,transparent_1px)] bg-[length:100%_84px]" />
 
                 <div className="relative z-10 grid min-h-[430px] place-items-center pt-8 md:min-h-[600px] md:px-[5vw] md:pt-0">
-                    <div className="absolute inset-x-[15px] top-10 hidden min-h-[520px] grid-cols-[minmax(150px,210px)_1fr_minmax(150px,210px)] grid-rows-2 gap-x-[4vw] gap-y-16 md:grid">
+                    <div className="absolute left-[15px] right-16 top-10 hidden min-h-[520px] grid-cols-[minmax(150px,210px)_1fr_minmax(150px,210px)] grid-rows-2 gap-x-[4vw] gap-y-16 md:grid">
                         {exhibitionNodes.map((node, index) => (
                             <motion.a
                                 key={node.id}

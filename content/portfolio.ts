@@ -33,7 +33,7 @@ export const manifesto = {
   subtitle:
     'I do not define myself by any title. I define myself by curiosity, and by the progress I keep making.',
   bio:
-    'A digital exhibition of product thinking, business systems, AI workflow experiments, and small observations.',
+    'I turn business processes into testable AI workflows, skills, and product prototypes — then use what I build to understand where the technology truly helps.',
   portrait: profileImage,
   personalPhoto,
   vibecoderImage,
@@ -42,23 +42,23 @@ export const manifesto = {
 export const capabilityPlates = [
   {
     code: 'A01',
-    title: 'Product Translation',
-    body: 'Turn complex AI capabilities into configurable, reviewable, and operable product flows for business users.',
+    title: 'Problem Framing',
+    body: 'Find the operational problem behind a request, define its boundaries, and turn it into a product direction that can be tested.',
   },
   {
     code: 'A02',
-    title: 'Business Analysis',
-    body: 'Map roles, rules, page paths, edge cases, and system boundaries from real B-side automotive workflows.',
+    title: 'Workflow Translation',
+    body: 'Translate business processes into roles, rules, review gates, structured inputs and reusable AI workflows.',
   },
   {
     code: 'A03',
-    title: 'AI Workflow',
-    body: 'Use prompts, skills, OCR, RAG, and agent workflows to process large amounts of historical business information.',
+    title: 'AI Prototyping',
+    body: 'Build with multimodal models, Dify, skills, scripts, RAG, and agent frameworks to test what AI can and cannot reliably do.',
   },
   {
     code: 'A04',
-    title: 'Interface Craft',
-    body: 'Deliver PRDs, BRDs, journey flows, user stories, test cases, high-fidelity prototypes, and presentation materials.',
+    title: 'Product Delivery',
+    body: 'Connect PRDs, user journeys, high-fidelity prototypes, platform integration, and human review into an executable product loop.',
   },
 ];
 
@@ -73,22 +73,22 @@ export const exhibitionNodes = [
       'AI simulated customer training and assessment for automotive sales inspection scenarios.',
   },
   {
-    id: 'knowledge-engine',
-    label: 'System Layer',
-    title: 'Knowledge Engine',
+    id: 'industrial-ai',
+    label: 'Work in Progress',
+    title: 'Industrial AI Workflow',
     color: '#6d7563',
     position: 'leftBottom',
     summary:
-      'A structured knowledge base for automotive parts business rules, OCR evidence, PRD history, and current effective documents.',
+      'Turning engineering documents, conditions, comparison logic, and review rules into reusable AI workflows and skills.',
   },
   {
-    id: 'digital-employee',
-    label: 'In Progress',
-    title: 'Digital Employee Lab',
+    id: 'synapse',
+    label: 'AI Product Lab',
+    title: 'Synapse',
     color: '#d72418',
     position: 'rightBottom',
     summary:
-      'Researching how AI agents can help product managers update documents, write PRDs, verify code evidence, and maintain business knowledge.',
+      'Exploring how product documents, development evidence, and actual code logic can stay connected as a system changes.',
   },
   {
     id: 'memory-layer',
@@ -135,10 +135,10 @@ export const timelineEntries = [
   },
   {
     year: 'Now',
-    meta: 'AI Product Research',
-    title: 'Digital Employee & Knowledge Agent',
+    meta: 'Industrial AI / Product Lab',
+    title: 'From AI Workflows to Agents',
     body:
-      'Exploring a knowledge engineering agent for product managers: document update, PRD writing, RAG evidence retrieval, code cross-checking, and user-confirmed calibration loops.',
+      'Designing AI workflows for manufacturing engineering tasks while using Synapse as a personal lab for knowledge continuity, change awareness, skills, and evidence-based agents.',
   },
 ];
 
@@ -242,74 +242,182 @@ export const projects: PortfolioProject[] = [
     kind: 'gallery',
   },
   {
-    id: 'knowledge-engine',
+    id: 'industrial-ai',
     index: '021',
-    title: 'Knowledge Engine',
-    label: 'Business System / AI Workflow',
-    date: '2025.08 - Now',
-    role: 'BA / AI Workflow Designer',
-    type: 'Automotive parts process knowledge base',
+    title: 'Industrial AI Workflow',
+    label: 'Main Case / Work in Progress',
+    date: '2026 - Now',
+    role: 'AI Workflow Planning / Design / Integration',
+    type: 'Manufacturing engineering automation',
     description:
-      'Built a method for organizing automotive parts lifecycle logic from historical PRDs, OCR evidence, page paths, business rules, role actions, and current effective documents.',
+      'Designing a reusable AI workflow for manufacturing engineering tasks: recognizing PDF and PNG inputs, extracting engineering conditions, mapping and comparing information, and returning structured results for downstream DQR and CAA processes.',
     contribution: [
-      'Built a lifecycle framework covering purchase, inbound, outbound, transfer, traceability, inventory, and settlement.',
-      'Designed AI reading rules to extract goals, current logic, updated logic, menu paths, terms, and role operation paths.',
-      'Converted personal AI use into reusable prompts, skills, and knowledge documents for team handoff.',
+      'Plan and build the AI workflow, define its boundaries, and connect it with the surrounding platform.',
+      'Translate engineering SOPs into skills composed of judgment rules, steps, tools, scripts, references, and templates.',
+      'Combine semantic classification, multimodal extraction, format conversion, low-confidence suggestions, and explicit human confirmation.',
+    ],
+    cardHighlights: [
+      'Goal: move engineers away from repetitive checking, searching, comparing, and clicking toward defining the rules that guide AI.',
+      'Role: own AI workflow planning, design, prototyping, and third-party platform integration.',
+      'Status: workflow under active development; architecture and output contracts defined, business validation ongoing.',
+    ],
+    problem:
+      'Engineering work contains repeated document checks, information lookup, comparison, and manual judgment. These steps are time-consuming, easy to miss, and difficult for the organization to retain as reusable knowledge.',
+    outcome:
+      'An in-progress workflow architecture that converts PDF and PNG inputs into reviewable structured data for DQR and CAA processes, while preserving human confirmation for extracted facts, comparisons, and final judgments.',
+    skills: [
+      'AI workflow architecture',
+      'Multimodal document understanding',
+      'Skill design',
+      'Human-in-the-loop design',
+      'Platform integration',
+    ],
+    detailSections: [
+      {
+        title: 'Product Goal',
+        body:
+          'The aim is not to remove engineering judgment. It is to let engineers become rule makers: they capture their process and experience, direct AI through reusable skills, and retain those assets inside the organization.',
+      },
+      {
+        title: 'Workflow Framework',
+        items: [
+          'Input: engineering PDFs and PNGs from existing business processes.',
+          'Processing: document recognition, engineering-condition extraction, semantic classification, mapping, comparison, and format conversion.',
+          'Review: low-confidence suggestions and all important extracted, compared, or judged results remain subject to human confirmation.',
+          'Output: two structured JSON packages carrying the information needed by downstream DQR and CAA processes.',
+        ],
+      },
+      {
+        title: 'Knowledge as an Operational Asset',
+        body:
+          'Skills translate business experience from macro to micro: SOP, judgment rules, steps, tools, scripts, references, and templates. This makes the workflow repeatable and lets the company retain more than a one-off automation result.',
+      },
+      {
+        title: 'Current Status',
+        body:
+          'The workflow is being built and tested. The portfolio presents the product architecture, design decisions, and role boundaries rather than claiming completed production impact or unverified efficiency metrics.',
+      },
     ],
     accent: '#6d7563',
     kind: 'plate',
   },
   {
-    id: 'digital-employee',
-    index: '026',
-    title: 'Digital Employee Lab',
-    label: 'Research / In Progress',
-    date: '2026.05 - Now',
-    role: 'AI Product Research',
-    type: 'Product manager knowledge engineering agent',
-    description:
-      'Researching a digital employee for product managers: not a simple vector Q&A tool, but an agent workflow that maintains current effective business documents and writes PRDs with evidence retrieval and code cross-checking.',
-    contribution: [
-      'Defined document update and PRD writing loops.',
-      'Separated raw historical documents, current effective documents, RAG indexes, and code evidence.',
-      'Designed calibration flow for conflicts between PRD intent and actual code implementation.',
-    ],
-    accent: '#d72418',
-    kind: 'plate',
-  },
-  {
     id: 'synapse',
-    index: '032',
-    title: 'Synapse AI Platform',
-    label: 'Internal AI Tool',
-    date: '2025.06',
-    role: 'Product & UX/UI',
-    type: 'Workflow assistant',
+    index: '026',
+    title: 'Synapse',
+    label: 'AI Product Lab / Demo',
+    date: '2025 - Now',
+    role: 'Problem Definition / Product Architecture / Prototype',
+    type: 'Knowledge continuity and product-development agent',
     description:
-      'An internal AI-driven platform for product and engineering workflows, helping generate PRDs and BRDs and reduce friction between human teams and AI agents.',
+      'A continuing AI product experiment born from a real collaboration gap: product documents, development work, and actual code logic evolve together, but teams often cannot perceive how one change affects the others.',
     contribution: [
-      'Designed product workflow and interface structure.',
-      'Explored AI assistant, dashboard, login, and workflow pages.',
-      'Used visual prototypes to explain complex AI workflows.',
+      'Defined a knowledge structure that separates raw sources, current effective documents, retrieval indexes, code evidence, task context, rules, skills, and outputs.',
+      'Designed change-aware loops for document updates and PRD writing, including evidence retrieval, impact analysis, code cross-checking, and human calibration.',
+      'Prototyped the product direction from a Knowledge Engine into a Digital Employee that can use organizational knowledge to perform bounded work.',
+    ],
+    cardHighlights: [
+      'Problem: product documents, development decisions, and code logic become disconnected as each side changes.',
+      'Evolution: Knowledge Engine → change awareness → evidence-based Digital Employee.',
+      'Status: personal AI Product Lab and prototype, used to test product hypotheses and agent boundaries.',
+    ],
+    problem:
+      'Documents are scattered, handovers are difficult, and important context remains with individuals. When a product rule or implementation changes, the connected documents and code are not automatically understood as one evolving system.',
+    outcome:
+      'A prototype architecture for preserving current business knowledge and letting an agent retrieve evidence, identify conflicts, analyze impact, draft product documents, and route uncertain decisions back to people.',
+    skills: [
+      'Product discovery',
+      'Knowledge architecture',
+      'RAG and evidence design',
+      'Agent workflow design',
+      'Human calibration',
+    ],
+    detailSections: [
+      {
+        title: 'Why Synapse Exists',
+        body:
+          'The idea began with repeated product work: historical documents were fragmented, handovers lost context, and product intent could diverge from development decisions and actual code. A change in one place often affected another, but the relationship was invisible.',
+      },
+      {
+        title: 'Stage 01 — Knowledge Engine',
+        body:
+          'The first stage focused on continuity: preserve raw sources, organize current effective documents, retain evidence and code knowledge, and make business rules traceable instead of relying on individual memory.',
+      },
+      {
+        title: 'Stage 02 — Change Awareness',
+        body:
+          'The next question was not only where knowledge lives, but how it changes. Synapse explores relationships between product documents, development evidence, and code logic so that conflicts and downstream impact can be surfaced for review.',
+      },
+      {
+        title: 'Stage 03 — Digital Employee',
+        body:
+          'Once knowledge has structure and provenance, an agent can perform bounded tasks: clarify requirements, retrieve evidence, compare document intent with code reality, analyze impact, draft a PRD, and ask people to resolve uncertainty.',
+      },
+      {
+        title: 'Product Boundary',
+        items: [
+          'RAG finds evidence; it does not make the final business decision.',
+          'Agents plan, compare, and draft within explicit workflows and shared state.',
+          'Code is implementation evidence, not automatically the correct business definition.',
+          'Conflicts, missing evidence, and consequential changes return to human review.',
+        ],
+      },
+      {
+        title: 'Prototype Status',
+        body:
+          'Synapse is a personal AI Product Lab rather than a deployed enterprise platform. It demonstrates how I discover a recurring organizational problem, define an architecture, build reusable skills and workflows, and test the boundaries of an agent-based solution.',
+      },
     ],
     image: synapseCover,
     images: [synapseCoverPage, synapseLogin, synapseAssistant, synapseDashboard, synapseWorkflow],
-    accent: '#111111',
+    accent: '#d72418',
     kind: 'gallery',
   },
   {
     id: 'bike-rental',
     index: '041',
     title: 'C2C Bike Rental',
-    label: 'UX/UI Design',
+    label: 'UX/UI Design / Product MVP',
     date: '2025.09',
-    role: 'UX/UI Design',
-    type: 'Commercial app',
+    role: 'Product & UX/UI Design',
+    type: 'Two-sided marketplace MVP',
     description:
-      'A C2C platform concept for peer-to-peer bike rental and urban mobility sharing.',
+      'A zero-to-one C2C bike rental concept designed around the trust, payment, handoff, return, and dispute needs of both owners and renters.',
     contribution: [
-      'Defined a rental flow for browsing, booking, and handoff.',
-      'Explored commercial mobile app experience and visual structure.',
+      'Mapped separate owner and renter journeys across the complete transaction lifecycle.',
+      'Defined the MVP boundary, shared capabilities, order state machine, deposit holding period, and dispute flow.',
+      'Translated the product logic into a high-fidelity mobile prototype and WeChat mini-program experiment.',
+    ],
+    cardHighlights: [
+      'Defined a two-sided transaction from vehicle publishing to payment, handoff, return, settlement, and appeal.',
+      'Used user journeys to expose trust, vehicle-condition evidence, and fund-transparency requirements.',
+      'Reduced the P0 scope to the smallest complete transaction loop.',
+    ],
+    problem:
+      'Peer-to-peer bike rental requires more than a listing page: both sides need confidence in identity, vehicle condition, payment custody, handoff, return, and dispute handling.',
+    outcome:
+      'A scoped P0 product concept with two-sided user journeys, a complete order lifecycle, high-fidelity interface direction, and a mini-program prototype experiment.',
+    skills: [
+      'MVP definition',
+      'Two-sided marketplace design',
+      'User journey mapping',
+      'State-machine design',
+      'High-fidelity prototyping',
+    ],
+    detailSections: [
+      {
+        title: 'MVP Decision',
+        body:
+          'The P0 scope prioritizes one complete transaction loop: account and rule confirmation, vehicle discovery, owner approval, payment and deposit custody, handoff, return, settlement, and appeal. Recommendation algorithms, advanced credit scoring, and analytics remain outside the first version.',
+      },
+      {
+        title: 'Two-Sided Journey',
+        items: [
+          'Renter: understand rules, find a bike, choose time and place, request rental, pay, collect, return, and track deposit release.',
+          'Owner: publish a vehicle, review a request, verify secured funds, coordinate handoff, inspect the return, receive payment, or initiate an appeal.',
+          'Shared trust layer: identity verification, platform messaging, vehicle-condition evidence, traceable funds, and visible order status.',
+        ],
+      },
     ],
     image: bikeRentalCover,
     video: bikeRentalVideo,
