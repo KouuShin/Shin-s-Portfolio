@@ -1,8 +1,8 @@
-import { HeroSection } from './components/sections/hero/HeroSection';
 import { AboutSection } from './components/sections/about/AboutSection';
-import { TimelineSection } from './components/sections/timeline/TimelineSection';
+import { HeroSection } from './components/sections/hero/HeroSection';
 import { ProjectSection } from './components/sections/project-gallery/ProjectSection';
-import { manifesto } from './components/portfolioContent';
+import { TimelineSection } from './components/sections/timeline/TimelineSection';
+import { manifesto, siteConfig } from './content/portfolio';
 
 function App() {
   return (
@@ -18,8 +18,16 @@ function App() {
           {manifesto.name} builds product documents, AI workflows, prototypes, and business
           systems that help teams understand complex logic.
         </p>
-        <div className="font-mono-ui md:col-span-4 md:text-right">
-          Digital exhibition portfolio / 2026
+        <div className="grid justify-items-start gap-3 font-mono-ui md:col-span-4 md:justify-items-end md:text-right">
+          <span>Digital exhibition portfolio / 2026</span>
+          <a
+            href={siteConfig.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="normal-case text-[#111111]/70 transition hover:text-[#2457ff]"
+          >
+            LinkedIn ↗
+          </a>
         </div>
       </footer>
     </main>

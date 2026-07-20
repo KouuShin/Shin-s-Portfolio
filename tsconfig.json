@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -15,32 +11,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "strict": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "figma:asset/*": [
-        "./assets/*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
-  "include": [
-    "vite-env.d.ts",
-    "main.tsx",
-    "App.tsx",
-    "components/portfolioContent.ts",
-    "components/sections/**/*.tsx",
-    "components/ui/AiWorksModal.tsx",
-    "components/ui/VideoModal.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "vite.config.ts",
-    "vite-plugin-figma-asset.ts"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
 }

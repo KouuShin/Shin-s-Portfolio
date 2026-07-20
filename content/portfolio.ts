@@ -19,8 +19,13 @@ import aiMingjianCover from '@/assets/ai-mingjian_cover_page.png';
 import sleepCover from '@/assets/ai_beautiful_cover.png';
 import sleepVideo from '@/assets/助眠demo.mp4';
 
-export const manifesto = {
+export const siteConfig = {
   name: 'Xinyi Kou',
+  linkedin: 'https://www.linkedin.com/in/xinyi-kou-12a732334/',
+} as const;
+
+export const manifesto = {
+  name: siteConfig.name,
   index: '001',
   title: 'I do not define myself by any title.',
   titleCn:

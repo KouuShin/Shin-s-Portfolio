@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ProjectExhibitModal } from '../../ui/ProjectExhibitModal';
-import { PortfolioProject, projects } from '../../portfolioContent';
+import { ProjectExhibitModal } from '../../modals/ProjectExhibitModal';
+import { PortfolioProject, projects } from '../../../content/portfolio';
 
 const getCardHighlights = (project: PortfolioProject) =>
   project.cardHighlights ?? project.contribution.slice(0, 3);

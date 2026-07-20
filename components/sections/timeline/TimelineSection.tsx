@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { AiWorksModal, GalleryImage } from '../../ui/AiWorksModal';
-import { timelineEntries } from '../../portfolioContent';
+import { AiWorksModal, GalleryImage } from '../../modals/AiWorksModal';
+import { timelineEntries } from '../../../content/portfolio';
 
 export const TimelineSection = () => {
     const [gallery, setGallery] = useState<GalleryImage[] | null>(null);

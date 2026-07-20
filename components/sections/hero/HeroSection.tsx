@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { exhibitionNodes, manifesto } from '../../portfolioContent';
+import { exhibitionNodes, manifesto } from '../../../content/portfolio';
 
 const nodeFrameClass: Record<string, string> = {
     rightTop: 'col-start-3 row-start-1 self-start justify-self-end border-[#2457ff] shadow-[6px_6px_0_#2457ff]',

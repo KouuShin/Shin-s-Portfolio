@@ -1,66 +1,18 @@
-import { defineConfig } from 'vite';
+import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
-import { existsSync, readFileSync } from 'fs';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// Custom plugin to handle figma:asset imports
-function figmaAssetPlugin() {
-  return {
-    name: 'figma-asset',
-    resolveId(id: string) {
-      if (id.startsWith('figma:asset/')) {
-        const assetPath = id.replace('figma:asset/', '');
-        const fullPath = resolve(__dirname, 'assets', assetPath);
-
-        // 如果文件不存在，返回一个虚拟 ID 用于 load hook 处理
-        if (!existsSync(fullPath)) {
-          // 对于 synapse-ai-coverpage.jpg，使用 dashboard 图片作为备用
-          if (assetPath === 'synapse-ai-coverpage.jpg') {
-            const fallbackPath = resolve(__dirname, 'assets', 'synapse-dashboard.png');
-            // 返回虚拟 ID，标记需要回退
-            return `\0figma:asset:fallback:${fallbackPath}`;
-          }
-          // 其他文件不存在时也返回一个默认图片
-          const fallbackPath = resolve(__dirname, 'assets', 'synapse-dashboard.png');
-          return `\0figma:asset:fallback:${fallbackPath}`;
-        }
-
-        return fullPath;
-      }
-    },
-    load(id: string) {
-      // 处理回退文件
-      if (id.startsWith('\0figma:asset:fallback:')) {
-        const fallbackPath = id.replace('\0figma:asset:fallback:', '');
-        if (existsSync(fallbackPath)) {
-          // 返回文件内容作为 URL
-          const fileBuffer = readFileSync(fallbackPath);
-          const base64 = fileBuffer.toString('base64');
-          const ext = fallbackPath.split('.').pop() || 'png';
-          const mimeType = ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' : 'image/png';
-          return `export default "data:${mimeType};base64,${base64}";`;
-        }
-      }
-      return null;
-    }
-  };
-}
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   base: './',
-  plugins: [react(), figmaAssetPlugin()],
+  plugins: [react()],
   server: {
     port: 884,
-    host: '0.0.0.0', // 绑定到所有网络接口，支持 IPv4 和 IPv6
-    strictPort: true, // 固定使用 884 端口
+    host: '0.0.0.0',
+    strictPort: true,
   },
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./"),
+      '@': resolve(process.cwd(), './'),
     },
   },
 });
