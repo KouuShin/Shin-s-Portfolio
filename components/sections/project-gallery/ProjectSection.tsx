@@ -41,8 +41,8 @@ export const ProjectSection = () => {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.55, delay: index * 0.04 }}
-                className="group grid overflow-hidden rounded-[28px] border-2 border-[#111111] bg-[#f7f6f1] md:min-h-[520px] md:grid-cols-12"
+                transition={{ duration: 0.42, delay: index * 0.04, ease: [0.23, 1, 0.32, 1] }}
+                className="group grid overflow-hidden rounded-[28px] border-2 border-[#111111] bg-[#f7f6f1] transition-[box-shadow,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-[0_18px_70px_rgba(17,17,17,0.12)] md:min-h-[520px] md:grid-cols-12"
               >
                 <div className="flex min-h-[390px] flex-col justify-between border-b-2 border-[#111111] bg-[#030303] p-5 text-[#f7f6f1] md:col-span-5 md:min-h-[520px] md:border-b-0 md:border-r-2 md:p-7">
                   <div className="font-mono-ui text-xs uppercase leading-tight text-[#f7f6f1]/72">
@@ -56,7 +56,7 @@ export const ProjectSection = () => {
                   <button
                     type="button"
                     onClick={() => openProject(project)}
-                    className="mt-14 block w-full bg-[#f7f6f1] p-3 pb-10 text-left shadow-[0_3px_14px_rgba(0,0,0,0.28)] transition duration-200 group-hover:-translate-y-1 md:mt-20"
+                    className="relative mt-14 block w-full overflow-hidden bg-[#f7f6f1] p-3 pb-10 text-left shadow-[0_3px_14px_rgba(0,0,0,0.28)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(0,0,0,0.3)] active:scale-[0.985] md:mt-20"
                   >
                     {project.image ? (
                       <img
@@ -64,7 +64,7 @@ export const ProjectSection = () => {
                         alt={project.title}
                         loading="eager"
                         decoding="async"
-                        className="aspect-[16/10] w-full object-cover grayscale transition duration-300 group-hover:grayscale-0"
+                        className="aspect-[16/10] w-full object-cover grayscale transition-[filter,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.015] group-hover:grayscale-0"
                       />
                     ) : (
                       <div className="relative grid aspect-[16/10] w-full place-items-center overflow-hidden bg-[#030303] text-[#f7f6f1]">
@@ -115,9 +115,10 @@ export const ProjectSection = () => {
                     <button
                       type="button"
                       onClick={() => openProject(project)}
-                      className="mt-8 w-fit border-2 border-[#111111] bg-[#f7f6f1] px-4 py-3 font-mono-ui text-xs uppercase transition duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#111111] md:mt-auto"
+                      className="group/cta mt-8 inline-flex w-fit items-center gap-3 border-2 border-[#111111] bg-[#f7f6f1] px-4 py-3 font-mono-ui text-xs uppercase transition-[transform,box-shadow,background-color,color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#111111] active:scale-[0.97] md:mt-auto"
                     >
                       Open exhibit
+                      <span className="h-px w-8 bg-current transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover/cta:scale-x-125" />
                     </button>
                   </div>
                 </div>
