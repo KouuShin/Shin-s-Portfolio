@@ -1,37 +1,67 @@
-import { AboutSection } from './components/sections/about/AboutSection';
-import { HeroSection } from './components/sections/hero/HeroSection';
-import { ProjectSection } from './components/sections/project-gallery/ProjectSection';
-import { TimelineSection } from './components/sections/timeline/TimelineSection';
-import { manifesto, siteConfig } from './content/portfolio';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, ArrowRight, ArrowLeft, X, Plus, Grid2X2, ScanLine } from 'lucide-react';
+import { projects, siteConfig, timelineEntries } from './content/portfolio';
+import photo from './assets/sink-photo.jpg';
+import portrait from './assets/sink-portrait.png';
+import workflow from './assets/dify-workflow.png';
+import reader from './assets/plugin-source-reader.png';
+import tiler from './assets/plugin-image-tiler.png';
+import step from './assets/plugin-step.png';
+import businessProcess from './assets/manufacturing-business-process.png';
+import analysisSkill from './assets/business-analysis-skill.png';
+import agentPlatform from './assets/manufacturing-agent-platform.png';
+import './styles/studio.css';
+import { ProjectCaseViewer } from './components/ProjectCaseViewer';
+import type { PortfolioProject } from './content/portfolio';
 
-function App() {
-  return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-[#f7f6f1] text-[#111111] selection:bg-[#030303] selection:text-[#f7f6f1]">
-      <HeroSection />
-      <AboutSection />
-      <TimelineSection />
-      <ProjectSection />
-
-      <footer className="mx-auto grid w-[min(1480px,100%)] grid-cols-1 gap-8 border-t border-[#111111]/20 px-6 py-12 text-xs uppercase leading-tight tracking-normal text-[#111111]/55 md:grid-cols-12 md:px-8 lg:px-10">
-        <div className="font-mono-ui md:col-span-3">099 / End Plate</div>
-        <p className="max-w-xl md:col-span-5">
-          {manifesto.name} builds product documents, AI workflows, prototypes, and business
-          systems that help teams understand complex logic.
-        </p>
-        <div className="grid justify-items-start gap-3 font-mono-ui md:col-span-4 md:justify-items-end md:text-right">
-          <span>Digital exhibition portfolio / 2026</span>
-          <a
-            href={siteConfig.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="normal-case text-[#111111]/70 transition hover:text-[#2457ff]"
-          >
-            LinkedIn ↗
-          </a>
-        </div>
-      </footer>
-    </main>
-  );
+type Item = { id: string; title: string; category: string; tag: string; description: string; image?: string; video?: string; notes: string[]; project?: PortfolioProject; visual: string };
+const items: Item[] = [
+ { id:'reader', title:'Engineering Source Reader', category:'Plugins', tag:'DIFY PLUGIN / V0.1.0', description:'让不同格式的工程资料，进入同一个 AI 工作流。', image:reader, visual:'reader', notes:['本地 PDF / DOCX / 图像规范化处理。','提供保守的 STEP 实体证据，不推断 CAD 中心点。','已开发 · 本地插件'] },
+ { id:'tiler', title:'Image Tiler', category:'Plugins', tag:'DIFY PLUGIN / V0.0.4', description:'把大图切小，让细节被看见。', image:tiler, visual:'tiler', notes:['将 JPEG、PNG 图像切成带重叠区域的 JPEG 切片。','返回可追溯清单，保留切片与原图的关系。','已开发 · 本地插件'] },
+ { id:'step', title:'STEP Text Converter', category:'Plugins', tag:'DIFY PLUGIN / V0.2.1', description:'从 STEP 文件，到模型可以读取的文本。', image:step, visual:'step', notes:['读取 .stp / .step 文件字节并转换为纯文本。','为 LLM 提供输入，不执行工程分析。','已开发 · 本地插件'] },
+ { id:'flow', title:'从工程资料到结构化结果', category:'Workflows', tag:'DIFY / WORKFLOW', description:'把插件、文件分流与模型处理，连接成实际的工作路径。', image:workflow, visual:'flow', notes:['按 PDF、图像和 STEP 类型分流处理。','连接图片切片、图纸识别、STEP 文本处理与结果整理。','实际流程截图 · 点击可放大查看'] },
+ { id:'business', title:'制造业设计工程师业务流程', category:'Workflows', tag:'BUSINESS DESIGN / VOSS', description:'以工程成果的状态变化，梳理从客户资料到工程交付的六个阶段。', visual:'business', image:businessProcess, notes:['验证客户输入 → 定义工程方案 → 确认设计方案 → 创建 3D 数模 → 生成 2D 图纸包 → 发布工程交付包。','流程按 L0–L3 分层，逐项明确角色、输入输出、数据来源、规则与工具。','DQR 必须在建模前确认；关键问题未关闭，不进入数模阶段。','实际业务流程页面截图，展示 L1 阶段、L2 任务与 L3 操作步骤。'] },
+ { id:'agent', title:'制造业工程设计智能体平台', category:'Agents', tag:'PRODUCT DESIGN / WORK IN PROGRESS', description:'面向制造业设计工程师，将工程任务、证据复核与 CAD 执行串成协作工作台。', visual:'agent', image:agentPlatform, notes:['原型包含项目工作台、审核、资料资产、规则、流程、CAD 执行与团队治理。','工程师处理方案草稿；专家审核规则；审核人确认 DQR 后，再进入 CAD 任务。','CATIA、本地文件与 SAP / ECTR 连接仍有待接入或确认；不将交互原型表述为已上线系统。','实际产品原型截图：在同一任务中协作查看对话、资料与工程结果。'] },
+ { id:'skills', title:'业务需求分析', category:'Skills', tag:'PERSONAL SKILL / 01', description:'先理解业务，再建立业务层级、数据流与依赖关系，最后映射到技术实现。', visual:'skills', image:analysisSkill, notes:['业务需求分析 / Business Process Decomposition Skill。','将非结构化、混乱或粒度不一致的业务描述，整理为清晰、分层、可执行、可复用的业务架构。','适用于业务流程梳理、SOP 设计与重构、复杂需求分析，以及 Agent、Workflow 和自动化流程设计。'] },
+ { id:'skill-agent', title:'业务需求 → Agent 架构', category:'Skills', tag:'PERSONAL SKILL / 02', description:'连接需求分析与 Agent 架构设计，让业务逻辑延伸到产品方案。', visual:'skills', notes:['个人沉淀的业务需求转换成 Agent 架构 Skill。','后续使用真实 Skill 截图展示。','实际 Skill 截图待补充。'] },
+ ...projects.filter(p=>p.id!=='industrial-ai').map(p=>({id:p.id,title:p.title,category:'Products',tag:p.label,description:p.description,image:p.image,video:p.video,notes:p.contribution,project:p,visual:'project'})),
+];
+const categories=['All','Plugins','Workflows','Skills','Agents','Products'];
+export default function App(){
+ const [page,setPage]=useState('Home');
+ const [category,setCategory]=useState('All');
+ const [selected,setSelected]=useState('reader');
+ const [realPhoto,setRealPhoto]=useState(false);
+ const [sliced,setSliced]=useState(false);
+ const [detail,setDetail]=useState<Item|null>(null);
+ const dialog=useRef<HTMLDialogElement>(null);
+ const filtered=items.filter(i=>category==='All'||i.category===category);
+ const active=filtered.find(i=>i.id===selected)||filtered[0];
+ useEffect(()=>{if(detail)dialog.current?.showModal();else dialog.current?.close();},[detail]);
+ const go=(next:string)=>{setPage(next);window.scrollTo(0,0);};
+ const openWork=(id='reader')=>{setCategory('All');setSelected(id);go('Work');};
+ const turn=(dir:number)=>{setSelected(filtered[(filtered.indexOf(active)+dir+filtered.length)%filtered.length].id);setSliced(false);};
+ function visual(item:Item){
+  if((item.id === 'business' || item.id === 'skills' || item.id === 'agent') && item.image)return <button className={`screenshot-exhibit screenshot-${item.id}`} onClick={()=>setDetail(item)} aria-label={`查看 ${item.title} 实际截图`}><div className="screenshot-mat"><img src={item.image} alt={`${item.title} 实际截图`}/></div><span className="screenshot-caption">{item.id === 'business' ? 'BUSINESS PROCESS / 从客户资料到工程交付' : item.id === 'agent' ? 'PRODUCT DESIGN / 制造业工程设计智能体平台' : 'SKILL / BUSINESS PROCESS DECOMPOSITION'}<span>查看截图 ↗</span></span></button>;
+  if(item.visual==='business')return <div className="business-art"><span className="mono">FROM CUSTOMER INPUT TO ENGINEERING DELIVERY</span><div className="business-steps">{['验证客户输入','定义工程方案','DQR 方案确认','创建 3D 数模','生成 2D 图纸','发布工程交付'].map((s,i)=><div key={s}><small>0{i+1}</small><strong>{s}</strong><span>{i===2?'审核关口':'→'}</span></div>)}</div><span className="caption">依据业务流程源码整理 · 非原页面截图</span></div>;
+  if(item.visual==='tiler')return <div className="tile-demo"><div className={`tile-grid ${sliced?'sliced':''}`}>{Array.from({length:9},(_,i)=><span key={i}>{String(i+1).padStart(2,'0')}</span>)}</div><button className="demo-button" onClick={()=>setSliced(!sliced)}>{sliced?'重新拼合 ↗':'试着切一切 ↗'}</button><small>交互示意 · 非在线插件运行</small></div>;
+  if(item.visual==='reader')return <div className="reader-art"><div className="file-stack"><span>PDF</span><span>DOCX</span><span>IMG</span></div><ArrowRight size={44}/><div className="source-box"><ScanLine size={42}/><b>SOURCE<br/>READER</b><small>MAKE IT READABLE.</small></div></div>;
+  if(item.visual==='step')return <div className="step-art"><span className="wire-cube">◇</span><div><span className="mono">.STP / .STEP</span><h3>Less friction.<br/>More context.</h3><code>ISO-10303-21;<br/>HEADER;<br/>…<br/>ENDSEC;</code></div></div>;
+  if(item.visual==='flow')return <div className="flow-art"><span className="mono">INPUT → UNDERSTAND → STRUCTURE</span><button onClick={()=>setDetail(item)} aria-label="放大工作流截图"><img src={workflow} alt="实际 Dify 工程资料处理流程"/></button><span className="caption">一个工作流，让资料找到各自的处理路径。</span></div>;
+  if(item.visual==='agent')return <div className="agent-art"><span className="orbit orbit-one"/><span className="orbit orbit-two"/><span className="agent-star">✳</span><h3>Thinking<br/>in systems.</h3><span className="wip">↗ 正在打磨中</span></div>;
+  if(item.visual==='skills')return <div className="skill-art"><div className="screenshot-slot"><Plus size={32}/><span>给好方法，留一个位置。</span><small>SKILL SCREENSHOTS · COMING SOON</small></div><span className="caption">截图展台 / 01</span></div>;
+  return <button className="project-preview-button" onClick={()=>setDetail(item)} aria-label={`打开 ${item.title} 作品演示与完整案例`}><img className="project-image" src={item.image} alt={item.title}/><span className="project-preview-label">{item.video ? '▷ 播放演示视频' : `查看作品图集 · ${new Set([item.image,...(item.project?.images||[])]).size} 张`}<ArrowUpRight size={18}/></span></button>;
+ }
+ return <div className="studio">
+ <header className="studio-header"><button className="wordmark" onClick={()=>go('Home')} aria-label="Sink 首页">sink<span>✳</span></button><span className="header-note">寇欣怡 / XINYI KOU<br/>PRODUCT THINKER & AI BUILDER</span><nav aria-label="主导航">{[['Home','首页'],['Work','作品'],['About','关于我']].map(([key,label])=><button key={key} aria-current={page===key?'page':undefined} className={page===key?'current':''} onClick={()=>go(key)}>{label}<span>{key==='Home'?'01':key==='Work'?'02':'03'}</span></button>)}</nav><a className="contact-link" href={siteConfig.linkedin} target="_blank" rel="noreferrer">LET’S TALK <ArrowUpRight size={17}/></a></header>
+ <main key={page} className="studio-main">
+ {page==='Home'&&<section className="home-view"><div className="hero-topline"><span>INDEPENDENT MIND. HANDS-ON BUILDER.</span><span className="availability"><i/> 持续探索，持续构建</span></div><div className="hero-composition"><div className="hero-copy"><span className="intro-tag">你好，我是 Sink。</span><h1>Serious ideas.<br/><span>Playful</span> builds<span className="period">.</span></h1><p>用产品思维拆解复杂，用 AI 把想法做出来。<br/>产品经理，也是喜欢亲手构建的人。</p><button className="primary-link" onClick={()=>openWork()}>Products built by Sink <ArrowUpRight size={23}/></button><span className="hand-note">a little curious, always.</span></div><button className={`portrait-card ${realPhoto?'is-photo':''}`} onClick={()=>setRealPhoto(!realPhoto)} aria-label="切换插画头像与自拍"><img src={realPhoto?photo:portrait} alt={realPhoto?'寇欣怡的自拍':'寇欣怡的半色调插画肖像'}/><span className="portrait-label">{realPhoto?'THE HUMAN BEHIND THE BUILDS':'A PRODUCT MIND, WITH A TWIST.'}<ArrowUpRight size={18}/></span><span className="portrait-sticker">{realPhoto?'hello, me!':'click to meet me'}</span></button><span className="hero-spark" aria-hidden="true">✳</span></div><div className="home-bottom"><div className="shelf-label"><span className="mono">ON MY WORKBENCH</span><span>最近在做的东西 ↗</span></div>{[{id:'tiler',title:'Small tools. Big help.',label:'DIFY PLUGINS',icon:<Grid2X2/>},{id:'flow',title:'Connect the dots.',label:'WORKFLOWS',icon:<ScanLine/>},{id:'agent',title:'Made for the real world.',label:'INDUSTRIAL AGENT · WIP',icon:<span>✳</span>}].map(x=><button className="shelf-item" key={x.id} onClick={()=>openWork(x.id)}><span className="shelf-icon">{x.icon}</span><span><small>{x.label}</small><strong>{x.title}</strong></span><ArrowUpRight size={20}/></button>)}</div></section>}
+ {page==='Work'&&<section className="work-view"><div className="section-heading"><div><span className="mono">SELECTED WORKS & USEFUL EXPERIMENTS</span><h1>Products built by <em>Sink.</em></h1></div><span className="work-count">{String(items.length).padStart(2,'0')} things, and counting ↗</span></div><div className="filters" aria-label="作品分类">{categories.map(c=><button key={c} aria-pressed={category===c} className={category===c?'active':''} onClick={()=>{setCategory(c);setSliced(false);}}>{c}<sup>{c==='All'?items.length:items.filter(i=>i.category===c).length}</sup></button>)}</div><div className="exhibition"><aside className="work-index">{filtered.map((item,i)=><button key={item.id} className={active.id===item.id?'selected':''} onClick={()=>{setSelected(item.id);setSliced(false);}}><span className="mono">{String(i+1).padStart(2,'0')}</span><span>{item.title}<small>{item.category}</small></span><ArrowUpRight size={16}/></button>)}</aside><div className="exhibit-body"><div className={`visual-stage visual-${active.visual}`} key={active.id}>{visual(active)}</div><div className="exhibit-info"><div><span className="mono">{active.tag}</span><h2>{active.title}</h2><p>{active.description}</p></div><button className="round-arrow" onClick={()=>setDetail(active)} aria-label={`查看 ${active.title} 详情`}><ArrowUpRight/></button></div><div className="exhibit-controls"><span>BUILT WITH INTENTION, SHARED WITH CURIOSITY.</span><div><button onClick={()=>turn(-1)} aria-label="上一个作品"><ArrowLeft size={17}/></button><span>{String(filtered.indexOf(active)+1).padStart(2,'0')} / {String(filtered.length).padStart(2,'0')}</span><button onClick={()=>turn(1)} aria-label="下一个作品"><ArrowRight size={17}/></button></div></div></div></div></section>}
+ {page==='About'&&<section className="about-view"><div className="about-photo"><img src={photo} alt="寇欣怡的生活照片"/><span>MORE THAN A JOB TITLE. ↗</span></div><div className="about-copy"><span className="mono">THE PERSON BEHIND SINK</span><h1>保持好奇。<br/>把想法做实<span className="period">。</span></h1><p>我是寇欣怡，一名产品经理。我关心复杂业务里的真实问题，也喜欢动手把它们变成可以体验、验证和复用的产品。</p><p>从用户体验、业务系统，到 Dify 插件、工作流与工业制造 Agent，我持续探索 AI 如何参与实际工作。</p><div className="about-tags"><span>Product thinking</span><span>AI building</span><span>Design curiosity</span></div><details><summary>一路走来的线索 <Plus size={18}/></summary><div className="journey">{timelineEntries.map((entry,i)=><p key={i}><b>{entry.year}</b><span>{entry.title}</span></p>)}</div></details><a className="primary-link" href={siteConfig.linkedin} target="_blank" rel="noreferrer">在 LinkedIn 找到我 <ArrowUpRight size={22}/></a></div></section>}
+ </main><footer className="studio-footer"><span>© 2026 SINK / 寇欣怡</span><span>THINK CLEARLY. MAKE SOMETHING.</span><button onClick={()=>go(page==='Work'?'Home':'Work')}>{page==='Work'?'回到首页':'逛逛我的作品'} ↗</button></footer>
+ <dialog ref={dialog} className="detail-dialog" onCancel={()=>setDetail(null)} onClick={e=>{if(e.target===e.currentTarget)setDetail(null);}} onClose={()=>setDetail(null)}>{detail&&<><div className="detail-header"><span className="mono">{detail.tag}</span><button autoFocus onClick={()=>setDetail(null)} aria-label="关闭详情"><X/></button></div><h2>{detail.title}</h2><p>{detail.description}</p>{detail.project ? <ProjectCaseViewer key={detail.id} project={detail.project}/> : <>{detail.image?<ScreenshotEvidence key={detail.id} src={detail.image} title={detail.title}/>:<div className="detail-placeholder"><Plus/><span>{detail.category==='Skills'?'Skill 截图展示位 · 待补充':'项目打磨中 · 阶段成果待补充'}</span></div>}{detail.video&&<video controls preload="metadata" src={detail.video}/>}<ul>{detail.notes.map((note,i)=><li key={i}>{note}</li>)}</ul></>}</>}</dialog>
+ </div>;
 }
 
-export default App;
+
+function ScreenshotEvidence({src,title}:{src:string;title:string}){const [zoom,setZoom]=useState(false);return <><button className="screenshot-zoom" onClick={()=>setZoom(!zoom)}>{zoom ? '适应窗口 ↙' : '放大查看细节 ↗'}</button><div className={`evidence-image ${zoom?'evidence-zoomed':' '}`}><img src={src} alt={`${title} 实际截图`}/></div></>;}

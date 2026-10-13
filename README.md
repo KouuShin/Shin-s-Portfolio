@@ -1,8 +1,8 @@
-# 个人作品集网站
+# Sink · 个人作品集
 
-基于 React、Vite、TypeScript 和 Tailwind CSS 的个人在线作品集。
+基于 React、Vite、TypeScript 和 Tailwind CSS 的作品集。当前版本采用米白纸感与蓝色强调，通过首页、作品和关于我三个原地切换视图展示内容。
 
-## 常用命令
+## 开发与构建
 
 ```bash
 npm install
@@ -11,29 +11,26 @@ npm run typecheck
 npm run build
 ```
 
-提交或发布前至少运行 `npm run typecheck` 和 `npm run build`。
+默认预览地址为 http://127.0.0.1:884/。发布前运行类型检查与生产构建。沿用原 Vercel 配置，构建目录为 dist，不提交生成物。
 
-## 项目结构
+## 当前内容
 
-```text
-assets/                 网站使用的图片与视频
-components/
-  modals/               作品与图片弹窗
-  sections/             首页各内容区块
-content/
-  portfolio.ts          个人资料、时间线和作品内容
-styles/
-  globals.css           全局设计变量与基础样式
-App.tsx                 页面区块组合与页脚
-main.tsx                React 入口
-```
+- 三个 Dify 插件：Engineering Source Reader、Image Tiler、STEP Text Converter。
+- Dify 工程资料处理流程、制造业设计工程师业务流程。
+- 制造业工程设计智能体平台，标注为设计中产品。
+- 业务需求分析 Skill（已接入截图）、业务需求转 Agent 架构 Skill（截图待补充）。
+- 原有 AI 明检、Synapse、C2C Bike Rental、AI Sleep Companion，保留完整案例、图片与视频。
 
-## 更新内容
+## 文件与维护
 
-- 修改个人资料、LinkedIn、时间线：编辑 `content/portfolio.ts` 顶部对应数据。
-- 新增作品：在 `content/portfolio.ts` 的 `projects` 数组中复制一个现有项目对象，修改唯一 `id`、文字和资源引用。
-- 新增媒体：放入 `assets/`，再从 `content/portfolio.ts` 导入使用。
-- 修改版块布局：进入 `components/sections/` 对应目录。
-- 修改弹窗展示：进入 `components/modals/`。
+- `App.tsx`：页面结构、新展品数据、筛选、截图详情与导航。
+- `content/portfolio.ts`：个人资料、时间线及原有项目的完整案例和媒体数据。
+- `components/ProjectCaseViewer.tsx`：案例过程、图集翻阅、图片放大与视频播放。
+- `styles/studio.css`：新版布局、中文字体、响应式与交互样式。
+- `styles/globals.css`：全局设计变量与基础样式。
+- `assets/`：正式使用的照片、截图、封面与视频。
+- `docs/`：改版记录和预览截图。
 
-项目配置了 Vercel 部署，构建产物由 Vite 生成，无需提交 `dist/`。
+新增插件、流程、Skill 或 Agent，在 App.tsx 的 items 中维护；新增原有类型案例，在 content/portfolio.ts 的 projects 中维护。截图存入 assets 后使用模块导入，不引用临时目录。旧版 components/sections 和 components/modals 暂保留供参考，当前入口不使用它们。
+
+中文采用 Noto Sans SC，英文主要采用 Archivo。外部字体不可用时使用系统字体回退。
