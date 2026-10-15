@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, X } from 'lucide-react';
 import { exhibits, filters, type Exhibit } from './content/exhibits';
 import { timelineEntries } from './content/portfolio';
 import { ProjectCaseViewer } from './components/ProjectCaseViewer';
+import { ProjectFilmPreview } from './components/ProjectFilmPreview';
 import photo from './assets/sink-editorial-portrait.png';
 import { Photography } from './components/Photography';
 import './styles/studio.css';
@@ -53,7 +54,7 @@ export default function App(){
      <div className="gallery-object">
       <AnimatePresence mode="popLayout" initial={false}><motion.div key={active.id} variants={turnVariants} initial="enter" animate="show" exit="leave" transition={{duration:reduced?0:.32,ease:[.16,1,.3,1]}} drag={reduced?false:'x'} dragConstraints={{left:0,right:0}} dragElastic={.45} dragMomentum={false} dragTransition={{bounceStiffness:420,bounceDamping:38}} onDragStart={()=>{dragging.current=true;}} onDragEnd={(_,info)=>{if(Math.abs(info.offset.x)>55)browse(info.offset.x<0?1:-1);window.setTimeout(()=>{dragging.current=false;},120);}} className="gallery-dragger">
        <button className={`gallery-print ${active.category==='Plugins'?'plugin-print':''}`} onClick={()=>{if(!dragging.current)open(active);}} aria-label={`Open ${active.title}`}>
-        {active.image?<img draggable={false} src={active.image} alt={active.title}/>:<div className="diffusion-art"><span>Ideas,<br/>taking shape.</span><small>SCREENSHOT FORTHCOMING</small></div>}
+        {active.project?.video?<ProjectFilmPreview key={active.id} src={active.project.video} poster={active.image} title={active.title} enabled={!detail}/>:active.image?<img draggable={false} src={active.image} alt={active.title}/>:<div className="diffusion-art"><span>Ideas,<br/>taking shape.</span><small>SCREENSHOT FORTHCOMING</small></div>}
         <span className="print-open">{active.project?.video?'Play film':'Open project'} <ArrowUpRight size={13}/></span>
        </button>
       <div className="gallery-caption" aria-live="polite"><span>{active.tag}</span><h2>{active.title}</h2><p>{active.description}</p></div>
