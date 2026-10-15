@@ -1,0 +1,22 @@
+import { projects, type PortfolioProject } from './portfolio';
+import workflow from '../assets/dify-workflow.png';
+import reader from '../assets/plugin-source-reader.png';
+import tiler from '../assets/plugin-image-tiler.png';
+import step from '../assets/plugin-step.png';
+import business from '../assets/manufacturing-business-process.png';
+import skill from '../assets/business-analysis-skill.png';
+import agent from '../assets/manufacturing-agent-platform.png';
+
+export type Exhibit = { id:string; title:string; category:string; tag:string; description:string; image?:string; notes:string[]; project?:PortfolioProject };
+export const exhibits:Exhibit[] = [
+ {id:'agent',title:'Manufacturing Design Agent',category:'Agents',tag:'PRODUCT DESIGN · IN PROGRESS',description:'A shared workspace for engineering tasks, evidence review and design decisions.',image:agent,notes:['Designed for manufacturing design engineers, with project conversations, source material and task results in one place.','The prototype brings together drawing information, part matching, hidden components, DQR review and deliverables.','Engineers prepare drafts; reviewers confirm the design before CAD execution.','A product prototype in development. CAD and enterprise integrations are not presented as production-ready.']},
+ {id:'business',title:'From input to engineering delivery',category:'Workflows',tag:'BUSINESS PROCESS DESIGN',description:'A layered map of the work behind an engineering deliverable.',image:business,notes:['Validate customer inputs → define the engineering proposal → confirm the design → create 3D models → produce 2D drawings → release the engineering package.','L0–L3 decomposition connects outcomes, tasks and actions with roles, inputs, outputs, rules and tools.','DQR confirmation comes before modeling. Unresolved critical issues block the next stage.']},
+ {id:'reader',title:'Engineering Source Reader',category:'Plugins',tag:'DIFY PLUGIN · V0.1.0',description:'Different engineering sources. One readable starting point.',image:reader,notes:['Normalizes local PDF, DOCX and image inputs.','Provides conservative STEP entity evidence without inferring CAD center points.','Developed as a local Dify plugin.']},
+ {id:'tiler',title:'Image Tiler',category:'Plugins',tag:'DIFY PLUGIN · V0.0.4',description:'Smaller images, with the bigger picture kept intact.',image:tiler,notes:['Splits JPEG and PNG images into overlapping JPEG tiles.','Returns a traceable manifest connecting each tile to its source.','Developed as a local Dify plugin.']},
+ {id:'step',title:'STEP Text Converter',category:'Plugins',tag:'DIFY PLUGIN · V0.2.1',description:'A simple bridge from STEP files to model-readable text.',image:step,notes:['Reads .stp / .step bytes and converts them into plain text for an LLM.','Performs conversion, not engineering analysis.','Developed as a local Dify plugin.']},
+ {id:'flow',title:'Engineering document workflow',category:'Workflows',tag:'DIFY WORKFLOW',description:'Connecting file routing, image processing and structured results.',image:workflow,notes:['Routes PDF, image and STEP inputs to their respective processing paths.','Connects image tiling, drawing recognition, STEP text processing and result assembly.','The image shows the actual Dify workflow.']},
+ {id:'skills',title:'Business Requirements Analysis',category:'Skills',tag:'PERSONAL SKILL · 01',description:'Understand the business first. Then decide how to build.',image:skill,notes:['Business Process Decomposition Skill.','Turns unstructured or inconsistent business descriptions into a clear, layered, actionable and reusable business architecture.','Maps business levels, data flows and dependencies before choosing agents, workflows or tools.']},
+ {id:'skill-agent',title:'Requirements to Agent Architecture',category:'Skills',tag:'PERSONAL SKILL · 02',description:'Translating business requirements into an agent architecture.',notes:['A reusable skill connecting requirements analysis and agent architecture design.','Original screenshot to be added. The gradient cover is an abstract placeholder.']},
+ ...projects.filter(p=>p.id!=='industrial-ai').map(p=>{const project=p.id==='ai-check'?{...p,title:'AI Mingjian'}:p;return {id:p.id,title:project.title,category:'Products',tag:p.label,description:p.description,image:p.image,notes:p.contribution,project};}),
+];
+export const filters=['All','Products','Agents','Workflows','Plugins','Skills'];
