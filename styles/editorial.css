@@ -51,3 +51,6 @@ figure.home-portrait{margin:0;cursor:default}.home-portrait figcaption{font-size
 /* Preserve the selected portrait in full at a consistent 3:4 ratio. */
 .home-portrait .portrait-stack{height:auto;aspect-ratio:3/4;max-width:none}.editorial-about figure img{width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;border:0;box-shadow:none}.journal-header nav>button:last-child{display:flex;align-items:center;gap:6px}
 
+
+.agent-film-detail video{display:block;width:100%;max-height:min(62vh,680px);object-fit:contain;background:#201f1c;margin:24px 0}.agent-film-detail ul{margin-top:28px}
+
